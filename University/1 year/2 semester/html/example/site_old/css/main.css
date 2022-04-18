@@ -1,0 +1,32 @@
+body {
+	background-color:#17181a;
+	color: white;
+}
+ul {
+	list-style-type:none;
+	margin: -8px;
+	padding: 0;
+	overflow: hidden;
+	background-color:#2e2e33;
+	text-align: center;
+}
+li {
+	display: inline-block;
+	text-align: center;
+	font-size: 25px;
+	line-height: 40px;
+	transition: background-color 0.2s ease;
+}
+
+li a {
+	display: block;
+	color: white;
+	text-align: center;
+	padding: 16px;
+	text-decoration: none;
+}
+li:hover {
+	background-color: blue;
+	text-decoration: none;
+}
+

@@ -1,0 +1,47 @@
+nav {
+	font-family: Arial; 
+	font-size:30px;
+}
+#quotes {
+	font-family:Arial;
+	font-size:25px;
+} 
+#mention {
+	font-size:15px;
+}
+#Characteristics {
+	font-size:25px;
+}
+#Characteristics .table {
+	font-size:20px;
+}
+#Music {
+	font-size:25px;
+	font-weight:Bold;
+}
+#Video {
+	font-size:25px;
+	font-weight:Bold;
+}
+.miner {
+	font-size:20px;
+}
+#aligntest {
+	font-size:20px;
+}
+#aligntest span.super {
+	vertical-align:super;
+}
+#aligntest span.sub {
+	vertical-align:sub;
+}
+#Survey p {
+	font-size:30px;
+	font-weight:Bold;
+}
+#Survey form {
+	font-size:20px;
+}
+footer {
+	font-size:15px;
+}

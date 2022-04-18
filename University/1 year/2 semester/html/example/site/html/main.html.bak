@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<link rel="stylesheet" href="../css/main.css">
+		<title> Сайт-портфолио </title>
+	</head>
+	
+	<body> 
+		<header>
+			<ul>
+				<li><a href="main.html">На главную</a>
+				<li><a href="resume.html">Резюме</a>
+				<li><a href="about.html">Обо мне</a>
+				<li><a href="achivements.html">Мои успехи и достижения</a>
+				<li><a href="contact.html">Связь со мной</a>  
+			</ul>
+		</header>
+		
+	
+		<div id="container">
+			<h1> Андрей Рублев </h1>
+			<h2> Студент ВятГУ </h2>
+			<br><br><br><br><br><br><br><br>
+		</div>
+		
+		<img class="me" align="center" src='../img/jaaaa.jpg'>
+	</body>
+</html>	

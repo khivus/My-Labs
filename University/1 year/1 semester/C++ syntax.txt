@@ -1,0 +1,416 @@
+always:
+#include "stdio.h"
+/* we also have:
+#include "locale.h" - for sellocale(LC_ALL,"Russian") and
+#include "conio.h" - for getch() */
+
+// comment
+/* long
+		comm */
+
+\n new line
+\t horizontal tab
+\\ backslash
+\b backspace
+\' single quote
+\" double quote
+
+\n – переход на новую строку;
+\t – горизонтальная табуляция;
+\b – возврат каретки (курсора) назад на один символ; 
+\r – возврат каретки (курсора) в начало строки; 
+\? – знак вопроса;
+\0 – нулевой символ;
+\\ – обратная косая черта;
+\’ – апостроф (одиночная кавычка);
+\” – кавычка (символ двойной кавычки).
+
+
+Математическая функция - Имя функции в языке С
+1 - 2
+корень - sqrt(x)
+|x| - fabs(x)
+e^x - exp(x)
+x^y - pow(x,y)
+ln(x) - log(x)
+lg10(x) - log10(x)
+sin(x) - sin(x)
+cos(x) - cos(x)
+tg(x) - tan(x)
+arcsin(x) - asin(x)
+arccos(x) - acos(x)
+arctg(x) - atan(x)
+arctg(x/y) - atan2(x,y)
+tgh(x) - tanh(x)
+Остаток от деления x на y - fmod(x,y)
+Наименьшее целое, которое больше либо равно x - ceil(x)
+Наибольшее целое, которое меньше либо равно x - floor(x)
+
+Типы констант:
+#define <cname> <value>
+const <type> <cname> = <value>
+
+d decimal
+c character
+s string
+f float
+e scientific notation
+x hexadecimal
+
+int a[x][y] //2 dimensional array with x rows and y collumns
+int a[x] //array a with x chars
+int a,b,c
+float amt
+char name[21] //or *name
+char ans //single char
+void  // ничего не возвращает
+FILE // for files
+
+%d	десятичное целое число
+%c	один символ
+%s	строка символов
+%e	число с плавающей точкой (экспоненциальная запись)
+%f	число с плавающей точкой (десятичная запись)
+%u	десятичное число без знака
+%o	восьмеричное число без знака
+%x	шестнадцатеричное число без знака
+
+pointer_type *identifier 
+
+sizeof(<element>) //определяет размер элемента
+
+printf("number is %d",number) // simple output.
+printf_s() //same as printf() but without using <stdio.h> ???
+puts(string) //takes only a string argument and can also be used to display output. However, it adds a newline to output.
+fputs(string, stdout) //requires the name of the string and a pointer to where you want to print the string. To print to the screen, use stdout which refers to the standard output.
+putchar() // outputs 1 char
+
+scanf("%s %d",string, &number) 
+gets(string) //reads input until a enter key is pressed. string is a example
+fgets(string, 50, stdin) //reads up to a specified number of characters. 50 means 50 characters. stdin means to read from the standard input, which is the keyboard
+
+//!We also have cin >> and cout << but in the beggining of programm you need write: using namespace std
+
+1/3 = 0
+1.0/3.0 = 0.3333
+
+&& - *and* operator
+|| - *or* operator
+! - *not* operator
+fabs() //absolute(модуль), like abs() in python
+
+if - else
+if - else-if:
+	if ...
+	else if ...
+	else if ...
+	else ...
+switch {
+case1 ... ;break;
+case2 ... ;break;
+}
+
+for:/*
+for (initvalue; condition; increment) {
+  statements;
+} */
+
+while
+
+do-while loop:
+/*
+do {
+  statements
+} while (expression);
+*/
+
+
+__________________________________________________________________________________________________________________________
+# FUNCTIONS #
+
+A function:
+• is a block of code that performs a specific task
+• is reusable
+• makes a program easier to test
+• can be modified without changing the calling program
+
+return_type function_name(parameters); 
+
+void //return_type
+int, etc. 
+
+build strings for other data types:
+sprintf(<string array>,"<out>",<values>) //A formatted string can be created with the sprintf() function. This is useful for building a string from other data types.
+sscanf(<string array>,"<out>",<values>) //for scanning a string for values. The function reads values from a string and stores them at the corresponding variable addresses.
+
+<string.h> library:
+strlwr(str)            - convert string to lower case
+strupr(str)            - convert string to upper case
+strrev(str)            - reverse string
+strlen(str)            - Returns the length of the string stored in str, not including the NULL character.
+strcat(str1, str2) 	   - Appends (concatenates) str2 to the end of str1 and returns a pointer to str1.
+strcpy(str1, str2)     - Copies str2 to str1. This function is useful for assigning a string a new value.
+strncat(str1, str2, n) - Appends (concatenates) first n characters of str2 to the end of str1 and returns a pointer to str1.
+strncpy(str1, str2, n) - Copies the first n characters of str2 to str1.
+strcmp(str1, str2)     - Returns 0 when str1 is equal to str2, less than 0 when str1 < str2, and greater than 0 when str1 > str2.
+strncmp(str1, str2, n) - Returns 0 when the first n characters of str1 is equal to the first n characters of str2, less than 0 when str1 < str2, and greater than 0 when str1 > str2.
+strchr(str1, c)        - Returns a pointer to the first occurrence of char c in str1, or NULL if character not found.
+strrchr(str1, c)       - Searches str1 in reverse and returns a pointer to the position of char c in str1, or NULL if character not found.
+strstr(str1, str2)     - Returns a pointer to the first occurrence of str2 in str1, or NULL if str2 not found.
+
+<stdio.h>
+int atoi(str)        - Stands for ASCII to integer. Converts str to the equivalent int value. 0 is returned if the first character is not a number or no numbers are encountered.
+double atof(str)     - Stands for ASCII to float. Converts str to the equivalent double value. 0.0 is returned if the first character is not a number or no numbers are encountered.
+long int atol(str)   - Stands for ASCII to long int. Converts str to the equivalent long integer value. 0 is returned if the first character is not a number or no numbers are encountered.
+
+return_type (*func_name)(parameters) //function pointer
+
+__________________________________________________________________________________________________________________________
+# STRUCTURES #
+
+structures can also be inside a structures
+
+# Declare structure
+struct <name> { <declare 1>; <declare 2>; ... };
+
+# Declaring structure in main
+struct <name> <sname>;
+
+# Initialization
+struct <name> <sname> = { <variables> };
+or
+<sname> = (struct <name>) { <variables> };
+
+# Accessing
+<declare>.<sname> = <variable>;
+
+# Typedef
+typedef is commonly used with structures because it eliminates the need to use the keyword struct when declaring variables.
+Note that a structure tag is no longer used, instead a typedef name appears before the struct declaration.
+
+typedef struct { <declare 1>; <declare 2>; ... } <name>;
+<name> <sname>;
+
+# Pointers to structures
+struct myStruct *struct_ptr;
+defines a pointer to the myStruct structure.
+
+struct_ptr = &struct_var;
+stores the address of the structure variable struct_var in the pointer struct_ptr.
+
+struct_ptr -> struct_mem;
+accesses the value of the structure member struct_mem.
+
+__________________________________________________________________________________________________________________________
+# UNIONS #
+
+A union declaration uses the keyword union, a union tag, and curly braces { } with a list of members.
+
+# Declaring union
+union <name> {
+	<type> <cname>;
+	<type> <cname>;
+};
+
+# Declaring variables
+union <name> <sname1>;
+union <name> <sname2>;
+...
+
+Unions are used for memory management. The largest member data type is used to determine the size of the memory to share and then all members use this one location. This process also helps limit memory fragmentation.
+
+# Accessing union members
+You access the members of a union variable by using the . dot operator between the variable name and the member name.
+When assignment is performed, the union memory location will be used for that member until another member assignment is performed.
+Trying to access a member that isn't occupying the memory location gives unexpected results.
+
+...
+test.integer = <value>;
+test.<sname> = <value>;
+
+printf ("%d %<sname.variable>", test.integer, test.<sname>)
+
+The last assignment overrides previous assignments, which is why str stores a value and accessing int_num and fl_num is meaningless.
+
+# Structures With Unions
+Unions are often used within structures because a structure can have a member to keep track of which union member stores a value.
+
+struct {
+	union {
+		//quick example
+	}
+}
+
+Note that the union was declared inside the structure. When doing this, a union name was required at the end of the declaration.
+A union with a union tag could have been declared outside the structure, but with such a specific use, the union within the struct provides easier to understand the code.
+Note also the dot operator is used twice to access union members of struct members.
+The id_type keeps track of which union member stores a value.
+
+# Pointers to Unions
+A pointer to a union points to the memory location allocated to the union.
+A union pointer is declared by using the keyword union and the union tag along with * and the pointer name.
+When you want to access the union members through a pointer, the -> operator is required.
+
+union <name> *ptr = NULL;
+ptr = &<sname>
+ptr-><cname> = <value>
+
+# Unions as Function Parameters
+A function can have union parameters that accept arguments by value when a copy of the union variable is all that is needed.
+For a function to change the actual value in a union memory location, pointer parameters are required.
+
+...
+void <f.name> ( union <un.name> <var.name> ) {
+	<func.operators>
+}
+
+# Array of Unions
+An array can store elements of any data type, including unions.
+With unions, it is important to keep in mind that only one member of the union can store data for each array element.
+After declaring an array of unions, an element is accessible with the index number. The dot operator is then used to access members of the union.
+
+An array is a data structure that stores collection values that are all the same type. Arrays of unions allow storing values of different types.
+
+__________________________________________________________________________________________________________________________
+# <stdlib.h> #
+
+The stdlib.h library includes memory management functions.
+The statement #include <stdlib.h> at the top of your program gives you access to the following:
+
+malloc(bytes)                - Returns a pointer to a contiguous block of memory that is of size bytes.
+calloc(num_items, item_size) - Returns a pointer to a contiguous block of memory that has num_items items, each of size item_size bytes. Typically used for arrays, structures, and other derived data types. The allocated memory is initialized to 0.
+realloc(ptr, bytes)          - Resizes the memory pointed to by ptr to size bytes. The newly allocated memory is not initialized.
+free(ptr)                    - Releases the block of memory pointed to by ptr.
+
+__________________________________________________________________________________________________________________________
+# FILES #
+
+An external file can be opened, read from, and written to in a C program. For these operations, C includes the FILE type for defining a file stream. The file stream keeps track of where reading and writing last occurred.
+
+# Accessing Files
+The stdio.h library includes file handling functions:
+FILE Typedef for defining a file pointer.
+
+fopen(filename, mode) - Returns a FILE pointer to file filename which is opened using mode. If a file cannot be opened, NULL is returned.
+Mode options are:
+- r open for reading (file must exist)
+- w open for writing (file need not exist)
+- a open for append (file need not exist)
+- r+ open for reading and writing from beginning
+- w+ open for reading and writing, overwriting file
+- a+ open for reading and writing, appending to file
+
+fclose(fp) - Closes file opened with FILE fp, returning 0 if close was successful. 
+EOF - (end of file) is returned if there is an error in closing.
+
+# Read from file
+fgetc(fp)                                  - Returns the next character from the file pointed to by fp. If the end of the file has been reached, then EOF is returned.
+fgets(buff, n, fp)                         - Reads n-1 characters from the file pointed to by fp and stores the string in buff. A NULL character '\0' is appended as the last character in buff. If fgets encounters a newline character or the end of file before n-1 characters is reached, then only the characters up to that point are stored in buff.
+fscanf(fp, conversion_specifiers, vars)    - Reads characters from the file pointed to by fp and assigns input to a list of variable pointers vars using conversion_specifiers. As with scanf, fscanf stops reading a string when a space or newline is encountered.
+
+# Write in file
+fputc(char, fp)        - Writes character char to the file pointed to by fp.
+fputs(str, fp)         - Writes string str to the file pointed to by fp.
+fprintf(fp, str, vars) - Prints string str to the file pointed to by fp. str can optionally include format specifiers and a list of variables vars.
+
+# Binary functions 1/0
+Writing only characters and strings to a file can become tedious when you have an array or structure. To write entire blocks of memory to a file, there are the following binary functions:
+
+Binary file mode options for the fopen() function are:
+- rb open for reading (file must exist)
+- wb open for writing (file need not exist)
+- ab open for append (file need not exist)
+- rb+ open for reading and writing from beginning
+- wb+ open for reading and writing, overwriting file
+- ab+ open for reading and writing, appending to file
+
+fwrite(ptr, item_size, num_items, fp) - Writes num_items items of item_size size from pointer ptr to the file pointed to by file pointer fp.
+fread(ptr, item_size, num_items, fp) - Reads num_items items of item_size size from the file pointed to by file pointer fp into memory pointed to by ptr.
+fclose(fp) - Closes file opened with file fp, returning 0 if close was successful. EOF is returned if there is an error in closing.
+
+# Controlling the File Pointer
+There are functions in stdio.h for controlling the location of the file pointer in a binary file:
+
+ftell(fp) - Returns a long int value corresponding to the fp file pointer position in number of bytes from the start of the file.
+
+fseek(fp, num_bytes, from_pos) - Moves the fp file pointer position by num_bytes bytes relative to position from_pos, which can be one of the following constants:
+- SEEK_SET start of file
+- SEEK_CUR current position
+- SEEK_END end of file
+
+__________________________________________________________________________________________________________________________
+# Error handling #
+
+# exit
+The exit command immediately stops the execution of a program and sends an exit code back to the calling process. For example, if a program is called by another program, then the calling program may need to know the exit status.
+
+Using exit to avoid a program crash is a good practice because it closes any open file connections and processes.
+
+You can return any value through an exit statement, but 0 for success and -1 for failure are typical. The predefined stdlib.h macros EXIT_SUCCESS and EXIT_FAILURE are also commonly used.
+
+# errno
+Some library functions, such as fopen(), set an error code when they do not execute as expected. The error code is set in a global variable named errno, which is defined in the errno.h header file. When using errno you should set it to 0 before calling a library function.
+
+To output the error code stored in errno, you use fprintf to print to the stderr file stream, the standard error output to the screen. Using stderr is a matter of convention and a good programming practice.
+
+You can output the errno through other means, but it will be easier to keep track of your exception handling if you only use stderr for error messages.
+
+To use errno, you need to declare it with the statement extern int errno; at the top of your program (or you can include the errno.h header file).
+
+# The perror and strerror Functions
+When a library function sets errno, a cryptic error number is assigned. For a more descriptive message about the error, you can use perror(). You can also obtain the message using strerror() in the string.h header file, which returns a pointer to the message text.
+
+perror() must include a string that will precede the actual error message. Typically, there is no need for both perror() and strerror() for the same error.
+
+# EDOM and ERANGE Error Codes
+Some of the mathematical functions in the math.h library set errno to the defined macro value EDOM when a domain is out of range.
+Similarly, the ERANGE macro value is used when there is a range error.
+
+# The feof and ferror Functions
+In addition to checking for a NULL file pointer and using errno, the feof() and ferror() functions can be used for determining file I/O errors:
+feof(fp) - Returns a nonzero value if the end of stream has been reached, 0 otherwise. feof also sets EOF.
+ferror(fp) - Returns a nonzero value if there is an error, 0 for no error.
+
+__________________________________________________________________________________________________________________________
+# Preprocessor Directives #
+
+# The #include Directive
+Some useful C libraries are:
+stdio input/output functions, including printf and file operations.
+stdlib memory management and other utilities
+string functions for handling strings
+errno errno global variable and error code macros
+math common mathematical functions
+time time/date utilities
+
+Corresponding header files for the libraries end with .h by convention. The #include directive expects brackets <> around the header filename if the file should be searched for in the compiler include paths.
+A user-defined header file is also given the .h extension, but is referred to with quotation marks, as in "myutil.h". When quotation marks are used, the file is searched for in the source code directory.
+
+# The #define Directive
+The #define directive is used to create object-like macros for constants based on values or expressions.
+#define can also be used to create function-like macros with arguments that will be replaced by the preprocessor.
+
+Be cautious with function-like definitions. Keep in mind that the preprocessor does a direct replacement without any calculations, which can lead to unexpected results, as demonstrated with the following program:
+
+for example: #define pi 3.14 //it will replace every pi in code with 3.14
+also u can: #define <func.name> (<типа х>) (<типа что ты с х будешь делать>)
+
+If a # directive is lengthy, you can use the \continuation character to extend the definition over more than one line.
+
+# Predefined Macro Definitions
+In addition to defining your own macros, there are several standard predefined macros that are always available in a C program without requiring the #define directive:
+__DATE__ The current date as a string in the format Mm dd yyyy
+__TIME__ The current time as a string in the format hh:mm:ss
+__FILE__ The current filename as a string
+__LINE__ The current line number as an int value
+__STDC__ 1
+
+__________________________________________________________________________________________________________________________
+# Preprocessor Operators #
+The C preprocessor provides the following operators.
+
+# The # Operator
+The # macro operator is called the stringification or stringizing operator and tells the preprocessor to convert a parameter to a string constant.
+White space on either side of the argument are ignored and escape sequences are recognized.
+
+done fuck
