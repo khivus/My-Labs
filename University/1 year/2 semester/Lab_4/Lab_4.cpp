@@ -14,16 +14,16 @@ Main file*/
 
 using namespace std;
 
-//FUNCTIONS solution and verification aren't working from other .cpp file!!!
+//functions solution and verification aren't working from other .cpp file!!!
 //idk why, maybe because struct return or what
-//
+
 
 struct result_struct {
     double res; //result
     int n; //number of interations
 };
 
-result_struct solution(double accuracy) { //Solution function
+result_struct solution(double accuracy) { //solution function
     static double x_prev;
     static double x_next;
     static double n = 1;
@@ -70,10 +70,6 @@ result_struct verification(double accuracy) { //verification function by loop
 int main() {
     int point, write_in, var_out; //declaring variables
     float accuracy = NULL;
-    /*struct result_struct {
-        double res; //result
-        int n; //number of interations
-    };*/
 
     menu_output(); //first menu output
 
@@ -86,17 +82,13 @@ int main() {
         case 2: //recursive solution
             if (accuracy != NULL) {
                 result_struct recursive = solution(accuracy);
-                cout << "Solution by recursion is: " << recursive.res << "\nNumber of iterarions is: " << recursive.n;
-                cout << "\n\nDo you want to write this value in file? ([1] for yes)\n";
+                cout << "Solution by recursion with accuracy = " << accuracy << " is: x(" << recursive.n << ") = " << recursive.res;
+                cout << "\n\nDo you want to write this value in file \"results.txt\"? ([1] for yes)\n";
                 while (!_kbhit());
                 write_in = _getch() - 48;
-                if (write_in == 1 && compare_from_file(recursive.res, recursive.n)) { //double check and write in file
-                    write_in_file(recursive.res, recursive.n);
-
-                    cout << "Data saved succsessfully!";
-                }
-                else if (write_in == 1 && !compare_from_file(recursive.res, recursive.n)) { //check not completed
-                    cout << "This data already in the file!";
+                if (write_in == 1) { //double check and write in file
+                    write_in_file(recursive.res, recursive.n, accuracy);
+                    cout << "Data saved succsessfully in \"results.txt\"!";
                 }
                 else { //different input
                     cout << "Data won't be saved.";
@@ -109,35 +101,18 @@ int main() {
         case 3: //verification solution
             if (accuracy != NULL) {
                 result_struct ver_res = verification(accuracy);
-                cout << "Solution for verification is: " << ver_res.res << "\nNumber of iterarions is: " << ver_res.n;
-
+                result_struct recursive = solution(accuracy);
+                cout << "For compare:\n"
+                    "Solution by recursion with accuracy = " << accuracy << " is: x(" << recursive.n << ") = " << recursive.res << endl
+                    << "Solution by loop with accuracy = " << accuracy << " is: x(" << ver_res.n << ") = " << ver_res.res;
             }
             else {
                 cout << "Firstly, please use input [1]";
             }
             break;
-        case 4: //output
-            cout << "Output from program [1] or file [2]?\n";
-            while (!_kbhit());
-            var_out = _getch() - 48;
-            if (var_out == 1) { //output from program
-                if (accuracy != NULL) {
-                    result_struct recursive = solution(accuracy);
-                    result_struct ver_res = verification(accuracy);
-                    cout << "For compare: \n"
-                        "Solution by recursion is: " << recursive.res << "\nNumber of iterarions is: " << recursive.n << endl <<
-                        "Solution for verification is: " << ver_res.res << "\nNumber of iterarions is: " << ver_res.n;
-                }
-                else {
-                    cout << "Firstly, please use input [1]";
-                }
-            }
-            else if (var_out == 2) { //output from file
-                read_from_file();
-            }
-            else { //incorrect input
-                cout << "Wrong input!";
-            }
+        case 4: //output from file
+            cout << "Output from file \"results.txt\":\n";
+            read_from_file();
             break;
         case 5: //about program
             cout << "Recursion\n"
@@ -152,7 +127,7 @@ int main() {
                 "[1] Input - Input the accuracy of the equation\n"
                 "[2] Solution by recursion - Solution by recursive function\n"
                 "[3] Verification - Solution by loop\n"
-                "[4] Output - Output from program or from file\n"
+                "[4] Output from file - Output from file \"results.txt\"\n"
                 "[5] About program - About program and developer\n"
                 "[6] Help - This paragraph\n"
                 "[7] Exit - Close the program\n";
