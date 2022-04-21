@@ -21,7 +21,7 @@ float input_accuracy() { //Input function
     unsigned int i, j;
 
     do {
-        cout << "Input accuracy (default = 0.00001) (0 < num < 32767): ";
+        cout << "Input accuracy (default = 0.00001) (0 < accuracy < 32767): ";
         getline(cin, accuracy);
 
         bool char_check = false;
@@ -119,29 +119,6 @@ void read_from_file() { //output in console from file
     }
     file.close();
 }
-
-//bool compare_from_file(double res, int n) { //compare for double numbers in file
-//    oc_file();
-//    bool mark = true;
-//    double data;
-//    int dton, dta, dres;
-//    fstream file;
-//    file.open("results.txt", fstream::in | fstream::app);
-//    while (!file.eof() && mark) {
-//        file >> data;
-//        dta = data * 1000000; //rounding for compare
-//        dres = res * 1000000; //same as well
-//        if (dta == dres) {
-//            file >> data;
-//            dton = data;
-//            if (dton == n) {
-//                mark = false;
-//            }
-//        }
-//    }
-//    file.close();
-//    return mark;
-//}
 
 void menu_output() { //menu print function
     cout << "=========================\n"

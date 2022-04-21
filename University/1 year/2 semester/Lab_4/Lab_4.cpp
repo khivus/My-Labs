@@ -1,5 +1,5 @@
 /*Recursive function
-ver 2.2
+ver 3.1
 2022
 Kharin Aleksey
 Main file*/
@@ -116,7 +116,7 @@ int main() {
             break;
         case 5: //about program
             cout << "Recursion\n"
-                "ver 2.2\n"
+                "ver 3.1\n"
                 "2022\n"
                 "Kharin Aleksey";
             break;

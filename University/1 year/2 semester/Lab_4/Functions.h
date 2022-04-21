@@ -16,8 +16,6 @@ void write_in_file(double res, int n, float accuracy);
 
 void read_from_file();
 
-//bool compare_from_file(double res, int n);
-
 void menu_output();
 
 int menu();
