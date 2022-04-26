@@ -68,20 +68,20 @@ body h2 {
 }
 
 .my_photo {
-	margin-left: 5%;
-    margin-right: 5%;
-	margin-top: 2%;
+	margin-left: 15%;
+    margin-right: 15%;
+	margin-top: 5%;
 	display: block;
-	width: 90%;
+	width: 70%;
 	padding: 0%;
 }
 
 .my_photo img{
-	max-width: 15%;
+	max-width: 20%;
 	height: auto;
 	border-style: solid;
 	border-color: black;
-	border-width: 5px;
+	border-width: 3px;
     position: relative;
 	float: right;
 }
@@ -120,6 +120,7 @@ body h2 {
 
 #about_file {
 	color: white;
+	overflow: auto;
 }
 
 #about_file div h2{

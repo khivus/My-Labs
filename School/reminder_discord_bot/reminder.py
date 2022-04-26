@@ -1,9 +1,11 @@
 #Copyright by khivus (Aleksey Kharin) 2021
 import discord
-import config
+import sys
 from time import gmtime, strftime, localtime
 import datamanager
 import threading
+
+sys.path.insert(1, 'C:\Users\Khivus\Education\config.py') # it isn't working, fuck it
 
 client = discord.Client()
 
@@ -88,4 +90,4 @@ async def on_message(message):
             if content != None:
                 print('sus')
 
-client.run(config.token)
+client.run(sys.config.token)

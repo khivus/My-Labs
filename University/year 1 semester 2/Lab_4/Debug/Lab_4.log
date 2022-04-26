@@ -1,4 +1,2 @@
-﻿  Functions.cpp
-C:\Users\Khivus\Education\Programming\University\1 year\2 semester\Lab_4\Functions.cpp(39,19): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\Khivus\Education\Programming\University\1 year\2 semester\Lab_4\Functions.cpp(41,26): warning C4305: '=': truncation from 'double' to 'float'
-  Lab_4.vcxproj -> C:\Users\Khivus\Education\Programming\University\1 year\2 semester\Lab_4\Debug\Lab_4.exe
+﻿  Lab_4.cpp
+  Lab_4.vcxproj -> C:\Users\Khivus\Education\Programming\University\year 1 semester 2\Lab_4\Debug\Lab_4.exe

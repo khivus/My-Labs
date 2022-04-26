@@ -1,6 +1,6 @@
-//Functions file. It keeps functions
+// Functions file. It keeps functions
 
-#include <math.h>
+#include <math.h> // includes for functions
 #include <iostream>
 #include <conio.h>
 #include <string>
@@ -9,90 +9,41 @@
 
 using namespace std;
 
-//struct result_struct {
-//    double res; //result
-//    int n; //number of interations
-//};
-
-float input_accuracy() { //Input function
+double input_accuracy() { // input function
     string accuracy;
-    string chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    float acc;
+    string chars = "abcdfghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"; // chars check for input // symbol 'e' didn't there because you can print like "1e-5"
+    double acc;
     unsigned int i, j;
 
     do {
-        cout << "Input accuracy (default = 0.00001) (0 < accuracy < 32767): ";
+        cout << "Input accuracy (default = 0.00001) (0 < accuracy < 1): ";
         getline(cin, accuracy);
 
         bool char_check = false;
-        for (i = 0; i < accuracy.length(); i++) {
+        for (i = 0; i < accuracy.length(); i++) { // input check for chars
             for (j = 0; j < chars.length(); j++) {
                 if (accuracy[i] == chars[j]) {
                     char_check = true;
                 }
             }
         }
-        if (char_check) {
-            cout << "Wrong input! Used default value.\n";
-        }
 
-        acc = atof(accuracy.c_str());
+        acc = atof(accuracy.c_str()); // convert to double
         if (acc == NULL) {
             acc = 0.00001;
         }
-        if (acc < 0 || acc > 32767) {
+        if (char_check) { // if chars was used
+            cout << "Wrong input! Used default value.\n";
+        }
+        else if (acc < 0 || acc > 1) {
             cout << "Wrong input!\n";
         }
-    } while (acc < 0 || acc > 32767);
+    } while (acc < 0 || acc > 1);
     cout << "You printed: " << acc << "\n\n";
     return acc;
 }
 
-//result_struct solution(double accuracy) { //Solution function
-//    static double x_prev;
-//    static double x_next;
-//    static double n = 1;
-//
-//    result_struct recursive;
-//
-//    if (n == 1) {
-//        x_prev = 1;
-//    }
-//
-//    x_next = (2 - pow(x_prev, 3)) / 5;
-//
-//    if (abs(x_next - x_prev) < accuracy) {
-//        recursive.res = x_next;
-//        recursive.n = n;
-//        n = 1;
-//        return recursive;
-//    }
-//    else {
-//        x_prev = x_next;
-//        n++;
-//        solution(accuracy); //recursion
-//    }
-//}
-//
-//result_struct verification(double accuracy) { //verification function
-//    double x_prev = 1;
-//    double x_next = 0;
-//    int n = 0;
-//
-//    result_struct ver_res;
-//
-//    do {
-//        n++;
-//        if (n != 1) x_prev = x_next;
-//        x_next = (2 - pow(x_prev, 3)) / 5;
-//    } while (abs(x_next - x_prev) >= accuracy);
-//
-//    ver_res.res = x_next;
-//    ver_res.n = n;
-//    return ver_res;
-//}
-
-void oc_file() { //file creation check
+void oc_file() { // file creation check function
     fstream file;
     file.open("results.txt", fstream::app);
     if (!file.is_open()) {
@@ -101,26 +52,26 @@ void oc_file() { //file creation check
     file.close();
 }
 
-void write_in_file(double res, int n, float accuracy) { //input in file
-    oc_file();
+void write_in_file(double res, int n, double accuracy) { // input in file
+    oc_file(); // file existing check
     fstream file;
     file.open("results.txt", fstream::out | fstream::app);
     file << "Result with accuracy = " << accuracy << " is: x(" << n << ") = " << res << endl;
     file.close();
 }
 
-void read_from_file() { //output in console from file
-    oc_file();
+void read_from_file() { // output in console from file
+    oc_file(); // file existing check
     string line;
     fstream file;
     file.open("results.txt", fstream::in | fstream::app);
     while (getline(file, line)) {
-        cout << line << endl;
+        cout << line << endl; // simple one by one output lines
     }
     file.close();
 }
 
-void menu_output() { //menu print function
+void menu_output() { // menu print function
     cout << "=========================\n"
         "Menu: \n"
         "[1] Input\n"
@@ -133,11 +84,11 @@ void menu_output() { //menu print function
         "=========================\n\n";
 }
 
-int menu() { //console clear and menu manager
+int menu() { // console clear and menu manager
     int point;
-    while (!_kbhit());
+    while (!_kbhit()); // waits for input
     point = _getch() - 48;
-    system("cls"); //clears the console
+    system("cls"); // clears the console
     menu_output();
     return point;
 }
