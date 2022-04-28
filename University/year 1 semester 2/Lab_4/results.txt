@@ -1,4 +1,0 @@
-Result with accuracy = 1e-05 is: x(6) = 0.388292
-Result with accuracy = 1e-08 is: x(9) = 0.388291
-Result with accuracy = 0.001 is: x(5) = 0.388284
-Result with accuracy = 1 is: x(1) = 0.2
