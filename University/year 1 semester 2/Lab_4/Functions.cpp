@@ -43,7 +43,7 @@ double input_accuracy() { // input function
     return acc;
 }
 
-void oc_file() { // file creation check function
+void oc_file() { // file creation check function (open/close file)
     fstream file;
     file.open("results.txt", fstream::app);
     if (!file.is_open()) {
