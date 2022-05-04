@@ -120,22 +120,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="About.cpp" />
     <ClCompile Include="AboutMe.cpp" />
-    <ClCompile Include="Animation.cpp" />
     <ClCompile Include="Anime.cpp" />
     <ClCompile Include="DataInput.cpp" />
     <ClCompile Include="DrawLevy.cpp" />
     <ClCompile Include="MyForm.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="About.h">
-      <FileType>CppForm</FileType>
-    </ClInclude>
     <ClInclude Include="AboutMe.h">
-      <FileType>CppForm</FileType>
-    </ClInclude>
-    <ClInclude Include="Animation.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="Anime.h">

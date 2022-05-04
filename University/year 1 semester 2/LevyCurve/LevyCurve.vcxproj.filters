@@ -21,13 +21,7 @@
     <ClCompile Include="DrawLevy.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Animation.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="DataInput.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="About.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Anime.cpp">
@@ -44,13 +38,7 @@
     <ClInclude Include="DrawLevy.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Animation.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="DataInput.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="About.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Anime.h">

@@ -1,8 +1,6 @@
 #pragma once
 #include "DrawLevy.h"
 #include "DataInput.h"
-#include "Animation.h"
-#include "About.h"
 #include "Anime.h"
 #include "AboutMe.h"
 
@@ -21,9 +19,7 @@ namespace LevyCurve {
 	public ref class MyForm : public System::Windows::Forms::Form {
 
 	private: DrawLevy^ draw;
-	//private: Animation^ animate;
 	private: DataInput^ nInput;
-	//private: About^ abt;
 	private: Anime^ animate;
 	private: AboutMe^ abt;
 
@@ -32,9 +28,7 @@ namespace LevyCurve {
 		{
 			InitializeComponent();
 			draw = gcnew DrawLevy;
-			//animate = gcnew Animation;
 			nInput = gcnew DataInput;
-			//abt = gcnew About;
 			animate = gcnew Anime;
 			abt = gcnew AboutMe;
 			//
