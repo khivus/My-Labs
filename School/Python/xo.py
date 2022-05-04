@@ -33,7 +33,7 @@ def restart():
 
 def winner(x):
     if (but_a1['text'] == but_a2['text'] == but_a3['text'] == x) or (but_b1['text'] == but_b2['text'] == but_b3['text'] == x) or (but_c1['text'] == but_c2['text'] == but_c3['text'] == x) or (but_a1['text'] == but_b1['text'] == but_c1['text'] == x) or (but_a2['text'] == but_b2['text'] == but_c2['text'] == x) or (but_a3['text'] == but_b3['text'] == but_c3['text'] == x) or (but_a1['text'] == but_b2['text'] == but_c3['text'] == x) or (but_a3['text'] == but_b2['text'] == but_c1['text'] == x):
-        lbl['text']=x,'Выиграли \nИгра окончена'
+        lbl['text']=f'{"Крестики" if x == "X" else "Нолики"} выиграли \nИгра окончена'
         but_restart.place(x=100,y=320)
         disable_buttons()
 
