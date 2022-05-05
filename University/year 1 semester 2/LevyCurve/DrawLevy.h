@@ -12,8 +12,7 @@ namespace LevyCurve {
 	/// <summary>
 	/// Summary for DrawLevy
 	/// </summary>
-	public ref class DrawLevy : public System::Windows::Forms::Form
-	{
+	public ref class DrawLevy : public System::Windows::Forms::Form {
 	public:
 		DrawLevy(void)
 		{
@@ -87,7 +86,7 @@ namespace LevyCurve {
 			this->ExitButton->TabIndex = 1;
 			this->ExitButton->Text = L"Main page";
 			this->ExitButton->UseVisualStyleBackColor = true;
-			this->ExitButton->Click += gcnew System::EventHandler(this, &DrawLevy::button1_Click);
+			this->ExitButton->Click += gcnew System::EventHandler(this, &DrawLevy::ExitButton_Click);
 			// 
 			// DrawLevy
 			// 
@@ -109,7 +108,9 @@ namespace LevyCurve {
 
 		}
 #pragma endregion
-		System::Void LevyCurve::DrawLevy::draw_levy(int iterations, float l, float a, float x, float y);
-	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e);
+		System::Void LevyCurve::DrawLevy::draw_levy(float x, float y, float length, float alpha, int iteration);
+	public: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void ExitButton_Click(System::Object^ sender, System::EventArgs^ e);
 	};
 }
+

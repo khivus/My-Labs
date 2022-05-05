@@ -1,11 +1,8 @@
-﻿  DrawLevy.cpp
-C:\Users\Khivus\Education\Programming\University\year 1 semester 2\LevyCurve\DrawLevy.cpp(11,9): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\Khivus\Education\Programming\University\year 1 semester 2\LevyCurve\DrawLevy.cpp(13,16): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\Khivus\Education\Programming\University\year 1 semester 2\LevyCurve\DrawLevy.cpp(14,9): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\Khivus\Education\Programming\University\year 1 semester 2\LevyCurve\DrawLevy.cpp(15,9): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\Khivus\Education\Programming\University\year 1 semester 2\LevyCurve\DrawLevy.cpp(19,17): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\Khivus\Education\Programming\University\year 1 semester 2\LevyCurve\DrawLevy.cpp(20,19): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Khivus\Education\Programming\University\year 1 semester 2\LevyCurve\DrawLevy.cpp(20,16): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Khivus\Education\Programming\University\year 1 semester 2\LevyCurve\DrawLevy.cpp(13): warning C4700: uninitialized local variable 'alpha' used
+﻿  DataInput.cpp
+C:\Users\Khivus\Education\Programming\University\year 1 semester 2\LevyCurve\DataIterations.h(4,2): warning C4091: 'static ': ignored on left of 'DataIterations' when no variable is declared
+  MyForm.cpp
+C:\Users\Khivus\Education\Programming\University\year 1 semester 2\LevyCurve\DataIterations.h(4,2): warning C4091: 'static ': ignored on left of 'DataIterations' when no variable is declared
+C:\Users\Khivus\Education\Programming\University\year 1 semester 2\LevyCurve\MyForm.cpp(7,33): warning C4829: Possibly incorrect parameters to function main. Consider 'int main(Platform::Array<Platform::String^>^ argv)'
+  Generating Code...
   AboutMe.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link
   LevyCurve.vcxproj -> C:\Users\Khivus\Education\Programming\University\year 1 semester 2\LevyCurve\Debug\LevyCurve.exe

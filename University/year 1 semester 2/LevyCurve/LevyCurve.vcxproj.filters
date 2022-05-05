@@ -47,5 +47,8 @@
     <ClInclude Include="AboutMe.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="DataIterations.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

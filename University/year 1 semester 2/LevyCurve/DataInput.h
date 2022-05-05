@@ -34,6 +34,14 @@ namespace LevyCurve {
 				delete components;
 			}
 		}
+	private: System::Windows::Forms::NumericUpDown^ IterationsGet;
+	protected:
+	private: System::Windows::Forms::Button^ OkButton;
+	private: System::Windows::Forms::Button^ CancelButton;
+	private: System::Windows::Forms::Label^ label1;
+	private: System::Windows::Forms::Label^ label2;
+
+
 
 	private:
 		/// <summary>
@@ -48,12 +56,98 @@ namespace LevyCurve {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			this->components = gcnew System::ComponentModel::Container();
-			this->Size = System::Drawing::Size(300,300);
-			this->Text = L"DataInput";
-			this->Padding = System::Windows::Forms::Padding(0);
+			this->IterationsGet = (gcnew System::Windows::Forms::NumericUpDown());
+			this->OkButton = (gcnew System::Windows::Forms::Button());
+			this->CancelButton = (gcnew System::Windows::Forms::Button());
+			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->label2 = (gcnew System::Windows::Forms::Label());
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->IterationsGet))->BeginInit();
+			this->SuspendLayout();
+			// 
+			// IterationsGet
+			// 
+			this->IterationsGet->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 20.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->IterationsGet->Location = System::Drawing::Point(433, 195);
+			this->IterationsGet->Maximum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 20, 0, 0, 0 });
+			this->IterationsGet->Minimum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 1, 0, 0, 0 });
+			this->IterationsGet->Name = L"IterationsGet";
+			this->IterationsGet->Size = System::Drawing::Size(120, 38);
+			this->IterationsGet->TabIndex = 0;
+			this->IterationsGet->Value = System::Decimal(gcnew cli::array< System::Int32 >(4) { 1, 0, 0, 0 });
+			// 
+			// OkButton
+			// 
+			this->OkButton->DialogResult = System::Windows::Forms::DialogResult::OK;
+			this->OkButton->Location = System::Drawing::Point(326, 489);
+			this->OkButton->Name = L"OkButton";
+			this->OkButton->Size = System::Drawing::Size(120, 60);
+			this->OkButton->TabIndex = 1;
+			this->OkButton->Text = L"OK";
+			this->OkButton->UseVisualStyleBackColor = true;
+			this->OkButton->Click += gcnew System::EventHandler(this, &DataInput::OkButton_Click);
+			// 
+			// CancelButton
+			// 
+			this->CancelButton->DialogResult = System::Windows::Forms::DialogResult::Cancel;
+			this->CancelButton->Location = System::Drawing::Point(452, 489);
+			this->CancelButton->Name = L"CancelButton";
+			this->CancelButton->Size = System::Drawing::Size(120, 60);
+			this->CancelButton->TabIndex = 1;
+			this->CancelButton->Text = L"Cancel";
+			this->CancelButton->UseVisualStyleBackColor = true;
+			this->CancelButton->Click += gcnew System::EventHandler(this, &DataInput::CancelButton_Click);
+			// 
+			// label1
+			// 
+			this->label1->AutoSize = true;
+			this->label1->BackColor = System::Drawing::Color::Transparent;
+			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 20.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label1->Location = System::Drawing::Point(12, 195);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(414, 62);
+			this->label1->TabIndex = 2;
+			this->label1->Text = L"Input number of iterations here ->\r\nIt must be 1<=iterations<=20";
+			// 
+			// label2
+			// 
+			this->label2->AutoSize = true;
+			this->label2->BackColor = System::Drawing::Color::Transparent;
+			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 20.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label2->Location = System::Drawing::Point(12, 285);
+			this->label2->Name = L"label2";
+			this->label2->Size = System::Drawing::Size(461, 62);
+			this->label2->TabIndex = 2;
+			this->label2->Text = L"In \"animation\" with \"Frame by frame\" \r\nyou can do more than 20 iterations";
+			// 
+			// DataInput
+			// 
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+			this->ClientSize = System::Drawing::Size(584, 561);
+			this->Controls->Add(this->label2);
+			this->Controls->Add(this->label1);
+			this->Controls->Add(this->CancelButton);
+			this->Controls->Add(this->OkButton);
+			this->Controls->Add(this->IterationsGet);
+			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedDialog;
+			this->MaximizeBox = false;
+			this->MaximumSize = System::Drawing::Size(600, 600);
+			this->MinimumSize = System::Drawing::Size(600, 600);
+			this->Name = L"DataInput";
+			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
+			this->Text = L"Input";
+			this->FormClosed += gcnew System::Windows::Forms::FormClosedEventHandler(this, &DataInput::DataInput_FormClosed);
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->IterationsGet))->EndInit();
+			this->ResumeLayout(false);
+			this->PerformLayout();
+
 		}
 #pragma endregion
-	};
+	private: System::Void OkButton_Click(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void CancelButton_Click(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void DataInput_FormClosed(System::Object^ sender, System::Windows::Forms::FormClosedEventArgs^ e);
+};
 }

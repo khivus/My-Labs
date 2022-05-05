@@ -3,6 +3,7 @@
 #include "DataInput.h"
 #include "Anime.h"
 #include "AboutMe.h"
+#include "DataIterations.h"
 
 namespace LevyCurve {
 
@@ -78,7 +79,8 @@ namespace LevyCurve {
 			// 
 			// Draw
 			// 
-			this->Draw->Location = System::Drawing::Point(36, 489);
+			this->Draw->Enabled = true;
+			this->Draw->Location = System::Drawing::Point(41, 489);
 			this->Draw->Name = L"Draw";
 			this->Draw->Size = System::Drawing::Size(120, 60);
 			this->Draw->TabIndex = 0;
@@ -88,7 +90,8 @@ namespace LevyCurve {
 			// 
 			// Animation
 			// 
-			this->Animation->Location = System::Drawing::Point(162, 489);
+			this->Animation->Enabled = true;
+			this->Animation->Location = System::Drawing::Point(167, 489);
 			this->Animation->Name = L"Animation";
 			this->Animation->Size = System::Drawing::Size(120, 60);
 			this->Animation->TabIndex = 0;
@@ -98,7 +101,7 @@ namespace LevyCurve {
 			// 
 			// Input
 			// 
-			this->Input->Location = System::Drawing::Point(288, 489);
+			this->Input->Location = System::Drawing::Point(293, 489);
 			this->Input->Name = L"Input";
 			this->Input->Size = System::Drawing::Size(120, 60);
 			this->Input->TabIndex = 0;
@@ -108,7 +111,7 @@ namespace LevyCurve {
 			// 
 			// About
 			// 
-			this->About->Location = System::Drawing::Point(417, 489);
+			this->About->Location = System::Drawing::Point(422, 489);
 			this->About->Name = L"About";
 			this->About->Size = System::Drawing::Size(120, 60);
 			this->About->TabIndex = 0;
@@ -119,6 +122,8 @@ namespace LevyCurve {
 			// lmao
 			// 
 			this->lmao->AutoSize = true;
+			this->lmao->BackColor = System::Drawing::SystemColors::ActiveCaptionText;
+			this->lmao->ForeColor = System::Drawing::SystemColors::ControlLightLight;
 			this->lmao->Location = System::Drawing::Point(537, 13);
 			this->lmao->Name = L"lmao";
 			this->lmao->Size = System::Drawing::Size(33, 13);
@@ -143,6 +148,7 @@ namespace LevyCurve {
 			this->MinimumSize = System::Drawing::Size(600, 600);
 			this->Name = L"MyForm";
 			this->RightToLeft = System::Windows::Forms::RightToLeft::No;
+			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Levy Curve";
 			this->ResumeLayout(false);
 			this->PerformLayout();

@@ -1,3 +1,6 @@
+  LevyCurve.AboutMe.resources - Embedded, ContainedInManifestFile, 
+  LevyCurve.Anime.resources - Embedded, ContainedInManifestFile, 
+  LevyCurve.DataInput.resources - Embedded, ContainedInManifestFile, 
   LevyCurve.DrawLevy.resources - Embedded, ContainedInManifestFile, 
   LevyCurve.MyForm.resources - Embedded, ContainedInManifestFile, 
 ImageRuntimeVersion: v4.0.30319
@@ -27,6 +30,8 @@ Class LevyCurve.DataInput: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
 Class LevyCurve.DrawLevy: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    button1_Click(Object, EventArgs): PrivateScope, Public, HideBySig
 Class LevyCurve.MyForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
