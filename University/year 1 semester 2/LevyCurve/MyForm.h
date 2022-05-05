@@ -79,7 +79,7 @@ namespace LevyCurve {
 			// 
 			// Draw
 			// 
-			this->Draw->Enabled = true;
+			this->Draw->Enabled = false;
 			this->Draw->Location = System::Drawing::Point(41, 489);
 			this->Draw->Name = L"Draw";
 			this->Draw->Size = System::Drawing::Size(120, 60);
@@ -90,7 +90,7 @@ namespace LevyCurve {
 			// 
 			// Animation
 			// 
-			this->Animation->Enabled = true;
+			this->Animation->Enabled = false;
 			this->Animation->Location = System::Drawing::Point(167, 489);
 			this->Animation->Name = L"Animation";
 			this->Animation->Size = System::Drawing::Size(120, 60);

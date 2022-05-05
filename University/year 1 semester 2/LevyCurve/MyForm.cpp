@@ -40,6 +40,8 @@ System::Void LevyCurve::MyForm::Input_Click(System::Object^ sender, System::Even
 	this->Hide();
 	if (nInput->ShowDialog() == System::Windows::Forms::DialogResult::OK)
 	{
+		Draw->Enabled = true;
+		Animation->Enabled = true;
 		this->Show();
 	}
 	else {
