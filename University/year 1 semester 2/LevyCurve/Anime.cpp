@@ -32,8 +32,8 @@ System::Void LevyCurve::Anime::FrameUser_Click(System::Object^ sender, System::E
 		Animate->Enabled = false;
 
 		counter++;
-
 		IterationNow->Text = Convert::ToString(counter);
+
 		float x = pictureBox1->Width / 3;
 		float y = pictureBox1->Height / 3;
 		float length = 200;

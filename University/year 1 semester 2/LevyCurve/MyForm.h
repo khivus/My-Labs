@@ -22,6 +22,7 @@ namespace LevyCurve {
 	private: DrawLevy^ draw;
 	private: DataInput^ nInput;
 	private: Anime^ animate;
+	private: System::Windows::Forms::Label^ AttentionText;
 	private: AboutMe^ abt;
 
 	public:
@@ -75,6 +76,7 @@ namespace LevyCurve {
 			this->Input = (gcnew System::Windows::Forms::Button());
 			this->About = (gcnew System::Windows::Forms::Button());
 			this->lmao = (gcnew System::Windows::Forms::Label());
+			this->AttentionText = (gcnew System::Windows::Forms::Label());
 			this->SuspendLayout();
 			// 
 			// Draw
@@ -122,13 +124,26 @@ namespace LevyCurve {
 			// lmao
 			// 
 			this->lmao->AutoSize = true;
-			this->lmao->BackColor = System::Drawing::SystemColors::ActiveCaptionText;
+			this->lmao->BackColor = System::Drawing::Color::Transparent;
 			this->lmao->ForeColor = System::Drawing::SystemColors::ControlLightLight;
 			this->lmao->Location = System::Drawing::Point(537, 13);
 			this->lmao->Name = L"lmao";
 			this->lmao->Size = System::Drawing::Size(33, 13);
 			this->lmao->TabIndex = 1;
 			this->lmao->Text = L"Exit ^";
+			// 
+			// AttentionText
+			// 
+			this->AttentionText->AutoSize = true;
+			this->AttentionText->BackColor = System::Drawing::Color::Transparent;
+			this->AttentionText->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->AttentionText->ForeColor = System::Drawing::Color::White;
+			this->AttentionText->Location = System::Drawing::Point(49, 462);
+			this->AttentionText->Name = L"AttentionText";
+			this->AttentionText->Size = System::Drawing::Size(229, 24);
+			this->AttentionText->TabIndex = 2;
+			this->AttentionText->Text = L"Use Input first for avilabillity";
 			// 
 			// MyForm
 			// 
@@ -137,6 +152,7 @@ namespace LevyCurve {
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->ClientSize = System::Drawing::Size(584, 561);
+			this->Controls->Add(this->AttentionText);
 			this->Controls->Add(this->lmao);
 			this->Controls->Add(this->About);
 			this->Controls->Add(this->Input);

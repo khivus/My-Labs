@@ -42,6 +42,7 @@ System::Void LevyCurve::MyForm::Input_Click(System::Object^ sender, System::Even
 	{
 		Draw->Enabled = true;
 		Animation->Enabled = true;
+		AttentionText->Visible = false;
 		this->Show();
 	}
 	else {
