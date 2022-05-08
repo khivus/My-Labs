@@ -81,7 +81,7 @@ namespace LevyCurve {
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(508, 168);
 			this->label1->TabIndex = 4;
-			this->label1->Text = L"Program: Levy C Curve\r\nVersion: 2.2\r\nYear 2022\r\nDeveloped by Aleksey Kharin";
+			this->label1->Text = L"Program: Levy C Curve\r\nVersion: 2.4\r\nYear 2022\r\nDeveloped by Aleksey Kharin";
 			// 
 			// GoToSite
 			// 
@@ -95,11 +95,12 @@ namespace LevyCurve {
 			// 
 			// pictureBox1
 			// 
+			this->pictureBox1->BackColor = System::Drawing::Color::Transparent;
 			this->pictureBox1->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.BackgroundImage")));
 			this->pictureBox1->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-			this->pictureBox1->Location = System::Drawing::Point(12, 180);
+			this->pictureBox1->Location = System::Drawing::Point(57, 180);
 			this->pictureBox1->Name = L"pictureBox1";
-			this->pictureBox1->Size = System::Drawing::Size(560, 303);
+			this->pictureBox1->Size = System::Drawing::Size(463, 303);
 			this->pictureBox1->TabIndex = 5;
 			this->pictureBox1->TabStop = false;
 			// 

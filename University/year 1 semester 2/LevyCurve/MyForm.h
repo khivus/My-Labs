@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "DrawLevy.h"
 #include "DataInput.h"
 #include "Anime.h"
@@ -23,6 +23,7 @@ namespace LevyCurve {
 	private: DataInput^ nInput;
 	private: Anime^ animate;
 	private: System::Windows::Forms::Label^ AttentionText;
+	private: System::Windows::Forms::PictureBox^ pictureBox1;
 	private: AboutMe^ abt;
 
 	public:
@@ -77,6 +78,8 @@ namespace LevyCurve {
 			this->About = (gcnew System::Windows::Forms::Button());
 			this->lmao = (gcnew System::Windows::Forms::Label());
 			this->AttentionText = (gcnew System::Windows::Forms::Label());
+			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// Draw
@@ -125,7 +128,7 @@ namespace LevyCurve {
 			// 
 			this->lmao->AutoSize = true;
 			this->lmao->BackColor = System::Drawing::Color::Transparent;
-			this->lmao->ForeColor = System::Drawing::SystemColors::ControlLightLight;
+			this->lmao->ForeColor = System::Drawing::Color::Black;
 			this->lmao->Location = System::Drawing::Point(537, 13);
 			this->lmao->Name = L"lmao";
 			this->lmao->Size = System::Drawing::Size(33, 13);
@@ -138,20 +141,30 @@ namespace LevyCurve {
 			this->AttentionText->BackColor = System::Drawing::Color::Transparent;
 			this->AttentionText->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->AttentionText->ForeColor = System::Drawing::Color::White;
+			this->AttentionText->ForeColor = System::Drawing::Color::Black;
 			this->AttentionText->Location = System::Drawing::Point(49, 462);
 			this->AttentionText->Name = L"AttentionText";
 			this->AttentionText->Size = System::Drawing::Size(229, 24);
 			this->AttentionText->TabIndex = 2;
 			this->AttentionText->Text = L"Use Input first for avilabillity";
 			// 
+			// pictureBox1
+			// 
+			this->pictureBox1->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.BackgroundImage")));
+			this->pictureBox1->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+			this->pictureBox1->Location = System::Drawing::Point(14, 53);
+			this->pictureBox1->Name = L"pictureBox1";
+			this->pictureBox1->Size = System::Drawing::Size(558, 360);
+			this->pictureBox1->TabIndex = 3;
+			this->pictureBox1->TabStop = false;
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->ClientSize = System::Drawing::Size(584, 561);
+			this->Controls->Add(this->pictureBox1);
 			this->Controls->Add(this->AttentionText);
 			this->Controls->Add(this->lmao);
 			this->Controls->Add(this->About);
@@ -165,7 +178,8 @@ namespace LevyCurve {
 			this->Name = L"MyForm";
 			this->RightToLeft = System::Windows::Forms::RightToLeft::No;
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
-			this->Text = L"Levy Curve";
+			this->Text = L"Levy С Curve";
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 

@@ -26,9 +26,9 @@ System::Void LevyCurve::DrawLevy::button1_Click(System::Object^ sender, System::
 
 	if (DataIterations::num_iterations != 0) {
 		int iterations = DataIterations::num_iterations;
-		float x = pictureBox1->Width / 3;
+		float x = pictureBox1->Width / 3.6;
 		float y = pictureBox1->Height / 3;
-		float length = 200;
+		float length = 250;
 		float alpha = 0;
 
 		draw_levy(x, y, length, alpha, iterations);

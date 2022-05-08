@@ -34,9 +34,9 @@ System::Void LevyCurve::Anime::FrameUser_Click(System::Object^ sender, System::E
 		counter++;
 		IterationNow->Text = Convert::ToString(counter);
 
-		float x = pictureBox1->Width / 3;
+		float x = pictureBox1->Width / 3.6;
 		float y = pictureBox1->Height / 3;
-		float length = 200;
+		float length = 250;
 		float alpha = 0;
 		
 		animate_levy(x, y, length, alpha, counter);
@@ -63,9 +63,9 @@ System::Void LevyCurve::Anime::timer1_Tick(System::Object^ sender, System::Event
 	counter++;
 	IterationNow->Text = Convert::ToString(counter);
 
-	float x = pictureBox1->Width / 3;
+	float x = pictureBox1->Width / 3.6;
 	float y = pictureBox1->Height / 3;
-	float length = 200;
+	float length = 250;
 	float alpha = 0;
 
 	animate_levy(x, y, length, alpha, counter);
