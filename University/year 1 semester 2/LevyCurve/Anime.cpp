@@ -5,7 +5,7 @@
 
 #define PI 3.1415
 
-System::Void LevyCurve::Anime::animate_levy(float x, float y, float length, float alpha, int iteration) {
+System::Void LevyCurve::Anime::animate_levy(float x, float y, float length, float alpha, int iteration) { // creating Levy C curve
 	Graphics^ gfx = pictureBox1->CreateGraphics();
 	float rads = 0;
 	if (iteration > 0) {
@@ -22,49 +22,45 @@ System::Void LevyCurve::Anime::animate_levy(float x, float y, float length, floa
 	}
 }
 
-System::Void LevyCurve::Anime::FrameUser_Click(System::Object^ sender, System::EventArgs^ e) {
-
-	if (DataIterations::num_iterations != 0) {
-
+System::Void LevyCurve::Anime::FrameUser_Click(System::Object^ sender, System::EventArgs^ e) { // Drawing frame by frame
+	if (DataIterations::num_iterations != 0) { 
 		Graphics^ gfx = pictureBox1->CreateGraphics();
-		gfx->Clear(Color::White);
-
-		Animate->Enabled = false;
+		gfx->Clear(Color::White); // clearing picture box
+		Animate->Enabled = false; // disable second button
 
 		counter++;
 		IterationNow->Text = Convert::ToString(counter);
 
 		float x = pictureBox1->Width / 3.6;
-		float y = pictureBox1->Height / 3;
+		float y = pictureBox1->Height / 3.0;
 		float length = 250;
 		float alpha = 0;
 		
-		animate_levy(x, y, length, alpha, counter);
+		animate_levy(x, y, length, alpha, counter); // drawing
 	}
 }
 
-System::Void LevyCurve::Anime::Animate_Click(System::Object^ sender, System::EventArgs^ e)
+System::Void LevyCurve::Anime::Animate_Click(System::Object^ sender, System::EventArgs^ e) // drawing animation
 {
 	if (DataIterations::num_iterations != 0) {
-
 		if (timer1->Enabled == false) {
 			timer1->Start();
 		}
 		else {
 			timer1->Stop();
 		}
-		FrameUser->Enabled = false;
+		FrameUser->Enabled = false; // disable second button
 	}
 }
 
-System::Void LevyCurve::Anime::timer1_Tick(System::Object^ sender, System::EventArgs^ e) {
+System::Void LevyCurve::Anime::timer1_Tick(System::Object^ sender, System::EventArgs^ e) { // timer tick action
 	Graphics^ gfx = pictureBox1->CreateGraphics();
 	gfx->Clear(Color::White);
 	counter++;
 	IterationNow->Text = Convert::ToString(counter);
 
 	float x = pictureBox1->Width / 3.6;
-	float y = pictureBox1->Height / 3;
+	float y = pictureBox1->Height / 3.0;
 	float length = 250;
 	float alpha = 0;
 
@@ -76,7 +72,7 @@ System::Void LevyCurve::Anime::timer1_Tick(System::Object^ sender, System::Event
 	}
 }
 
-System::Void LevyCurve::Anime::ResetButton_Click(System::Object^ sender, System::EventArgs^ e)
+System::Void LevyCurve::Anime::ResetButton_Click(System::Object^ sender, System::EventArgs^ e) // reset button
 {
 	Graphics^ gfx = pictureBox1->CreateGraphics();
 	gfx->Clear(Color::White);
@@ -87,7 +83,7 @@ System::Void LevyCurve::Anime::ResetButton_Click(System::Object^ sender, System:
 	FrameUser->Enabled = true;
 }
 
-System::Void LevyCurve::Anime::ExitButtonA_Click(System::Object^ sender, System::EventArgs^ e)
+System::Void LevyCurve::Anime::ExitButtonA_Click(System::Object^ sender, System::EventArgs^ e) // exit button
 {
 	Graphics^ gfx = pictureBox1->CreateGraphics();
 	gfx->Clear(Color::White);

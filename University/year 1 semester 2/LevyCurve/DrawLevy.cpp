@@ -5,7 +5,7 @@
 
 #define PI 3.1415
 
-System::Void LevyCurve::DrawLevy::draw_levy(float x, float y, float length, float alpha, int iteration) {
+System::Void LevyCurve::DrawLevy::draw_levy(float x, float y, float length, float alpha, int iteration) { // draw Levy func
 	Graphics^ gfx = pictureBox1->CreateGraphics();
 	float rads = 0;
 	if (iteration > 0) {
@@ -22,12 +22,11 @@ System::Void LevyCurve::DrawLevy::draw_levy(float x, float y, float length, floa
 	}
 }
 
-System::Void LevyCurve::DrawLevy::button1_Click(System::Object^ sender, System::EventArgs^ e) {
-
+System::Void LevyCurve::DrawLevy::button1_Click(System::Object^ sender, System::EventArgs^ e) { // Button click for draw
 	if (DataIterations::num_iterations != 0) {
 		int iterations = DataIterations::num_iterations;
 		float x = pictureBox1->Width / 3.6;
-		float y = pictureBox1->Height / 3;
+		float y = pictureBox1->Height / 3.0;
 		float length = 250;
 		float alpha = 0;
 
@@ -35,7 +34,7 @@ System::Void LevyCurve::DrawLevy::button1_Click(System::Object^ sender, System::
 	}
 }
 
-System::Void LevyCurve::DrawLevy::ExitButton_Click(System::Object^ sender, System::EventArgs^ e)
+System::Void LevyCurve::DrawLevy::ExitButton_Click(System::Object^ sender, System::EventArgs^ e) // exit button
 {
 	return System::Void();
 }
