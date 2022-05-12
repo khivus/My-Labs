@@ -81,7 +81,8 @@ namespace LevyCurve {
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(508, 168);
 			this->label1->TabIndex = 4;
-			this->label1->Text = L"Program: Levy C Curve\r\nVersion: 2.4\r\nYear 2022\r\nDeveloped by Aleksey Kharin";
+			this->label1->Text = L"Program: Levy C Curve\r\nRelease version: 1.01\r\nYear 2022\r\nDeveloped by Aleksey Kha"
+				L"rin";
 			// 
 			// GoToSite
 			// 

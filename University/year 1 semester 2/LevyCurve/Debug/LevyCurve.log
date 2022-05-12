@@ -1,27 +1,9 @@
-﻿  Anime.cpp
+﻿  AboutMe.cpp
+  DataInput.cpp
 C:\Users\Khivus\Education\Programming\University\year 1 semester 2\LevyCurve\DataIterations.h(5,2): warning C4091: 'static ': ignored on left of 'DataIterations' when no variable is declared
-C:\Users\Khivus\Education\Programming\University\year 1 semester 2\LevyCurve\Anime.cpp(12,19): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\Khivus\Education\Programming\University\year 1 semester 2\LevyCurve\Anime.cpp(14,15): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\Khivus\Education\Programming\University\year 1 semester 2\LevyCurve\Anime.cpp(15,9): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\Khivus\Education\Programming\University\year 1 semester 2\LevyCurve\Anime.cpp(16,9): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\Khivus\Education\Programming\University\year 1 semester 2\LevyCurve\Anime.cpp(20,15): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\Khivus\Education\Programming\University\year 1 semester 2\LevyCurve\Anime.cpp(21,62): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-C:\Users\Khivus\Education\Programming\University\year 1 semester 2\LevyCurve\Anime.cpp(21,38): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-C:\Users\Khivus\Education\Programming\University\year 1 semester 2\LevyCurve\Anime.cpp(34,11): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-C:\Users\Khivus\Education\Programming\University\year 1 semester 2\LevyCurve\Anime.cpp(35,11): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-C:\Users\Khivus\Education\Programming\University\year 1 semester 2\LevyCurve\Anime.cpp(62,10): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-C:\Users\Khivus\Education\Programming\University\year 1 semester 2\LevyCurve\Anime.cpp(63,10): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-  DrawLevy.cpp
+  MyForm.cpp
 C:\Users\Khivus\Education\Programming\University\year 1 semester 2\LevyCurve\DataIterations.h(5,2): warning C4091: 'static ': ignored on left of 'DataIterations' when no variable is declared
-C:\Users\Khivus\Education\Programming\University\year 1 semester 2\LevyCurve\DrawLevy.cpp(12,19): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\Khivus\Education\Programming\University\year 1 semester 2\LevyCurve\DrawLevy.cpp(14,15): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\Khivus\Education\Programming\University\year 1 semester 2\LevyCurve\DrawLevy.cpp(15,9): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\Khivus\Education\Programming\University\year 1 semester 2\LevyCurve\DrawLevy.cpp(16,9): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\Khivus\Education\Programming\University\year 1 semester 2\LevyCurve\DrawLevy.cpp(20,15): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\Khivus\Education\Programming\University\year 1 semester 2\LevyCurve\DrawLevy.cpp(21,62): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-C:\Users\Khivus\Education\Programming\University\year 1 semester 2\LevyCurve\DrawLevy.cpp(21,38): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-C:\Users\Khivus\Education\Programming\University\year 1 semester 2\LevyCurve\DrawLevy.cpp(28,11): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-C:\Users\Khivus\Education\Programming\University\year 1 semester 2\LevyCurve\DrawLevy.cpp(29,11): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\Khivus\Education\Programming\University\year 1 semester 2\LevyCurve\MyForm.cpp(7,33): warning C4829: Possibly incorrect parameters to function main. Consider 'int main(Platform::Array<Platform::String^>^ argv)'
   Generating Code...
   AboutMe.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link
   LevyCurve.vcxproj -> C:\Users\Khivus\Education\Programming\University\year 1 semester 2\LevyCurve\Debug\LevyCurve.exe
