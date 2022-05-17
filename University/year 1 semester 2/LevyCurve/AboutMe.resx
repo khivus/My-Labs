@@ -20752,4 +20752,15 @@
         ypCBUgEAAAAASUVORK5CYII=
 </value>
   </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>If using a Lindenmayer system 
+then the construction of the 
+C curve starts with a straight line. 
+An isosceles triangle with 
+angles of 45°, 90° and 45° 
+is built using this line 
+as its hypotenuse. 
+The original line is then replaced by 
+the other two sides of this triangle.</value>
+  </data>
 </root>

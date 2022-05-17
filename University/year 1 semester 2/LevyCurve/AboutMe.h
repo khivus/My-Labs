@@ -38,6 +38,9 @@ namespace LevyCurve {
 	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::Button^ GoToSite;
 	private: System::Windows::Forms::PictureBox^ pictureBox1;
+	private: System::Windows::Forms::Label^ label2;
+	private: System::Windows::Forms::Label^ label3;
+	private: System::Windows::Forms::Label^ label4;
 	protected:
 
 
@@ -59,6 +62,9 @@ namespace LevyCurve {
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->GoToSite = (gcnew System::Windows::Forms::Button());
 			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
+			this->label2 = (gcnew System::Windows::Forms::Label());
+			this->label3 = (gcnew System::Windows::Forms::Label());
+			this->label4 = (gcnew System::Windows::Forms::Label());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -99,17 +105,56 @@ namespace LevyCurve {
 			this->pictureBox1->BackColor = System::Drawing::Color::Transparent;
 			this->pictureBox1->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.BackgroundImage")));
 			this->pictureBox1->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-			this->pictureBox1->Location = System::Drawing::Point(57, 180);
+			this->pictureBox1->Location = System::Drawing::Point(279, 303);
 			this->pictureBox1->Name = L"pictureBox1";
-			this->pictureBox1->Size = System::Drawing::Size(463, 303);
+			this->pictureBox1->Size = System::Drawing::Size(290, 180);
 			this->pictureBox1->TabIndex = 5;
 			this->pictureBox1->TabStop = false;
+			// 
+			// label2
+			// 
+			this->label2->AutoSize = true;
+			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label2->Location = System::Drawing::Point(12, 230);
+			this->label2->Name = L"label2";
+			this->label2->Size = System::Drawing::Size(543, 60);
+			this->label2->TabIndex = 6;
+			this->label2->Text = L"The fractal curve that is the limit of this \"infinite\" process is the Lévy C curv"
+				L"e. \r\nIt takes its name from its resemblance to a highly \r\nornamented version of "
+				L"the letter \"C\".";
+			// 
+			// label3
+			// 
+			this->label3->AutoSize = true;
+			this->label3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label3->Location = System::Drawing::Point(15, 203);
+			this->label3->Name = L"label3";
+			this->label3->Size = System::Drawing::Size(321, 20);
+			this->label3->TabIndex = 6;
+			this->label3->Text = L"the Lévy C curve is a self-similar fractal curve\r\n";
+			// 
+			// label4
+			// 
+			this->label4->AutoSize = true;
+			this->label4->BackColor = System::Drawing::Color::Transparent;
+			this->label4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label4->Location = System::Drawing::Point(15, 303);
+			this->label4->Name = L"label4";
+			this->label4->Size = System::Drawing::Size(258, 180);
+			this->label4->TabIndex = 6;
+			this->label4->Text = resources->GetString(L"label4.Text");
 			// 
 			// AboutMe
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(584, 561);
+			this->Controls->Add(this->label3);
+			this->Controls->Add(this->label4);
+			this->Controls->Add(this->label2);
 			this->Controls->Add(this->pictureBox1);
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->GoToSite);
