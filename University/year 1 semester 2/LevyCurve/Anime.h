@@ -167,6 +167,8 @@ namespace LevyCurve {
 			this->Name = L"Anime";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Animetion";
+			this->FormClosed += gcnew System::Windows::Forms::FormClosedEventHandler(this, &Anime::Anime_FormClosed);
+			this->Load += gcnew System::EventHandler(this, &Anime::Anime_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
@@ -179,5 +181,6 @@ namespace LevyCurve {
 private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e);
 private: System::Void ResetButton_Click(System::Object^ sender, System::EventArgs^ e);
 private: System::Void ExitButtonA_Click(System::Object^ sender, System::EventArgs^ e);
+private: System::Void Anime_FormClosed(System::Object^ sender, System::Windows::Forms::FormClosedEventArgs^ e);
 };
 }

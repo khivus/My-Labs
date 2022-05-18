@@ -93,3 +93,14 @@ System::Void LevyCurve::Anime::ExitButtonA_Click(System::Object^ sender, System:
 	Animate->Enabled = true;
 	FrameUser->Enabled = true;
 }
+
+System::Void LevyCurve::Anime::Anime_FormClosed(System::Object^ sender, System::Windows::Forms::FormClosedEventArgs^ e)
+{
+	Graphics^ gfx = pictureBox1->CreateGraphics();
+	gfx->Clear(Color::White);
+	timer1->Stop();
+	IterationNow->Text = "0";
+	counter = 0;
+	Animate->Enabled = true;
+	FrameUser->Enabled = true;
+}

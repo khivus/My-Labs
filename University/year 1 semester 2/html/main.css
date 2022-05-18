@@ -129,7 +129,10 @@ body h2 {
 	margin-top: 2%;
 	width: 90%;
 	text-align: center;
-	
+}
+
+#about_file div p {
+	text-align: center;
 }
 
 #hobbies_file ul {
