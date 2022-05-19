@@ -1,9 +1,7 @@
 ﻿#pragma once
-#include "DrawLevy.h"
-#include "DataInput.h"
-#include "Anime.h"
+#include "LevyForm.h"
 #include "AboutMe.h"
-#include "DataIterations.h"
+
 
 namespace LevyCurve {
 
@@ -19,20 +17,15 @@ namespace LevyCurve {
 	/// </summary>
 	public ref class MyForm : public System::Windows::Forms::Form {
 
-	private: DrawLevy^ draw;
-	private: DataInput^ nInput;
-	private: Anime^ animate;
-	private: System::Windows::Forms::Label^ AttentionText;
-	private: System::Windows::Forms::PictureBox^ pictureBox1;
+	private: LevyForm^ lform;
+	private: System::Windows::Forms::Button^ ToDrawButton;
 	private: AboutMe^ abt;
 
 	public:
 		MyForm(void)
 		{
 			InitializeComponent();
-			draw = gcnew DrawLevy;
-			nInput = gcnew DataInput;
-			animate = gcnew Anime;
+			lform = gcnew LevyForm;
 			abt = gcnew AboutMe;
 			//
 			//TODO: Add the constructor code here
@@ -50,11 +43,8 @@ namespace LevyCurve {
 				delete components;
 			}
 		}
-	private: System::Windows::Forms::Button^ Draw;
-	private: System::Windows::Forms::Button^ Animation;
-	private: System::Windows::Forms::Button^ Input;
+
 	private: System::Windows::Forms::Button^ About;
-	private: System::Windows::Forms::Label^ lmao;
 
 	protected:
 
@@ -72,51 +62,15 @@ namespace LevyCurve {
 		void InitializeComponent(void)
 		{
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(MyForm::typeid));
-			this->Draw = (gcnew System::Windows::Forms::Button());
-			this->Animation = (gcnew System::Windows::Forms::Button());
-			this->Input = (gcnew System::Windows::Forms::Button());
 			this->About = (gcnew System::Windows::Forms::Button());
-			this->lmao = (gcnew System::Windows::Forms::Label());
-			this->AttentionText = (gcnew System::Windows::Forms::Label());
-			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
+			this->ToDrawButton = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
-			// 
-			// Draw
-			// 
-			this->Draw->Enabled = false;
-			this->Draw->Location = System::Drawing::Point(41, 489);
-			this->Draw->Name = L"Draw";
-			this->Draw->Size = System::Drawing::Size(120, 60);
-			this->Draw->TabIndex = 0;
-			this->Draw->Text = L"Draw curve";
-			this->Draw->UseVisualStyleBackColor = true;
-			this->Draw->Click += gcnew System::EventHandler(this, &MyForm::Draw_Click);
-			// 
-			// Animation
-			// 
-			this->Animation->Enabled = false;
-			this->Animation->Location = System::Drawing::Point(167, 489);
-			this->Animation->Name = L"Animation";
-			this->Animation->Size = System::Drawing::Size(120, 60);
-			this->Animation->TabIndex = 0;
-			this->Animation->Text = L"Animation";
-			this->Animation->UseVisualStyleBackColor = true;
-			this->Animation->Click += gcnew System::EventHandler(this, &MyForm::Animation_Click);
-			// 
-			// Input
-			// 
-			this->Input->Location = System::Drawing::Point(293, 489);
-			this->Input->Name = L"Input";
-			this->Input->Size = System::Drawing::Size(120, 60);
-			this->Input->TabIndex = 0;
-			this->Input->Text = L"Iterations input";
-			this->Input->UseVisualStyleBackColor = true;
-			this->Input->Click += gcnew System::EventHandler(this, &MyForm::Input_Click);
 			// 
 			// About
 			// 
-			this->About->Location = System::Drawing::Point(422, 489);
+			this->About->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->About->Location = System::Drawing::Point(307, 78);
 			this->About->Name = L"About";
 			this->About->Size = System::Drawing::Size(120, 60);
 			this->About->TabIndex = 0;
@@ -124,71 +78,44 @@ namespace LevyCurve {
 			this->About->UseVisualStyleBackColor = true;
 			this->About->Click += gcnew System::EventHandler(this, &MyForm::About_Click);
 			// 
-			// lmao
+			// ToDrawButton
 			// 
-			this->lmao->AutoSize = true;
-			this->lmao->BackColor = System::Drawing::Color::Transparent;
-			this->lmao->ForeColor = System::Drawing::Color::Black;
-			this->lmao->Location = System::Drawing::Point(537, 13);
-			this->lmao->Name = L"lmao";
-			this->lmao->Size = System::Drawing::Size(33, 13);
-			this->lmao->TabIndex = 1;
-			this->lmao->Text = L"Exit ^";
-			// 
-			// AttentionText
-			// 
-			this->AttentionText->AutoSize = true;
-			this->AttentionText->BackColor = System::Drawing::Color::Transparent;
-			this->AttentionText->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->ToDrawButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->AttentionText->ForeColor = System::Drawing::Color::Black;
-			this->AttentionText->Location = System::Drawing::Point(49, 462);
-			this->AttentionText->Name = L"AttentionText";
-			this->AttentionText->Size = System::Drawing::Size(229, 24);
-			this->AttentionText->TabIndex = 2;
-			this->AttentionText->Text = L"Use Input first for avilabillity";
-			// 
-			// pictureBox1
-			// 
-			this->pictureBox1->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.BackgroundImage")));
-			this->pictureBox1->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-			this->pictureBox1->Location = System::Drawing::Point(14, 53);
-			this->pictureBox1->Name = L"pictureBox1";
-			this->pictureBox1->Size = System::Drawing::Size(558, 360);
-			this->pictureBox1->TabIndex = 3;
-			this->pictureBox1->TabStop = false;
+			this->ToDrawButton->Location = System::Drawing::Point(307, 12);
+			this->ToDrawButton->Name = L"ToDrawButton";
+			this->ToDrawButton->Size = System::Drawing::Size(120, 60);
+			this->ToDrawButton->TabIndex = 0;
+			this->ToDrawButton->Text = L"Draw Levy";
+			this->ToDrawButton->UseVisualStyleBackColor = true;
+			this->ToDrawButton->Click += gcnew System::EventHandler(this, &MyForm::ToDrawButton_Click);
 			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-			this->ClientSize = System::Drawing::Size(584, 561);
-			this->Controls->Add(this->pictureBox1);
-			this->Controls->Add(this->AttentionText);
-			this->Controls->Add(this->lmao);
+			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
+			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
+			this->ClientSize = System::Drawing::Size(734, 411);
+			this->Controls->Add(this->ToDrawButton);
 			this->Controls->Add(this->About);
-			this->Controls->Add(this->Input);
-			this->Controls->Add(this->Animation);
-			this->Controls->Add(this->Draw);
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedDialog;
 			this->MaximizeBox = false;
-			this->MaximumSize = System::Drawing::Size(600, 600);
-			this->MinimumSize = System::Drawing::Size(600, 600);
+			this->MaximumSize = System::Drawing::Size(750, 450);
+			this->MinimumSize = System::Drawing::Size(750, 450);
 			this->Name = L"MyForm";
 			this->RightToLeft = System::Windows::Forms::RightToLeft::No;
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Levy С Curve";
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 			this->ResumeLayout(false);
-			this->PerformLayout();
 
 		}
 #pragma endregion
-
-private: System::Void Draw_Click(System::Object^ sender, System::EventArgs^ e);
-private: System::Void Animation_Click(System::Object^ sender, System::EventArgs^ e);
-private: System::Void Input_Click(System::Object^ sender, System::EventArgs^ e);
-private: System::Void About_Click(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void About_Click(System::Object^ sender, System::EventArgs^ e) {
+		abt->ShowDialog(); // transition between forms
+}
+private: System::Void ToDrawButton_Click(System::Object^ sender, System::EventArgs^ e) {
+	lform->ShowDialog(); // transition between forms
+}
 };
 }

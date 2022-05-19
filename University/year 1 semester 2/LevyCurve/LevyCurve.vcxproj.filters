@@ -18,16 +18,10 @@
     <ClCompile Include="MyForm.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="DrawLevy.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="DataInput.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Anime.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="AboutMe.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LevyForm.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -35,19 +29,10 @@
     <ClInclude Include="MyForm.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="DrawLevy.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="DataInput.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Anime.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="AboutMe.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="DataIterations.h">
+    <ClInclude Include="LevyForm.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

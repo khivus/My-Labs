@@ -121,23 +121,14 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AboutMe.cpp" />
-    <ClCompile Include="Anime.cpp" />
-    <ClCompile Include="DataInput.cpp" />
-    <ClCompile Include="DrawLevy.cpp" />
+    <ClCompile Include="LevyForm.cpp" />
     <ClCompile Include="MyForm.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AboutMe.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="Anime.h">
-      <FileType>CppForm</FileType>
-    </ClInclude>
-    <ClInclude Include="DataInput.h">
-      <FileType>CppForm</FileType>
-    </ClInclude>
-    <ClInclude Include="DataIterations.h" />
-    <ClInclude Include="DrawLevy.h">
+    <ClInclude Include="LevyForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="MyForm.h">
@@ -147,15 +138,6 @@
   <ItemGroup>
     <EmbeddedResource Include="AboutMe.resx">
       <DependentUpon>AboutMe.h</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Anime.resx">
-      <DependentUpon>Anime.h</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="DataInput.resx">
-      <DependentUpon>DataInput.h</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="DrawLevy.resx">
-      <DependentUpon>DrawLevy.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MyForm.resx">
       <DependentUpon>MyForm.h</DependentUpon>

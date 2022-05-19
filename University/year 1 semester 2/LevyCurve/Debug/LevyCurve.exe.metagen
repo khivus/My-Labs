@@ -1,7 +1,4 @@
   LevyCurve.AboutMe.resources - Embedded, ContainedInManifestFile, 
-  LevyCurve.Anime.resources - Embedded, ContainedInManifestFile, 
-  LevyCurve.DataInput.resources - Embedded, ContainedInManifestFile, 
-  LevyCurve.DrawLevy.resources - Embedded, ContainedInManifestFile, 
   LevyCurve.MyForm.resources - Embedded, ContainedInManifestFile, 
 ImageRuntimeVersion: v4.0.30319
 Assembly LevyCurve, Version=0.0.*, Culture=Invariant Language (Invariant Country): 
@@ -21,17 +18,9 @@ Assembly System.Xml, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c5619
 Class LevyCurve.AboutMe: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
-Class LevyCurve.Anime: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+Class LevyCurve.LevyForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
-Class LevyCurve.DataInput: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
-  :System.Windows.Forms.Form
-    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
-Class LevyCurve.DrawLevy: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
-  :System.Windows.Forms.Form
-    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
-  Methods:
-    button1_Click(Object, EventArgs): PrivateScope, Public, HideBySig
 Class LevyCurve.MyForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName

@@ -71,6 +71,8 @@ namespace LevyCurve {
 			// ExitButtonB
 			// 
 			this->ExitButtonB->DialogResult = System::Windows::Forms::DialogResult::Cancel;
+			this->ExitButtonB->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
 			this->ExitButtonB->Location = System::Drawing::Point(452, 489);
 			this->ExitButtonB->Name = L"ExitButtonB";
 			this->ExitButtonB->Size = System::Drawing::Size(120, 60);
@@ -87,11 +89,13 @@ namespace LevyCurve {
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(508, 168);
 			this->label1->TabIndex = 4;
-			this->label1->Text = L"Program: Levy C Curve\r\nRelease version: 1.01\r\nYear 2022\r\nDeveloped by Aleksey Kha"
+			this->label1->Text = L"Program: Levy C Curve\r\nRelease version: 1.10\r\nYear 2022\r\nDeveloped by Aleksey Kha"
 				L"rin";
 			// 
 			// GoToSite
 			// 
+			this->GoToSite->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
 			this->GoToSite->Location = System::Drawing::Point(326, 489);
 			this->GoToSite->Name = L"GoToSite";
 			this->GoToSite->Size = System::Drawing::Size(120, 60);
@@ -162,9 +166,10 @@ namespace LevyCurve {
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedDialog;
 			this->MaximizeBox = false;
 			this->MaximumSize = System::Drawing::Size(600, 600);
+			this->MinimizeBox = false;
 			this->MinimumSize = System::Drawing::Size(600, 600);
 			this->Name = L"AboutMe";
-			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
+			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterParent;
 			this->Text = L"About program";
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 			this->ResumeLayout(false);
@@ -173,6 +178,8 @@ namespace LevyCurve {
 		}
 #pragma endregion
 
-	private: System::Void GoToSite_Click(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void GoToSite_Click(System::Object^ sender, System::EventArgs^ e) {
+		System::Diagnostics::Process::Start("..\\site\\html\\main.html"); //go to developer site path
+	}
 	};
 }
