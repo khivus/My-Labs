@@ -1,3 +1,10 @@
+/* Error handler
+* v.1.01
+* 2022
+* Aleksey Kharin
+* Variant 9
+* C = (- b ^ 2 - 3 * b + 8) / (- a ^ 2 + 4 * a + 7) */
+
 #include <conio.h>
 #include <iostream>
 #include <math.h>
@@ -6,56 +13,35 @@
 
 using namespace std;
 
-bool check(string a) {
-    bool mark, mark1 = false;
-    string symb = "0123456789.e";
-
-    for (unsigned int i = 0; i < a.length(); i++) {
-        mark = false;
-        for (unsigned int j = 0; j < symb.length(); j++) {
-            if (a[i] == symb[j]) {
-                mark = true;
-            }
-        }
-        if (!mark)  mark1 = true;
-    }
-    return mark1;
-}
-
 int main() {
-    string A, B;
-    double a, b;
-    double c;
-
-    cout << "a = ";
-    cin >> A;
-    cout << "b = ";
-    cin >> B;
-
+    double A, B, C;
+    cin.exceptions(istream::failbit | istream::badbit);
     try {
-        if (A == "5.3166" || A ==  "- 1.3166")    throw 500;
-        if (check(A) || check(B))   throw 501;
-        else {
-            a = atof(A.c_str());
-            b = atof(B.c_str());
-            c = (-pow(b, 2) - 3 * b + 8) / (-pow(a, 2) + 4 * a + 7);
-        }
+        cout << "Input A = ";
+        cin >> A;
+        cout << "Input B = ";
+        cin >> B;
+        if (A == 5.3166 || A == -1.3166)    throw 2;
+        C = (-pow(B, 2) - 3 * B + 8) / (-pow(A, 2) + 4 * A + 7);
     }
-    catch (int a) {
-        cout << "Error " << a << ": ";
-        switch (a) {
-        case 500:
-            cout << "division by zero!\n";
-            break;
-        case 501:
-            cout << "wrong input!\n";
-            break;
-        }
+    catch (istream::failure e) {
+        cerr << "Wrong input!\n";
         cout << "Press any key to continue...";
         while (!_kbhit());
         return 1;
     }
-    cout << "c = " << c << endl;
+    catch (int a) {
+        cout << "Error " << a << ": ";
+        switch (a) {
+        case 2:
+            cout << "Division by zero!\n";
+            break;
+        }
+        cout << "Press any key to continue...";
+        while (!_kbhit());
+        return a;
+    }
+    cout << "C = " << C << endl;
     cout << "No exceptions found!\nPress any key to continue...";
     while (!_kbhit());
     return 0;
