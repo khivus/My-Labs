@@ -1,9 +1,9 @@
-/* Error handler
-* v.1.01
-* 2022
-* Aleksey Kharin
-* Variant 9
-* C = (- b ^ 2 - 3 * b + 8) / (- a ^ 2 + 4 * a + 7) */
+// Error handler
+// v.1.02
+// 2022
+// Aleksey Kharin
+// Variant 9
+// C = (- b ^ 2 - 3 * b + 8) / (- a ^ 2 + 4 * a + 7) 
 
 #include <conio.h>
 #include <iostream>
@@ -17,12 +17,17 @@ int main() {
     double A, B, C;
     cin.exceptions(istream::failbit | istream::badbit);
     try {
-        cout << "Input A = ";
+        cout << "Input A (-1e100 < A < 1e100) = ";
         cin >> A;
-        cout << "Input B = ";
+        cout << "You printed: " << A << endl;
+        cout << "Input B (-1e100 < A < 1e100) = ";
         cin >> B;
-        if (A == 5.3166 || A == -1.3166)    throw 2;
+        cout << "You printed: " << B << endl;
         C = (-pow(B, 2) - 3 * B + 8) / (-pow(A, 2) + 4 * A + 7);
+        if (A == 5.3166 || A == -1.3166)  throw 2;
+        if (C == INFINITY)                throw 3;
+        if (A < -1e100 || B < -1e100)     throw 4;
+        if (A > 1e100 || B > 1e100)       throw 5;
     }
     catch (istream::failure e) {
         cerr << "Wrong input!\n";
@@ -35,6 +40,15 @@ int main() {
         switch (a) {
         case 2:
             cout << "Division by zero!\n";
+            break;
+        case 3:
+            cout << "Overflow!\n";
+            break;
+        case 4:
+            cout << "Input is too small!\n";
+            break;
+        case 5:
+            cout << "Input is too big!\n";
             break;
         }
         cout << "Press any key to continue...";
