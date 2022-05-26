@@ -1,5 +1,5 @@
 // Phone book manager by queue
-// version 1.1.0
+// version 1.1.1
 // 2022
 // Kharin Aleksey
 // Variant 14
@@ -150,22 +150,22 @@ int main() {
             else file.seekg(-2, ios_base::cur);
             try {
                 file >> word;
-                if (check_file_data(word, 0)) throw NULL;
+                if (!check_file_data(word, 0)) throw NULL;
                 strcpy_s(person.first_name, word.c_str());
                 file >> word;
-                if (check_file_data(word, 0)) throw NULL;
+                if (!check_file_data(word, 0)) throw NULL;
                 strcpy_s(person.last_name, word.c_str());
                 file >> word;
-                if (check_file_data(word, 1)) throw NULL;
+                if (!check_file_data(word, 1)) throw NULL;
                 person.phone_number = atof(word.c_str());
                 file >> word;
-                if (check_file_data(word, 1)) throw NULL;
+                if (!check_file_data(word, 1)) throw NULL;
                 person.birthday_date[0] = atoi(word.c_str());
                 file >> word;
-                if (check_file_data(word, 1)) throw NULL;
+                if (!check_file_data(word, 1)) throw NULL;
                 person.birthday_date[1] = atoi(word.c_str());
                 file >> word;
-                if (check_file_data(word, 1)) throw NULL;
+                if (!check_file_data(word, 1)) throw NULL;
                 person.birthday_date[2] = atoi(word.c_str());
             }
             catch (...) {
@@ -207,20 +207,24 @@ int main() {
             } while (!check_file_data(person.last_name, 0));
             do {
                 cout << "Input phone number:   ";
-                cin >> person.phone_number;
-            } while (person.phone_number < 1 || person.phone_number > 1e10);
+                cin >> word;
+                person.phone_number = atof(word.c_str());
+            } while (atof(word.c_str()) < 1 || atof(word.c_str()) > 1e10 || !check_file_data(word, 1));
             do {
                 cout << "Input birthday day:   ";
-                cin >> person.birthday_date[0];
-            } while (person.birthday_date[0] < 0 || person.birthday_date[0] > 32);
+                cin >> word;
+                person.birthday_date[0] = atoi(word.c_str());
+            } while (atoi(word.c_str()) < 1 || atoi(word.c_str()) > 31 || !check_file_data(word, 1));
             do {
                 cout << "Input birthday month: ";
-                cin >> person.birthday_date[1];
-            } while (person.birthday_date[1] < 0 || person.birthday_date[1] > 13);
+                cin >> word;
+                person.birthday_date[1] = atoi(word.c_str());
+            } while (atoi(word.c_str()) < 1 || atoi(word.c_str()) > 12 || !check_file_data(word, 1));
             do {
                 cout << "Input birthday year:  ";
-                cin >> person.birthday_date[2];
-            } while (person.birthday_date[2] < 1900 || person.birthday_date[1] > 2022);
+                cin >> word;
+                person.birthday_date[2] = atoi(word.c_str());
+            } while (atoi(word.c_str()) < 1900 || atoi(word.c_str()) > 2022 || !check_file_data(word, 1));
 
             cout << "\nYou printed:\n\n";
             output_person(person);
@@ -236,16 +240,19 @@ int main() {
 
                 do {
                     cout << "Input birthday day:   ";
-                    cin >> for_delete[0];
-                } while (person.birthday_date[0] < 0 || person.birthday_date[0] > 32);
+                    cin >> word;
+                    for_delete[0] = atoi(word.c_str());
+                } while (atoi(word.c_str()) < 1 || atoi(word.c_str()) > 31 || !check_file_data(word, 1));
                 do {
                     cout << "Input birthday month: ";
-                    cin >> for_delete[1];
-                } while (person.birthday_date[1] < 0 || person.birthday_date[1] > 13);
+                    cin >> word;
+                    for_delete[1] = atoi(word.c_str());
+                } while (atoi(word.c_str()) < 1 || atoi(word.c_str()) > 12 || !check_file_data(word, 1));
                 do {
                     cout << "Input birthday year:  ";
-                    cin >> for_delete[2];
-                } while (person.birthday_date[2] < 1900 || person.birthday_date[1] > 2022);   
+                    cin >> word;
+                    for_delete[2] = atoi(word.c_str());
+                } while (atoi(word.c_str()) < 1900 || atoi(word.c_str()) > 2022 || !check_file_data(word, 1));
 
                 cout << "\nYou printed:\n"
                     "Birthday day:   " << for_delete[0] << endl <<
@@ -326,7 +333,7 @@ int main() {
 
         case 5: // About program
             cout << "Phone book manager\n"
-                "Version 1.1.0\n"
+                "Version 1.1.1\n"
                 "2022\n"
                 "Aleksey Kharin\n";
             break;
