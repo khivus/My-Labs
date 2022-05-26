@@ -1,0 +1,4 @@
+﻿  Lab_7.cpp
+C:\Users\Khivus\Education\Programming\University\year 1 semester 2\Lab_7\Lab_7\Lab_7.cpp(32,20): warning C4101: 'person2': unreferenced local variable
+C:\Users\Khivus\Education\Programming\University\year 1 semester 2\Lab_7\Lab_7\Lab_7.cpp(32,11): warning C4101: 'person1': unreferenced local variable
+  Lab_7.vcxproj -> C:\Users\Khivus\Education\Programming\University\year 1 semester 2\Lab_7\Debug\Lab_7.exe
