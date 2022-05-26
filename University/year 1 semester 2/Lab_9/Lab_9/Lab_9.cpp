@@ -1,5 +1,5 @@
 // Error handler
-// v.1.02
+// v1.0.3
 // 2022
 // Aleksey Kharin
 // Variant 9
@@ -23,7 +23,7 @@ int main() {
         cout << "Input B (-1e100 < A < 1e100) = ";
         cin >> B;
         cout << "You printed: " << B << endl;
-        C = (-pow(B, 2) - 3 * B + 8) / (-pow(A, 2) + 4 * A + 7);
+        C = (-B * B - 3 * B + 8) / (-A * A + 4 * A + 7);
         if (A == 5.3166 || A == -1.3166)  throw 2;
         if (C == INFINITY)                throw 3;
         if (A < -1e100 || B < -1e100)     throw 4;
