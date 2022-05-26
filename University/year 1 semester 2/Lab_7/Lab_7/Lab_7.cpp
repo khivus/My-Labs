@@ -1,5 +1,5 @@
 // Phone book manager by Linked list
-// version 0.2.1
+// version 0.3.0
 // 2022
 // Kharin Aleksey
 // Variant 14
@@ -27,21 +27,6 @@ QUEUE{
     QUEUE* prev;
 };
 
-void sort_list(QUEUE** current, unsigned int persons) {
-    QUEUE* node;
-    queue person1, person2;
-    node = *current;
-    for (unsigned int i = 0; i < persons; i++) {
-        for (unsigned int j = i + 1; j < persons; j++) {
-            //if ([j] < [i]) {
-
-            //}
-        }
-    }
-
-    //free(node);
-}
-
 void insert(QUEUE** current, queue item) {
     QUEUE* new_node;
     new_node = new QUEUE;
@@ -53,7 +38,7 @@ void insert(QUEUE** current, queue item) {
     }
     if ((*current)->next != NULL) {
         new_node->next = (*current)->next;
-        (*current)->next = new_node;
+        (*current)->next->prev = new_node;
         new_node->prev = *current;
         (*current)->next = new_node;
     }
@@ -67,8 +52,8 @@ void insert(QUEUE** current, queue item) {
 
 queue take_out(QUEUE** current) {
     queue value;
-    QUEUE* old_node = *current;
-    value = old_node->items;
+    //QUEUE* old_node = *current;
+    value = (*current)->items;
     if ((*current)->prev == NULL) {
         *current = (*current)->next;
         if (*current) {
@@ -86,8 +71,51 @@ queue take_out(QUEUE** current) {
             (*current) = (*current)->next;
         }
     }
-    free(old_node);
+    //free(old_node);
     return value;
+}
+
+QUEUE* sort_list(QUEUE** q, unsigned int persons) {
+    QUEUE* mew = 0;
+    QUEUE* current = *q;
+    queue person;
+    int cur_min, index, remain = persons;
+    string str, num;
+
+    for (unsigned int j = 0; j < persons; j++) {
+        if (remain > 1) {
+            for (unsigned int i = 0; i < remain; i++) {
+                num.clear();
+                person = take_out(&current);
+                str = to_string(person.phone_number);
+                for (unsigned int s = 0; s < 3; s++) {
+                    num += str[s];
+                }
+                if (i == 0) cur_min = atoi(num.c_str());
+                if (cur_min >= atoi(num.c_str())) {
+                    cur_min = atoi(num.c_str());
+                    index = i;
+                }
+                insert(&current, person);
+            }
+            for (unsigned int k = 0; k < remain; k++) {
+                person = take_out(&current);
+                if (k == index) {
+                    insert(&mew, person);
+                    remain--;
+                }
+                else {
+                    insert(&current, person);
+                }
+            }
+        }
+        else if (remain == 1) {
+            insert(&mew, take_out(&current));
+            remain--;
+        }
+    }
+    free(current);
+    return mew;
 }
 
 bool check_file_data(string word, int mode) {
@@ -216,6 +244,7 @@ int main() {
             else file.seekg(0, ios_base::end);
         } while (file.peek() != EOF);
         if (!mark) {
+            //if (persons > 1) q1 = sort_list(&q1, persons);
             cout << "Found saved data.\n"
                 "There are " << persons << " saved persons\n";
         }
@@ -265,6 +294,7 @@ int main() {
             output_person(person);
             insert(&q1, person);
             persons++;
+            //if (persons > 1) q1 = sort_list(&q1, persons);
             break;
 
         case 2: // Delete a person by birth date case
@@ -316,14 +346,15 @@ int main() {
                     "Please use the \"[1] Input info\" first\n";
             }
             break;
-
+            // There is not properly working output
+            // I'm so tired working with this fucking linked list
         case 3: // Output all info
             if (persons != 0) {
                 cout << "All persons:\n\n";
                 for (i = 0; i < persons; i++) {
                     person = take_out(&q1);
-                    insert(&q1, person);
                     output_person(person);
+                    insert(&q1, person);
                 }
             }
             else {
@@ -368,7 +399,7 @@ int main() {
 
         case 5: // About program
             cout << "Phone book manager\n"
-                "Version 0.2.1\n"
+                "Version 0.3.0\n"
                 "2022\n"
                 "Aleksey Kharin\n";
             break;
