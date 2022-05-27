@@ -1,4 +1,4 @@
 ﻿  Lab_7.cpp
-C:\Users\Khivus\Education\Programming\University\year 1 semester 2\Lab_7\Lab_7\Lab_7.cpp(87,40): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Khivus\Education\Programming\University\year 1 semester 2\Lab_7\Lab_7\Lab_7.cpp(101,40): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Khivus\Education\Programming\University\year 1 semester 2\Lab_7\Lab_7\Lab_7.cpp(94,40): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Khivus\Education\Programming\University\year 1 semester 2\Lab_7\Lab_7\Lab_7.cpp(108,40): warning C4018: '<': signed/unsigned mismatch
   Lab_7.vcxproj -> C:\Users\Khivus\Education\Programming\University\year 1 semester 2\Lab_7\Debug\Lab_7.exe

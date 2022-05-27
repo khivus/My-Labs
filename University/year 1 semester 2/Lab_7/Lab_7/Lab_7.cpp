@@ -1,5 +1,5 @@
 // Phone book manager by Linked list
-// version 0.3.0
+// version 0.4.1
 // 2022
 // Kharin Aleksey
 // Variant 14
@@ -27,56 +27,63 @@ QUEUE{
     QUEUE* prev;
 };
 
-void insert(QUEUE** current, queue item) {
+void insert(QUEUE** i, QUEUE** start, QUEUE** last, queue n) {
     QUEUE* new_node;
-    new_node = new QUEUE;
-    new_node->items = item;
-    if (*current == NULL) {
-        *current = new_node;
+    new_node = (QUEUE*)malloc(sizeof(QUEUE));
+    new_node->items = n;
+    if (*start == NULL) {
+        *start = new_node;
+        *last = new_node;
         new_node->next = NULL;
         new_node->prev = NULL;
+        *i = new_node;
     }
-    if ((*current)->next != NULL) {
-        new_node->next = (*current)->next;
-        (*current)->next->prev = new_node;
-        new_node->prev = *current;
-        (*current)->next = new_node;
+    if ((*i)->next != NULL) {
+        new_node->next = (*i)->next;
+        (*i)->next->prev = new_node;
+        new_node->prev = *i;
+        (*i)->next = new_node;
+
     }
     else {
-        (*current)->next = new_node;
-        new_node->prev = *current;
+        (*last)->next = new_node;
+        new_node->prev = *last;
         new_node->next = NULL;
-        (*current) = new_node;
+        (*last) = new_node;
+        *i = new_node;
     }
 }
 
-queue take_out(QUEUE** current) {
+queue take_out(QUEUE** i, QUEUE** start, QUEUE** last, int* error) {
+    QUEUE* old_node = *i;
     queue value;
-    //QUEUE* old_node = *current;
-    value = (*current)->items;
-    if ((*current)->prev == NULL) {
-        *current = (*current)->next;
-        if (*current) {
-            (*current)->prev = NULL;
-        }
-    }
+    if ((*start == NULL) || (*last == NULL) || (*i == NULL)) *error = 1;
     else {
-        if ((*current)->next == NULL) {
-            (*current) = (*current)->prev;
-            (*current)->next = NULL;
+        value = old_node->items;
+        if (*i == *start) {
+            *i = (*i)->next;
+            *start = *i;
+            if (*i) (*i)->prev = NULL;
         }
         else {
-            (*current)->prev->next = (*current)->next;
-            (*current)->next->prev = (*current)->prev;
-            (*current) = (*current)->next;
+            if (*i == *last) {
+                (*i) = (*i)->prev;
+                *last = *i;
+                (*i)->next = NULL;
+            }
+            else {
+                (*i)->prev->next = (*i)->next;
+                (*i)->next->prev = (*i)->prev;
+                (*i) = (*i)->next;
+            }
         }
+        *error = 0;
+        free(old_node);
     }
-    //free(old_node);
     return value;
 }
 
-QUEUE* sort_list(QUEUE** q, unsigned int persons) {
-    QUEUE* mew = 0;
+void sort_list(QUEUE** q, QUEUE** start, QUEUE** last, int* error, unsigned int persons) {
     QUEUE* current = *q;
     queue person;
     int cur_min, index, remain = persons;
@@ -86,7 +93,8 @@ QUEUE* sort_list(QUEUE** q, unsigned int persons) {
         if (remain > 1) {
             for (unsigned int i = 0; i < remain; i++) {
                 num.clear();
-                person = take_out(&current);
+                person = take_out(&*start, &*start, &*last, &*error);
+                insert(&*last, &*start, &*last, person);
                 str = to_string(person.phone_number);
                 for (unsigned int s = 0; s < 3; s++) {
                     num += str[s];
@@ -96,33 +104,31 @@ QUEUE* sort_list(QUEUE** q, unsigned int persons) {
                     cur_min = atoi(num.c_str());
                     index = i;
                 }
-                insert(&current, person);
             }
             for (unsigned int k = 0; k < remain; k++) {
-                person = take_out(&current);
+                person = take_out(&*start, &*start, &*last, &*error);
                 if (k == index) {
-                    insert(&mew, person);
+                    insert(&*last, &*start, &*last, person);
                     remain--;
                 }
                 else {
-                    insert(&current, person);
+                    insert(&*start, &*start, &*last, person);
                 }
             }
         }
         else if (remain == 1) {
-            insert(&mew, take_out(&current));
+            insert(&*last, &*start, &*last, take_out(&*start, &*start, &*last, &*error));
             remain--;
         }
     }
     free(current);
-    return mew;
 }
 
 bool check_file_data(string word, int mode) {
     string sym0 = "qwertyuiopasdfghjklzxcvbnm";
     string sym1 = "0123456789";
     unsigned int i, j;
-    bool check, mark;
+    bool check = NULL, mark;
     switch (mode) {
     case 0: // word mode
         transform(word.begin(), word.end(), word.begin(), ::tolower);
@@ -186,13 +192,13 @@ int menu() {
 int main() {
     cout.precision(10);
 
-    unsigned int point, persons = 0, i = 1, tmp_minus, person_found;
-    int for_delete[3];
-    bool first_read = true, person_deleted, mark = false;
+    unsigned int point, persons = 0, i = 1, tmp_minus;
+    int for_delete[3], error;
+    bool first_read = true, person_deleted, mark = false, person_found;
     char search_last_name[20];
     string word;
     queue person;
-    QUEUE* q1 = 0, * q2 = 0;
+    QUEUE* q = NULL, * start = NULL, * last = NULL;
     ifstream file;
 
     menu_output();
@@ -237,14 +243,14 @@ int main() {
                 mark = true;
             }
             if (!mark) {
-                insert(&q1, person);
+                insert(&last, &start, &last, person);
                 persons++;
                 file.seekg(2, ios_base::cur);
             }
             else file.seekg(0, ios_base::end);
         } while (file.peek() != EOF);
         if (!mark) {
-            //if (persons > 1) q1 = sort_list(&q1, persons);
+            if (persons > 1) sort_list(&q, &start, &last, &error, persons);
             cout << "Found saved data.\n"
                 "There are " << persons << " saved persons\n";
         }
@@ -292,9 +298,9 @@ int main() {
 
             cout << "\nYou printed:\n\n";
             output_person(person);
-            insert(&q1, person);
+            insert(&last, &start, &last, person);
             persons++;
-            //if (persons > 1) q1 = sort_list(&q1, persons);
+            if (persons > 1) sort_list(&q, &start, &last, &error, persons);
             break;
 
         case 2: // Delete a person by birth date case
@@ -326,14 +332,14 @@ int main() {
                 cout << "Deleted person(s):\n\n";
 
                 for (i = 0; i < persons; i++) {
-                    person = take_out(&q1);
+                    person = take_out(&start, & start, &last, &error);
                     if (for_delete[0] == person.birthday_date[0] && for_delete[1] == person.birthday_date[1] && for_delete[2] == person.birthday_date[2]) {
                         person_deleted = true;
                         output_person(person);
                         tmp_minus++;
                     }
                     else {
-                        insert(&q1, person);
+                        insert(&last, &start, &last, person);
                     }
                 }
                 persons = persons - tmp_minus;
@@ -346,15 +352,14 @@ int main() {
                     "Please use the \"[1] Input info\" first\n";
             }
             break;
-            // There is not properly working output
-            // I'm so tired working with this fucking linked list
+
         case 3: // Output all info
             if (persons != 0) {
                 cout << "All persons:\n\n";
                 for (i = 0; i < persons; i++) {
-                    person = take_out(&q1);
+                    person = take_out(&start, &start, &last, &error);
                     output_person(person);
-                    insert(&q1, person);
+                    insert(&last, &start, &last, person);
                 }
             }
             else {
@@ -365,26 +370,28 @@ int main() {
 
         case 4: // Output info by last name
             if (persons != 0) {
-                person_found = 0;
+                person_found = false;
 
                 cout << "Input last name for search: ";
                 cin >> search_last_name;
                 cout << "\nYou printed:\n"
                     "Last name: " << search_last_name << "\n\n";
-
+                
                 for (i = 0; i < persons; i++) {
-                    person = take_out(&q1);
-                    insert(&q1, person);
+                    person = take_out(&start, &start, &last, &error);
+                    insert(&last, &start, &last, person);
                     if (strcmp(search_last_name, person.last_name) == 0) {
-                        person_found++;
-                        insert(&q2, person);
+                        person_found = true;
                     }
                 }
-                if (person_found != 0) {
+                if (person_found) {
                     cout << "Found person:\n\n";
-                    for (i = 0; i < person_found; i++) {
-                        person = take_out(&q2);
-                        output_person(person);
+                    for (i = 0; i < persons; i++) {
+                        person = take_out(&start, &start, &last, &error);
+                        insert(&last, &start, &last, person);
+                        if (strcmp(search_last_name, person.last_name) == 0) {
+                            output_person(person);
+                        }
                     }
                 }
                 else {
@@ -399,7 +406,7 @@ int main() {
 
         case 5: // About program
             cout << "Phone book manager\n"
-                "Version 0.3.0\n"
+                "Version 0.4.1\n"
                 "2022\n"
                 "Aleksey Kharin\n";
             break;
@@ -420,7 +427,7 @@ int main() {
     to_file.open("phone_book.txt", ofstream::trunc | ofstream::out);
 
     for (i = 0; i < persons; i++) {
-        person = take_out(&q1);
+        person = take_out(&start, &start, &last, &error);
         to_file << person.first_name << ' ' << person.last_name << ' ' << person.phone_number << ' ' << person.birthday_date[0] << ' ' << person.birthday_date[1] << ' ' << person.birthday_date[2] << '\n';
     }
 
