@@ -1,5 +1,5 @@
 // Phone book manager by Linked list
-// version 0.4.1
+// version 1.0.0
 // 2022
 // Kharin Aleksey
 // Variant 14
@@ -85,18 +85,20 @@ queue take_out(QUEUE** i, QUEUE** start, QUEUE** last, int* error) {
 
 void sort_list(QUEUE** q, QUEUE** start, QUEUE** last, int* error, unsigned int persons) {
     QUEUE* current = *q;
+    QUEUE* i_sort = NULL, * start_sort = NULL, * last_sort = NULL;
     queue person;
     int cur_min, index, remain = persons;
     string str, num;
+    unsigned int i, j, k, s;
 
-    for (unsigned int j = 0; j < persons; j++) {
+    for (j = 0; j < persons; j++) {
         if (remain > 1) {
-            for (unsigned int i = 0; i < remain; i++) {
+            for (i = 0; i < remain; i++) {
                 num.clear();
                 person = take_out(&*start, &*start, &*last, &*error);
                 insert(&*last, &*start, &*last, person);
                 str = to_string(person.phone_number);
-                for (unsigned int s = 0; s < 3; s++) {
+                for (s = 0; s < 3; s++) {
                     num += str[s];
                 }
                 if (i == 0) cur_min = atoi(num.c_str());
@@ -105,21 +107,24 @@ void sort_list(QUEUE** q, QUEUE** start, QUEUE** last, int* error, unsigned int 
                     index = i;
                 }
             }
-            for (unsigned int k = 0; k < remain; k++) {
+            for (k = 0; k < remain; k++) {
                 person = take_out(&*start, &*start, &*last, &*error);
                 if (k == index) {
-                    insert(&*last, &*start, &*last, person);
+                    insert(&i_sort, &start_sort, &last_sort, person);
                     remain--;
                 }
                 else {
-                    insert(&*start, &*start, &*last, person);
+                    insert(&*last, &*start, &*last, person);
                 }
             }
         }
         else if (remain == 1) {
-            insert(&*last, &*start, &*last, take_out(&*start, &*start, &*last, &*error));
+            insert(&i_sort, &start_sort, &last_sort, take_out(&*start, &*start, &*last, &*error));
             remain--;
         }
+    }
+    for (i = 0; i < persons; i++) {
+        insert(&*last, &*start, &*last, take_out(&start_sort, &start_sort, &last_sort, &*error));
     }
     free(current);
 }
@@ -406,7 +411,7 @@ int main() {
 
         case 5: // About program
             cout << "Phone book manager\n"
-                "Version 0.4.1\n"
+                "Version 1.0.0\n"
                 "2022\n"
                 "Aleksey Kharin\n";
             break;
