@@ -1,5 +1,5 @@
 // Phone book manager by Linked list
-// version 1.0.0
+// version 1.0.1
 // 2022
 // Kharin Aleksey
 // Variant 14
@@ -177,7 +177,7 @@ void menu_output() {
     cout << "=============================================\n"
         "Menu: \n"
         "[1] Input info\n"
-        "[2] Delete info about person by birtday date\n"
+        "[2] Delete info about person by birthday date\n"
         "[3] Output all info\n"
         "[4] Output info by person's last name\n"
         "[5] About program\n"
@@ -411,7 +411,7 @@ int main() {
 
         case 5: // About program
             cout << "Phone book manager\n"
-                "Version 1.0.0\n"
+                "Version 1.0.1\n"
                 "2022\n"
                 "Aleksey Kharin\n";
             break;
