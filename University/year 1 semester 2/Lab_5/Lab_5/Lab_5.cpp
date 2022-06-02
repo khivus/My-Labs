@@ -1,8 +1,20 @@
-// Phone book manager by queue
-// version 1.1.1
+﻿// Phone book manager by queue
+// version 1.2.0
 // 2022
 // Kharin Aleksey
 // Variant 14
+// 1.)	Составить программу, которая содержит сведения телефонной книжки.
+// Каждая запись включает :
+// •	фамилия, имя;
+// •	номер телефона;
+// •	день рождения(массив из трех чисел).
+// 2.)	Программа должна обеспечивать :
+// •	хранение всех записей в виде односвязного списка(очередь);
+// •	добавление новой записи;
+// •	удаление из списка информации о человеке, день рождения которого приходится на дату, введенную с клавиатуры;
+// •	вывод информации обо всех номерах телефонов;
+// •	по запросу выводится информация о человеке, чья фамилия введена с клавиатуры.
+// 3.)	Программа должна обеспечивать диалог с помощью меню.
 
 #include <iostream>
 #include <conio.h>
@@ -59,7 +71,7 @@ bool check_file_data(string word, int mode) {
     string sym0 = "qwertyuiopasdfghjklzxcvbnm";
     string sym1 = "0123456789";
     unsigned int i, j;
-    bool check, mark;
+    bool check = false, mark;
     switch (mode) {
     case 0: // word mode
         transform(word.begin(), word.end(), word.begin(), ::tolower);
@@ -124,9 +136,9 @@ int main() {
     cout.precision(10);
 
     unsigned int point, persons = 0, i = 1, tmp_minus, person_found;
-    int for_delete[3];
-    bool first_read = true, person_deleted, mark = false;
-    char search_last_name[20];
+    int for_delete[3], num_for_del, index, minus;
+    bool first_read = true, person_deleted, mark = false, not_delete;
+    char search_last_name[20], sure;
     string word;
     queue person;
     QUEUE* q1 = 0, * q2 = 0;
@@ -236,7 +248,10 @@ int main() {
 
             if (persons != 0) {
                 person_deleted = false;
+                not_delete = false;
                 tmp_minus = 0;
+                index = 1;
+                minus = 0;
 
                 do {
                     cout << "Input birthday day:   ";
@@ -258,23 +273,57 @@ int main() {
                     "Birthday day:   " << for_delete[0] << endl <<
                     "Birthday month: " << for_delete[1] << endl <<
                     "Birthday year:  " << for_delete[2] << endl << endl;
-                cout << "Deleted person(s):\n\n";
-
+                
                 for (i = 0; i < persons; i++) {
                     person = take_out(&q1);
                     if (for_delete[0] == person.birthday_date[0] && for_delete[1] == person.birthday_date[1] && for_delete[2] == person.birthday_date[2]) {
                         person_deleted = true;
+                        cout << "[" << tmp_minus + 1 << "] Person\n\n";
                         output_person(person);
                         tmp_minus++;
                     }
-                    else {
-                        insert(&q1, person);
+                    insert(&q1, person);
+                }
+                
+                if (person_deleted) {
+                    cout << "Who you want to delete?\n"
+                        "Print person's number to delete him.";
+                    while (!_kbhit());
+                    num_for_del = _getch() - 48;
+                    for (i = 0; i < persons; i++) {
+                        if (!not_delete) {
+                            person = take_out(&q1);
+                            if (for_delete[0] == person.birthday_date[0] && for_delete[1] == person.birthday_date[1] && for_delete[2] == person.birthday_date[2]) {
+                                if (num_for_del == index) {
+                                    cout << "[" << index << "] Person\n\n";
+                                    output_person(person);
+                                    cout << "Are you sure you want to delete this person? [y/n]: ";
+                                    cin >> sure;
+                                    if (sure == 'y') {
+                                        cout << "Person succesfully deleted.\n";
+                                        minus++;
+                                    }
+                                    else {
+                                        cout << "\nPerson won't be deleted.";
+                                        insert(&q1, person);
+                                        not_delete = true;
+                                    }
+                                }
+                                else {
+                                    insert(&q1, person);
+                                    index++;
+                                }
+                            }
+                            else {
+                                insert(&q1, person);
+                            }
+                        }
                     }
                 }
-                persons = persons - tmp_minus;
-                if (!person_deleted) {
+                else {
                     cout << "This person not found!\n";
                 }
+                persons = persons - minus;
             }
             else {
                 cout << "There is no persons to wipe out!\n"
@@ -333,7 +382,7 @@ int main() {
 
         case 5: // About program
             cout << "Phone book manager\n"
-                "Version 1.1.1\n"
+                "Version 1.2.0\n"
                 "2022\n"
                 "Aleksey Kharin\n";
             break;
