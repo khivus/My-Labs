@@ -1,5 +1,5 @@
 // Phone book manager by Linked list
-// version 1.0.1
+// version 1.1.0
 // 2022
 // Kharin Aleksey
 // Variant 14
@@ -177,11 +177,12 @@ void menu_output() {
     cout << "=============================================\n"
         "Menu: \n"
         "[1] Input info\n"
-        "[2] Delete info about person by birthday date\n"
-        "[3] Output all info\n"
-        "[4] Output info by person's last name\n"
-        "[5] About program\n"
-        "[6] Save and exit\n"
+        "[2] Import data from file\n"
+        "[3] Delete info about person by birthday date\n"
+        "[4] Output all info\n"
+        "[5] Output info by person's last name\n"
+        "[6] About program\n"
+        "[7] Save and exit\n"
         "=============================================\n\n";
 }
 
@@ -198,74 +199,16 @@ int main() {
     cout.precision(10);
 
     unsigned int point, persons = 0, i = 1, tmp_minus;
-    int for_delete[3], error;
-    bool first_read = true, person_deleted, mark = false, person_found;
-    char search_last_name[20];
+    int for_delete[3], error, index, minus, num_for_del;
+    bool first_read = true, person_deleted, mark = false, person_found, for_stop_seek, file_opened_before = false;
+    char search_last_name[20], sure, list_of_persons, save_to_file;
     string word;
     queue person;
     QUEUE* q = NULL, * start = NULL, * last = NULL;
     ifstream file;
+    ofstream to_file;
 
     menu_output();
-
-    file.open("phone_book.txt", ifstream::in);
-    file.seekg(0, ios::end);
-
-    if (!file.is_open()) { // file is not open
-        cout << "File does not exist!\n"
-            "Use \"[1] Input info\" first.\n";
-    }
-    else if (file.tellg() != 0) { // file is open and not empty
-        // get data from file when program is strating
-        file.seekg(0, ios_base::beg);
-
-        do {
-            if (first_read) first_read = false;
-            else file.seekg(-2, ios_base::cur);
-            try {
-                file >> word;
-                if (!check_file_data(word, 0)) throw NULL;
-                strcpy_s(person.first_name, word.c_str());
-                file >> word;
-                if (!check_file_data(word, 0)) throw NULL;
-                strcpy_s(person.last_name, word.c_str());
-                file >> word;
-                if (!check_file_data(word, 1)) throw NULL;
-                person.phone_number = atof(word.c_str());
-                file >> word;
-                if (!check_file_data(word, 1)) throw NULL;
-                person.birthday_date[0] = atoi(word.c_str());
-                file >> word;
-                if (!check_file_data(word, 1)) throw NULL;
-                person.birthday_date[1] = atoi(word.c_str());
-                file >> word;
-                if (!check_file_data(word, 1)) throw NULL;
-                person.birthday_date[2] = atoi(word.c_str());
-            }
-            catch (...) {
-                cout << "File is broken.\n"
-                    "You need to use \"[1] Input info\" first.\n";
-                mark = true;
-            }
-            if (!mark) {
-                insert(&last, &start, &last, person);
-                persons++;
-                file.seekg(2, ios_base::cur);
-            }
-            else file.seekg(0, ios_base::end);
-        } while (file.peek() != EOF);
-        if (!mark) {
-            if (persons > 1) sort_list(&q, &start, &last, &error, persons);
-            cout << "Found saved data.\n"
-                "There are " << persons << " saved persons\n";
-        }
-        file.close();
-    }
-    else { // file is empty
-        cout << "No saved data!\n"
-            "You need to use \"[1] Input info\" first.\n";
-        file.close();
-    }
 
     do { // menu
         point = menu();
@@ -308,11 +251,82 @@ int main() {
             if (persons > 1) sort_list(&q, &start, &last, &error, persons);
             break;
 
-        case 2: // Delete a person by birth date case
+        case 2:
+            if (!file_opened_before) {
+                file_opened_before = true;
+
+                file.open("phone_book.txt", ifstream::in);
+                file.seekg(0, ios::end);
+
+                if (!file.is_open()) { // file is not open
+                    cout << "File does not exist!\n"
+                        "Nothing to import.\n\n";
+                }
+                else if (file.tellg() != 0) { // file is open and not empty
+                    // get data from file when program is strating
+                    file.seekg(0, ios_base::beg);
+
+                    do {
+                        if (first_read) first_read = false;
+                        else file.seekg(-2, ios_base::cur);
+                        try {
+                            file >> word;
+                            if (!check_file_data(word, 0)) throw NULL;
+                            strcpy_s(person.first_name, word.c_str());
+                            file >> word;
+                            if (!check_file_data(word, 0)) throw NULL;
+                            strcpy_s(person.last_name, word.c_str());
+                            file >> word;
+                            if (!check_file_data(word, 1)) throw NULL;
+                            person.phone_number = atof(word.c_str());
+                            file >> word;
+                            if (!check_file_data(word, 1)) throw NULL;
+                            person.birthday_date[0] = atoi(word.c_str());
+                            file >> word;
+                            if (!check_file_data(word, 1)) throw NULL;
+                            person.birthday_date[1] = atoi(word.c_str());
+                            file >> word;
+                            if (!check_file_data(word, 1)) throw NULL;
+                            person.birthday_date[2] = atoi(word.c_str());
+                        }
+                        catch (...) {
+                            cout << "File is broken.\n"
+                                "Can't import data.\n\n";
+                            mark = true;
+                        }
+                        if (!mark) {
+                            insert(&last, &start, &last, person);
+                            persons++;
+                            file.seekg(2, ios_base::cur);
+                        }
+                        else file.seekg(0, ios_base::end);
+                    } while (file.peek() != EOF);
+                    if (!mark) {
+                        if (persons > 1) sort_list(&q, &start, &last, &error, persons);
+                        cout << "Found saved data.\n"
+                            "There are " << persons << " saved persons added\n\n";
+                    }
+                    file.close();
+                }
+                else { // file is empty
+                    cout << "No saved data!\n"
+                        "Nothing to import.\n\n";
+                    file.close();
+                }
+            }
+            else {
+                cout << "Data is already imported!\n\n";
+            }
+            break;
+
+        case 3: // Delete a person by birth date case
 
             if (persons != 0) {
                 person_deleted = false;
+                for_stop_seek = false;
                 tmp_minus = 0;
+                index = 1;
+                minus = 0;
 
                 do {
                     cout << "Input birthday day:   ";
@@ -337,20 +351,56 @@ int main() {
                 cout << "Deleted person(s):\n\n";
 
                 for (i = 0; i < persons; i++) {
-                    person = take_out(&start, & start, &last, &error);
+                    person = take_out(&start, &start, &last, &error);
                     if (for_delete[0] == person.birthday_date[0] && for_delete[1] == person.birthday_date[1] && for_delete[2] == person.birthday_date[2]) {
                         person_deleted = true;
+                        cout << "[" << tmp_minus + 1 << "] Person\n\n";
                         output_person(person);
                         tmp_minus++;
                     }
-                    else {
-                        insert(&last, &start, &last, person);
+                    insert(&last, &start, &last, person);
+                }
+
+                if (person_deleted) {
+                    cout << "Who you want to delete?\n"
+                        "Print person's number to delete him.\n\n";
+                    while (!_kbhit());
+                    num_for_del = _getch() - 48;
+                    for (i = 0; i < persons; i++) {
+                        if (!for_stop_seek) {
+                            person = take_out(&start, &start, &last, &error);
+                            if (for_delete[0] == person.birthday_date[0] && for_delete[1] == person.birthday_date[1] && for_delete[2] == person.birthday_date[2]) {
+                                if (num_for_del == index) {
+                                    cout << "[" << index << "] Person\n\n";
+                                    output_person(person);
+                                    cout << "Are you sure you want to delete this person? [y/n]: ";
+                                    cin >> sure;
+                                    if (sure == 'y') {
+                                        cout << "Person succesfully deleted.\n";
+                                        minus++;
+                                        for_stop_seek = true; // person is deleted and no need to seek farther
+                                    }
+                                    else {
+                                        cout << "\nPerson won't be deleted.";
+                                        insert(&last, &start, &last, person);
+                                        for_stop_seek = true;
+                                    }
+                                }
+                                else {
+                                    insert(&last, &start, &last, person);
+                                    index++;
+                                }
+                            }
+                            else {
+                                insert(&last, &start, &last, person);
+                            }
+                        }
                     }
                 }
-                persons = persons - tmp_minus;
-                if (!person_deleted) {
+                else {
                     cout << "This person not found!\n";
                 }
+                persons = persons - minus;
             }
             else {
                 cout << "There is no persons to wipe out!\n"
@@ -358,13 +408,40 @@ int main() {
             }
             break;
 
-        case 3: // Output all info
+        case 4: // Output all info
             if (persons != 0) {
-                cout << "All persons:\n\n";
-                for (i = 0; i < persons; i++) {
-                    person = take_out(&start, &start, &last, &error);
-                    output_person(person);
-                    insert(&last, &start, &last, person);
+                if (persons == 1) {
+                    cout << "There is only one person:\n\n";
+                    for (i = 0; i < persons; i++) {
+                        person = take_out(&start, &start, &last, &error);
+                        output_person(person);
+                        insert(&last, &start, &last, person);
+                    }
+                }
+                else {
+                    cout << "Print direct or reverse list of persons? [d/r]: ";
+                    cin >> list_of_persons;
+                    cout << endl;
+
+                    if (list_of_persons == 'd') {
+                        cout << "All persons:\n\n";
+                        for (i = 0; i < persons; i++) {
+                            person = take_out(&start, &start, &last, &error);
+                            output_person(person);
+                            insert(&last, &start, &last, person);
+                        }
+                    }
+                    else if (list_of_persons == 'r') {
+                        cout << "All persons:\n\n";
+                        for (i = 0; i < persons; i++) {
+                            person = take_out(&last, &start, &last, &error);
+                            output_person(person);
+                            insert(&start, &start, &last, person);
+                        }
+                    }
+                    else {
+                        cout << "Wrong input!\n";
+                    }
                 }
             }
             else {
@@ -373,7 +450,7 @@ int main() {
             }
             break;
 
-        case 4: // Output info by last name
+        case 5: // Output info by last name
             if (persons != 0) {
                 person_found = false;
 
@@ -409,34 +486,43 @@ int main() {
             }
             break;
 
-        case 5: // About program
+        case 6: // About program
             cout << "Phone book manager\n"
-                "Version 1.0.1\n"
+                "Version 1.1.0\n"
                 "2022\n"
                 "Aleksey Kharin\n";
             break;
 
-        case 6: // Exit
-            cout << "Program succsessfully completed.\n";
+        case 7: // Exit
+            cout << "Save persons to file? [y/n]: ";
+            cin >> save_to_file;
+            cout << endl;
+
+            if (save_to_file == 'y') { // write data in file before close the program
+                
+                to_file.precision(10);
+                to_file.open("phone_book.txt", ofstream::trunc | ofstream::out);
+
+                for (i = 0; i < persons; i++) {
+                    person = take_out(&start, &start, &last, &error);
+                    to_file << person.first_name << ' ' << person.last_name << ' ' << person.phone_number << ' ' << person.birthday_date[0] << ' ' << person.birthday_date[1] << ' ' << person.birthday_date[2] << '\n';
+                }
+
+                to_file.close();
+                cout << "Data saved successfully.\n\n";
+            }
+            else {
+                cout << "Data won't be saved.\n\n";
+            }
+
+            cout << "Program succsessfully completed.\n\n";
             break;
 
         default:
             cout << "Wrong input!\n";
             break;
         }
-    } while (point != 6);
-
-    // write data in file before close the program
-    ofstream to_file;
-    to_file.precision(10);
-    to_file.open("phone_book.txt", ofstream::trunc | ofstream::out);
-
-    for (i = 0; i < persons; i++) {
-        person = take_out(&start, &start, &last, &error);
-        to_file << person.first_name << ' ' << person.last_name << ' ' << person.phone_number << ' ' << person.birthday_date[0] << ' ' << person.birthday_date[1] << ' ' << person.birthday_date[2] << '\n';
-    }
-
-    to_file.close();
+    } while (point != 7);
 
     cout << "Press any key to continiue...\n";
     while (!_kbhit());
