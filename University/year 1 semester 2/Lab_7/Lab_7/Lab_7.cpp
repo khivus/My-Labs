@@ -1,5 +1,5 @@
 // Phone book manager by Linked list
-// version 1.1.0
+// version 1.1.1
 // 2022
 // Kharin Aleksey
 // Variant 14
@@ -200,7 +200,7 @@ int main() {
 
     unsigned int point, persons = 0, i = 1, tmp_minus;
     int for_delete[3], error, index, minus, num_for_del;
-    bool first_read = true, person_deleted, mark = false, person_found, for_stop_seek, file_opened_before = false;
+    bool first_read = true, person_deleted, mark = false, person_found, for_stop_seek, file_opened_before = false, all_deleted;
     char search_last_name[20], sure, list_of_persons, save_to_file;
     string word;
     queue person;
@@ -362,7 +362,8 @@ int main() {
                 }
 
                 if (person_deleted) {
-                    cout << "Who you want to delete?\n"
+                    cout << "Whom you want to delete?\n"
+                        "Print [0] if you want to delete all people in this list.\n"
                         "Print person's number to delete him.\n\n";
                     while (!_kbhit());
                     num_for_del = _getch() - 48;
@@ -370,7 +371,12 @@ int main() {
                         if (!for_stop_seek) {
                             person = take_out(&start, &start, &last, &error);
                             if (for_delete[0] == person.birthday_date[0] && for_delete[1] == person.birthday_date[1] && for_delete[2] == person.birthday_date[2]) {
-                                if (num_for_del == index) {
+                                if (num_for_del == 0) {
+                                    minus++;
+                                    index++;
+                                    all_deleted = true;
+                                }
+                                else if (num_for_del == index) {
                                     cout << "[" << index << "] Person\n\n";
                                     output_person(person);
                                     cout << "Are you sure you want to delete this person? [y/n]: ";
@@ -399,6 +405,9 @@ int main() {
                 }
                 else {
                     cout << "This person not found!\n";
+                }
+                if (all_deleted) {
+                    cout << "Persons succesfully deleted.\n";
                 }
                 persons = persons - minus;
             }
@@ -488,7 +497,7 @@ int main() {
 
         case 6: // About program
             cout << "Phone book manager\n"
-                "Version 1.1.0\n"
+                "Version 1.1.1\n"
                 "2022\n"
                 "Aleksey Kharin\n";
             break;
