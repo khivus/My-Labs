@@ -1,5 +1,5 @@
 ﻿// Phone book manager by queue
-// version 1.2.0
+// version 1.2.1
 // 2022
 // Kharin Aleksey
 // Variant 14
@@ -137,7 +137,7 @@ int main() {
 
     unsigned int point, persons = 0, i = 1, tmp_minus, person_found;
     int for_delete[3], num_for_del, index, minus;
-    bool first_read = true, person_deleted, mark = false, not_delete;
+    bool first_read = true, person_deleted, mark = false, not_delete, all_deleted;
     char search_last_name[20], sure;
     string word;
     queue person;
@@ -252,6 +252,7 @@ int main() {
                 tmp_minus = 0;
                 index = 1;
                 minus = 0;
+                all_deleted = false;
 
                 do {
                     cout << "Input birthday day:   ";
@@ -286,7 +287,8 @@ int main() {
                 }
                 
                 if (person_deleted) {
-                    cout << "Who you want to delete?\n"
+                    cout << "Whom you want to delete?\n"
+                        "Print [0] if you want to delete all people in this list.\n"
                         "Print person's number to delete him.";
                     while (!_kbhit());
                     num_for_del = _getch() - 48;
@@ -294,7 +296,12 @@ int main() {
                         if (!not_delete) {
                             person = take_out(&q1);
                             if (for_delete[0] == person.birthday_date[0] && for_delete[1] == person.birthday_date[1] && for_delete[2] == person.birthday_date[2]) {
-                                if (num_for_del == index) {
+                                if (num_for_del == 0) {
+                                    minus++;
+                                    index++;
+                                    all_deleted = true;
+                                }
+                                else if (num_for_del == index) {
                                     cout << "[" << index << "] Person\n\n";
                                     output_person(person);
                                     cout << "Are you sure you want to delete this person? [y/n]: ";
@@ -302,6 +309,7 @@ int main() {
                                     if (sure == 'y') {
                                         cout << "Person succesfully deleted.\n";
                                         minus++;
+                                        not_delete = true;
                                     }
                                     else {
                                         cout << "\nPerson won't be deleted.";
@@ -318,6 +326,9 @@ int main() {
                                 insert(&q1, person);
                             }
                         }
+                    }
+                    if (all_deleted) {
+                        cout << "\n\nPersons succesfully deleted.\n";
                     }
                 }
                 else {
@@ -382,7 +393,7 @@ int main() {
 
         case 5: // About program
             cout << "Phone book manager\n"
-                "Version 1.2.0\n"
+                "Version 1.2.1\n"
                 "2022\n"
                 "Aleksey Kharin\n";
             break;
