@@ -1,5 +1,5 @@
 // Classes
-// Version 1.0.0
+// Version 1.0.1
 // 2022
 // Kharin Aleksey
 
@@ -110,7 +110,7 @@ int main() {
 
     unsigned int persons = 0, persons_old = 0, persons_young = 0, point, i, tmp_minus;
     int for_delete[3], date[3] = { 1, 6, 2022 }, index, minus, num_for_del;
-    bool first_read = true, person_found, found_old, found_young, for_stop_seek, old_person_detected, young_person_detected;
+    bool first_read = true, person_found, found_old, found_young, for_stop_seek, old_person_detected, young_person_detected, all_deleted;
     char search_last_name[20], sure;
 
     stack person_tmp_, person_old_, person_young_;
@@ -169,6 +169,7 @@ int main() {
                 index = 1;
                 minus = 0;
                 for_stop_seek = false;
+                all_deleted = false;
 
                 cout << "Input birthday day:   ";
                 cin >> word;
@@ -219,7 +220,8 @@ int main() {
 
                 if (old_person_detected) {
 
-                    cout << "Who you want to delete?\n"
+                    cout << "Whom you want to delete?\n"
+                        "Print [0] if you want to delete all people in this list.\n"
                         "Print person's number to delete him.\n\n";
                     while (!_kbhit());
                     num_for_del = _getch() - 48;
@@ -228,7 +230,12 @@ int main() {
                         if (!for_stop_seek) {
                             person = person_old_.pop(&person_old);
                             if (for_delete[0] == person.birthday_date[0] && for_delete[1] == person.birthday_date[1] && for_delete[2] == person.birthday_date[2]) {
-                                if (num_for_del == index) {
+                                if (num_for_del == 0) {
+                                    minus++;
+                                    index++;
+                                    all_deleted = true;
+                                }
+                                else if (num_for_del == index) {
                                     cout << "[" << index << "] Person\n\n";
                                     output_person(person);
                                     cout << "Are you sure you want to delete this person? [y/n]: ";
@@ -257,6 +264,9 @@ int main() {
                             person_tmp_.push(&person_tmp, person);
                         }
                     }
+                    if (all_deleted) {
+                        cout << "Persons succesfully deleted.\n";
+                    }
                     persons_old = persons_old - minus;
                     person_old_.rewrite(&person_tmp, &person_old, persons_old);
                 }
@@ -272,7 +282,12 @@ int main() {
                         if (!for_stop_seek) {
                             person = person_young_.pop(&person_young);
                             if (for_delete[0] == person.birthday_date[0] && for_delete[1] == person.birthday_date[1] && for_delete[2] == person.birthday_date[2]) {
-                                if (num_for_del == index) {
+                                if (num_for_del == 0) {
+                                    minus++;
+                                    index++;
+                                    all_deleted = true;
+                                }
+                                else if (num_for_del == index) {
                                     cout << "[" << index << "] Person\n\n";
                                     output_person(person);
                                     cout << "Are you sure you want to delete this person? [y/n]: ";
@@ -300,6 +315,9 @@ int main() {
                             person = person_young_.pop(&person_young);
                             person_tmp_.push(&person_tmp, person);
                         }
+                    }
+                    if (all_deleted) {
+                        cout << "Persons succesfully deleted.\n";
                     }
                     persons_young = persons_young - minus;
                     person_young_.rewrite(&person_tmp, &person_young, persons_young);
@@ -467,12 +485,24 @@ int main() {
 
         case 6: // About program
             cout << "Phone book manager\n"
-                "Version 1.0.0\n"
+                "Version 1.0.1\n"
                 "2022\n"
                 "Aleksey Kharin\n";
             break;
 
         case 7: // Exit
+
+            if (persons_old != 0) {
+                for (i = 0; i < persons_old; i++) {
+                    person = person_old_.pop(&person_old);
+                }
+            }
+            if (persons_young != 0) {
+                for (i = 0; i < persons_young; i++) {
+                    person = person_young_.pop(&person_young);
+                }
+            }
+
             cout << "Program succsessfully completed.\n";
             break;
 
