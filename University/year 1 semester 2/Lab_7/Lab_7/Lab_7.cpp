@@ -1,5 +1,5 @@
 // Phone book manager by Linked list
-// version 1.1.1
+// version 1.1.2
 // 2022
 // Kharin Aleksey
 // Variant 14
@@ -177,7 +177,7 @@ void menu_output() {
     cout << "=============================================\n"
         "Menu: \n"
         "[1] Input info\n"
-        "[2] Import data from file\n"
+        "[2] Import data from file \"phone_book.txt\"\n"
         "[3] Delete info about person by birthday date\n"
         "[4] Output all info\n"
         "[5] Output info by person's last name\n"
@@ -259,7 +259,7 @@ int main() {
                 file.seekg(0, ios::end);
 
                 if (!file.is_open()) { // file is not open
-                    cout << "File does not exist!\n"
+                    cout << "File \"phone_book.txt\" does not exist!\n"
                         "Nothing to import.\n\n";
                 }
                 else if (file.tellg() != 0) { // file is open and not empty
@@ -290,7 +290,7 @@ int main() {
                             person.birthday_date[2] = atoi(word.c_str());
                         }
                         catch (...) {
-                            cout << "File is broken.\n"
+                            cout << "File \"phone_book.txt\" is broken.\n"
                                 "Can't import data.\n\n";
                             mark = true;
                         }
@@ -303,13 +303,13 @@ int main() {
                     } while (file.peek() != EOF);
                     if (!mark) {
                         if (persons > 1) sort_list(&q, &start, &last, &error, persons);
-                        cout << "Found saved data.\n"
+                        cout << "Found saved data in the \"phone_book.txt\".\n"
                             "There are " << persons << " saved persons added\n\n";
                     }
                     file.close();
                 }
                 else { // file is empty
-                    cout << "No saved data!\n"
+                    cout << "No saved data in the \"phone_book.txt\"!\n"
                         "Nothing to import.\n\n";
                     file.close();
                 }
@@ -497,13 +497,13 @@ int main() {
 
         case 6: // About program
             cout << "Phone book manager\n"
-                "Version 1.1.1\n"
+                "Version 1.1.2\n"
                 "2022\n"
                 "Aleksey Kharin\n";
             break;
 
         case 7: // Exit
-            cout << "Save persons to file? [y/n]: ";
+            cout << "Save persons to file \"phone_book.txt\"? [y/n]: ";
             cin >> save_to_file;
             cout << endl;
 
@@ -518,7 +518,7 @@ int main() {
                 }
 
                 to_file.close();
-                cout << "Data saved successfully.\n\n";
+                cout << "Data saved successfully in the \"phone_book.txt\".\n\n";
             }
             else {
                 cout << "Data won't be saved.\n\n";
