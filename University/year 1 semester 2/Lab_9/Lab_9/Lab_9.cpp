@@ -1,5 +1,5 @@
 // Error handler
-// v1.1.0
+// v1.1.1
 // 2022
 // Aleksey Kharin
 // Variant 9
@@ -15,7 +15,7 @@ using namespace std;
 
 bool check(string a) {
     bool mark, mark1 = false;
-    string symb = "0123456789.e";
+    string symb = "0123456789.e-";
 
     for (int i = 0; i < a.length(); i++) {
         mark = false;
@@ -45,45 +45,62 @@ int main() {
         cout << "Input B (-1e100 < A < 1e100) = ";
         cin >> b;
         cout << "You printed: " << b << endl;
-    
+
         try {
-            if (check(a) || check(b))   throw 2;
-            else {
-                A = atof(a.c_str());
-                B = atof(b.c_str());
-
-                if (A == 5.3166 || A == -1.3166)  throw 3;
-                if (A < -1e100 || B < -1e100)     throw 4;
-                if (A > 1e100 || B > 1e100)       throw 5;
-
-                C = (-B * B - 3 * B + 8) / (-A * A + 4 * A + 7);
-                
-                if (C == INFINITY)                throw 6;
-            }
+            if (check(a))   throw 21;
+            A = atof(a.c_str());
+            if (A == 5.3166 || A == -1.3166)  throw 3;
+            if (A < -1e100)     throw 41;
+            if (A > 1e100)      throw 51;
         }
         catch (int a) {
             cout << "Error " << a << ": ";
             switch (a) {
-            case 2:
-                cout << "Wrong input!\n";
+            case 21:
+                cout << "Wrong 'A' input!\n";
                 break;
             case 3:
                 cout << "Division by zero!\n";
                 break;
-            case 4:
-                cout << "Input is too small!\n";
+            case 41:
+                cout << "Input 'A' is too small!\n";
                 break;
-            case 5:
-                cout << "Input is too big!\n";
+            case 51:
+                cout << "Input 'A' is too big!\n";
+                break;
+            }
+            w_exceptions = true;
+            error = a;
+
+        }
+        try {
+            if (check(b))   throw 22;
+            B = atof(b.c_str());
+            if (B < -1e100)     throw 42;
+            if (B > 1e100)      throw 52;
+            C = (-B * B - 3 * B + 8) / (-A * A + 4 * A + 7);
+            if (C == INFINITY)                throw 6;
+        }
+        catch (int a) {
+            cout << "Error " << a << ": ";
+            switch (a) {
+            case 22:
+                cout << "Wrong 'B' input!\n";
+                break;
+            case 42:
+                cout << "Input 'B' is too small!\n";
+                break;
+            case 52:
+                cout << "Input 'B' is too big!\n";
                 break;
             case 6:
                 cout << "Overflow!\n";
                 break;
             }
-            
             w_exceptions = true;
             error = a;
         }
+
         if (!w_exceptions) {
             cout << "C = " << C << endl;
             cout << "No exceptions found!\n";
