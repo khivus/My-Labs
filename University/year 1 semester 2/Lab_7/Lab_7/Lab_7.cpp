@@ -1,5 +1,5 @@
 // Phone book manager by Linked list
-// version 1.1.2
+// version 1.1.3
 // 2022
 // Kharin Aleksey
 // Variant 14
@@ -304,7 +304,7 @@ int main() {
                     if (!mark) {
                         if (persons > 1) sort_list(&q, &start, &last, &error, persons);
                         cout << "Found saved data in the \"phone_book.txt\".\n"
-                            "There are " << persons << " saved persons added\n\n";
+                            << persons << " persons added\n\n";
                     }
                     file.close();
                 }
@@ -324,6 +324,7 @@ int main() {
             if (persons != 0) {
                 person_deleted = false;
                 for_stop_seek = false;
+                all_deleted = false;
                 tmp_minus = 0;
                 index = 1;
                 minus = 0;
@@ -402,6 +403,7 @@ int main() {
                             }
                         }
                     }
+                    if (persons > 1) sort_list(&q, &start, &last, &error, persons);
                 }
                 else {
                     cout << "This person not found!\n";
@@ -497,7 +499,7 @@ int main() {
 
         case 6: // About program
             cout << "Phone book manager\n"
-                "Version 1.1.2\n"
+                "Version 1.1.3\n"
                 "2022\n"
                 "Aleksey Kharin\n";
             break;
