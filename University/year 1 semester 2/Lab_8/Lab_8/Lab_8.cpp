@@ -1,5 +1,5 @@
-// Pointers to functions
-// Version 1.0.0
+﻿// Pointers to functions
+// Version 1.1.0
 // 2022
 // Kharin Aleksey
 // Variant 14: Sum = 1 / i^2 and Sum = -2^i / i!
@@ -11,35 +11,49 @@
 
 using namespace std;
 
-int n;
-
-double factorial(int num) {
-    double sum = 1;
-    for (int i = 1; i < num; i++) {
-        sum *= i;
+double func_1(int i, int n) {
+    double ans;
+    if (i > 0) {
+        ans = 1 / ((double)i * i);
     }
-    return sum;
+    else {
+        ans = 0;
+    }
+    return ans;
 }
 
-double func_1(void) {
-    double sum = 0;
-    for (int i = 1; i < n; i++) {
-        sum += 1 / ((double)i * i);
-    }
-    return sum;
+double func_2(int i, int n) {
+    double ans;
+    static double power = 1;
+    static int factor = 1;
+
+        if (i == 0) {
+            ans = 1;
+        }
+        else {
+            power *= -2;
+            factor *= i;
+            ans = power / factor;
+            if (i == n - 1) {
+                power = 1;
+                factor = 1;
+            }
+        }
+
+    return ans;
 }
 
-double func_2(void) {
-    double sum = 0;
+double fsum(double (*point)(int, int), int n) {
+    double answer = 0;
     for (int i = 0; i < n; i++) {
-        sum += pow(-2, i) / factorial(i);
+        answer += (*point)(i, n);
     }
-    return sum;
+    return answer;
 }
 
-double (*menu(void))(void) {
+double (*menu(void))(int, int) {
     int choice;
-    double (*menu_items[])() = { func_1, func_2 };
+    double (*menu_items[])(int, int) = { func_1, func_2 };
 
     cout << "Pick the menu item  (1 or 2): ";
     cin >> choice;
@@ -56,8 +70,9 @@ double (*menu(void))(void) {
 int main() {
     string get;
     char c_exit;
-    double (*point)(void);
+    double (*point)(int, int);
     double go;
+    int n;
 
     do {
         do {
@@ -73,7 +88,7 @@ int main() {
             cout << "Wrong input!\n";
         }
         else {
-            go = (*point)();
+            go = fsum(point, n);
             cout << "Answer is: " << go;
         }
 
