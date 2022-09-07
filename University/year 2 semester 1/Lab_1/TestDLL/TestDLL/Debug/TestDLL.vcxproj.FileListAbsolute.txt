@@ -1,0 +1,6 @@
+C:\Users\Zloy\source\repos\TestDLL\TestDLL\Debug\TestDLL.vcxproj.AssemblyReference.cache
+C:\Users\Zloy\source\repos\TestDLL\TestDLL\Debug\TestDLL.MyForm.resources
+C:\Users\Zloy\source\repos\TestDLL\TestDLL\Debug\TestDLL.vcxproj.GenerateResource.cache
+C:\Users\Khivus\source\repos\Project\TestDLL\TestDLL\Debug\TestDLL.vcxproj.AssemblyReference.cache
+C:\Users\Khivus\source\repos\Project\TestDLL\TestDLL\Debug\TestDLL.MyForm.resources
+C:\Users\Khivus\source\repos\Project\TestDLL\TestDLL\Debug\TestDLL.vcxproj.GenerateResource.cache

@@ -1,0 +1,5 @@
+﻿  ..\..\myDLL\Debug\myDLL.dll
+  1 File(s) copied
+  MyForm.cpp
+  MyForm.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link
+  TestDLL.vcxproj -> C:\Users\Khivus\source\repos\Project\TestDLL\Debug\TestDLL.exe
