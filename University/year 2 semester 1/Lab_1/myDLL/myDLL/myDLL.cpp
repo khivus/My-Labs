@@ -14,7 +14,7 @@ using namespace std;
 
 int VowelCount(char* s) {
     int i = 0, counter = 0;
-    char vowels[] = "aeyuioAEYUIO¸óåàîıÿèşû¨ÓÅÀÎİßÈŞÛ";
+    char vowels[] = "aeyuioAEYUIOóåûàîıÿèşÓÅÀÎİßÈŞÛ";
     while (s[i] != '\0') {
         for (unsigned int j = 0; j < strlen(vowels); j++) {
             if (s[i] == vowels[j])
@@ -25,16 +25,20 @@ int VowelCount(char* s) {
     return counter;
 }
 
-//char* Code_Dec(string s) {
-//    char* ch = new char[s.length() + 1];
-//    strcpy(ch, s.c_str());
-//    sprintf(ch, "\x1b[32m%s", ch);
-//    return ch;
-//    delete[] ch;
-//}
+int RadioButtonSelection(int mode) {
+    switch (mode) {
+    case 1:
+        return 1;
+        break;
+    case 2:
+        return 2;
+        break;
+    case 3:
+        return 3;
+        break;
+    default:
+        return 4;
+        break;
+    }
+}
 
-// void DoBoldFont(TextBox^ txt) {
-//    System::Drawing::Font^ bold_font;
-//    bold_font = gcnew System::Drawing::Font(txt->Font->FontFamily, txt->Font->Size, System::Drawing::FontStyle::Bold);
-//    txt->Font = bold_font;
-//}

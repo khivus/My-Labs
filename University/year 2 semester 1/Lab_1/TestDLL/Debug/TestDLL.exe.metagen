@@ -19,4 +19,3 @@ Class TestDLL.MyForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
   Methods:
     SystemStringToChar(String): PrivateScope, Public, HideBySig
-    CharToSystemString(SByte*): PrivateScope, Public, HideBySig

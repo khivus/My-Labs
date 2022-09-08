@@ -1,6 +1,2 @@
-﻿  pch.cpp
-  dllmain.cpp
-  myDLL.cpp
-  Generating Code...
-     Creating library C:\Users\Khivus\source\repos\Project\myDLL\Debug\myDLL.lib and object C:\Users\Khivus\source\repos\Project\myDLL\Debug\myDLL.exp
-  myDLL.vcxproj -> C:\Users\Khivus\source\repos\Project\myDLL\Debug\myDLL.dll
+﻿  myDLL.cpp
+  myDLL.vcxproj -> C:\Users\Khivus\Education\Programming\University\year 2 semester 1\Lab_1\myDLL\Debug\myDLL.dll
