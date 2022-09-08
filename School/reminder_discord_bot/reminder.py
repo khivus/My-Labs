@@ -5,7 +5,7 @@ from time import gmtime, strftime, localtime
 import datamanager
 import threading
 
-sys.path.insert(1, 'C:\Users\Khivus\Education\config.py') # it isn't working, fuck it
+#sys.path.insert(1, 'C:\Users\Khivus\Education\config.py') # it isn't working, fuck it
 
 client = discord.Client()
 
@@ -65,7 +65,7 @@ async def on_message(message):
             await client.close()
 
         if msg.startswith(autosend):
-            await message.channel.send('I got it!')
+            await message.channel.send('Got it!')
             mess = [message.channel.id, message.id, msg[9:17], msg[18::]]
             print(mess)
             datamanager.insert_data(mess)
