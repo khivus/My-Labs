@@ -1,4 +1,4 @@
-// CppCalculator v0.1.0 2022 Aleksey Kharin
+// CppCalculator v0.1.1 2022 Aleksey Kharin
 //
 // I need to make list:
 // * Backspace button
@@ -6,6 +6,9 @@
 // * Other buttons (for now, idk need to do them)
 // * Error handling (like div by 0)
 // * Better multiplication
+// * Do RichTextBoxMain->Text handling
+// * Better ClickPad function
+//
 
 #pragma once
 
