@@ -1,4 +1,4 @@
-// Lab_1 v1.0.1 2022 Aleksey Kharin
+// Lab_1 v1.0.2 2022 Aleksey Kharin
 
 #pragma once
 #include "myDLL.h"
