@@ -1,4 +1,4 @@
-// CppCalculator v0.1.1 2022 Aleksey Kharin
+// CppCalculator v0.1.2 2022 Aleksey Kharin
 //
 // I need to make list:
 // * Backspace button
@@ -11,6 +11,8 @@
 //
 
 #pragma once
+
+#include <string>
 
 namespace WindowsFormsTemplate {
 
@@ -507,6 +509,7 @@ namespace WindowsFormsTemplate {
 			this->ButDivWithoutRemainder->TabIndex = 0;
 			this->ButDivWithoutRemainder->Text = L"%";
 			this->ButDivWithoutRemainder->UseVisualStyleBackColor = true;
+			this->ButDivWithoutRemainder->Click += gcnew System::EventHandler(this, &MainForm::ButDivWithoutRemainder_Click);
 			// 
 			// menuStrip1
 			// 
@@ -649,6 +652,26 @@ private: System::Void ButBackspace_Click(System::Object^ sender, System::EventAr
 	//also will work soon
 	//just res_num - last digit
 }
+
+	   bool TextBoxCheck() {
+		   System::String^ txt = richTextBoxMain->Text;
+		   std::string nums = "0123456789.-";
+		   bool check = true;
+		   bool tmp_check;
+		   for (int i = 0; i < txt->Length; i++) {
+			   tmp_check = false;
+			   for (int j = 0; j < nums.length(); j++) {
+				   if (txt[i] == nums[j]) {
+					   tmp_check = true;
+				   }
+			   }
+			   if (!tmp_check) {
+				   check = false;
+			   }
+		   }
+		   return check;
+	   }
+
 	   void ClickPad(int mode) {
 		   if (flag) {
 			   flag = false;
@@ -703,19 +726,50 @@ private: System::Void ButBackspace_Click(System::Object^ sender, System::EventAr
 	   }
 
 private: System::Void ButGetRes_Click(System::Object^ sender, System::EventArgs^ e) {
-	Calculate(5);
+	if (TextBoxCheck()) {
+		Calculate(5);
+	}
+	else {
+		richTextBoxMain->Text = "0";
+		dot = false;
+	}
 }
 private: System::Void ButPlus_Click(System::Object^ sender, System::EventArgs^ e) {
-	Calculate(1);
+	if (TextBoxCheck()) {
+		Calculate(1);
+	}
+	else {
+		richTextBoxMain->Text = "0";
+		dot = false;
+	}
 }
 private: System::Void ButMinus_Click(System::Object^ sender, System::EventArgs^ e) {
-	Calculate(2);
+	if (TextBoxCheck()) {
+		Calculate(2);
+	}
+	else {
+		richTextBoxMain->Text = "0";
+		dot = false;
+	}
 }
 private: System::Void ButMulti_Click(System::Object^ sender, System::EventArgs^ e) {
-	Calculate(3);
+	if (TextBoxCheck()) {
+		Calculate(3);
+	}
+	else {
+		richTextBoxMain->Text = "0";
+		dot = false;
+	}
 }
 private: System::Void ButDiv_Click(System::Object^ sender, System::EventArgs^ e) {
-	Calculate(4);
+	if (TextBoxCheck()) {
+		Calculate(4);
+	}
+	else {
+		richTextBoxMain->Text = "0";
+		dot = false;
+	}
 }
+private: System::Void ButDivWithoutRemainder_Click(System::Object^ sender, System::EventArgs^ e){}
 };
 }
