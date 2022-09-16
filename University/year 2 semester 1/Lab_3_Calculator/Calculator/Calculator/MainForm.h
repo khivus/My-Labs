@@ -1,4 +1,4 @@
-// CppCalculator v0.2.0 2022 Aleksey Kharin
+﻿// CppCalculator v0.2.1 2022 Aleksey Kharin
 //
 // I need to make list:
 // * Backspace button
@@ -89,20 +89,23 @@ namespace WindowsFormsTemplate {
 	private: System::Windows::Forms::Button^ ButRoot;
 
 	private: System::Windows::Forms::Button^ ButDiv;
-	private: System::Windows::Forms::Button^ But1Divx;
+	private: System::Windows::Forms::Button^ ButCos;
+
 	private: System::Windows::Forms::Button^ ButClearEverything;
 
 
 
 	private: System::Windows::Forms::Button^ ButClear;
-
-	private: System::Windows::Forms::Button^ ButBackspace;
-	private: System::Windows::Forms::Button^ ButDivWithoutRemainder;
+	private: System::Windows::Forms::Button^ ButTan;
 
 
+	private: System::Windows::Forms::Button^ ButSin;
 
 
-	private: System::Windows::Forms::MenuStrip^ menuStrip1;
+
+
+
+
 	private: System::Windows::Forms::RichTextBox^ richTextBoxMain;
 	private: System::Windows::Forms::RichTextBox^ richTextBoxRes;
 	private: System::Windows::Forms::RichTextBox^ richTextBoxSign;
@@ -143,12 +146,11 @@ namespace WindowsFormsTemplate {
 			this->ButSqr = (gcnew System::Windows::Forms::Button());
 			this->ButRoot = (gcnew System::Windows::Forms::Button());
 			this->ButDiv = (gcnew System::Windows::Forms::Button());
-			this->But1Divx = (gcnew System::Windows::Forms::Button());
+			this->ButCos = (gcnew System::Windows::Forms::Button());
 			this->ButClearEverything = (gcnew System::Windows::Forms::Button());
 			this->ButClear = (gcnew System::Windows::Forms::Button());
-			this->ButBackspace = (gcnew System::Windows::Forms::Button());
-			this->ButDivWithoutRemainder = (gcnew System::Windows::Forms::Button());
-			this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());
+			this->ButTan = (gcnew System::Windows::Forms::Button());
+			this->ButSin = (gcnew System::Windows::Forms::Button());
 			this->richTextBoxMain = (gcnew System::Windows::Forms::RichTextBox());
 			this->richTextBoxRes = (gcnew System::Windows::Forms::RichTextBox());
 			this->richTextBoxSign = (gcnew System::Windows::Forms::RichTextBox());
@@ -401,7 +403,7 @@ namespace WindowsFormsTemplate {
 			this->ButSqr->FlatAppearance->CheckedBackColor = System::Drawing::Color::Gray;
 			this->ButSqr->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->ButSqr->Location = System::Drawing::Point(118, 225);
+			this->ButSqr->Location = System::Drawing::Point(12, 225);
 			this->ButSqr->Name = L"ButSqr";
 			this->ButSqr->Size = System::Drawing::Size(100, 60);
 			this->ButSqr->TabIndex = 0;
@@ -415,11 +417,11 @@ namespace WindowsFormsTemplate {
 			this->ButRoot->FlatAppearance->CheckedBackColor = System::Drawing::Color::Gray;
 			this->ButRoot->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->ButRoot->Location = System::Drawing::Point(224, 225);
+			this->ButRoot->Location = System::Drawing::Point(12, 159);
 			this->ButRoot->Name = L"ButRoot";
 			this->ButRoot->Size = System::Drawing::Size(100, 60);
 			this->ButRoot->TabIndex = 0;
-			this->ButRoot->Text = L"x^1/2";
+			this->ButRoot->Text = L"√x";
 			this->ButRoot->UseVisualStyleBackColor = true;
 			// 
 			// ButDiv
@@ -437,19 +439,19 @@ namespace WindowsFormsTemplate {
 			this->ButDiv->UseVisualStyleBackColor = true;
 			this->ButDiv->Click += gcnew System::EventHandler(this, &MainForm::ButDiv_Click);
 			// 
-			// But1Divx
+			// ButCos
 			// 
-			this->But1Divx->FlatAppearance->BorderColor = System::Drawing::Color::Black;
-			this->But1Divx->FlatAppearance->BorderSize = 0;
-			this->But1Divx->FlatAppearance->CheckedBackColor = System::Drawing::Color::Gray;
-			this->But1Divx->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->ButCos->FlatAppearance->BorderColor = System::Drawing::Color::Black;
+			this->ButCos->FlatAppearance->BorderSize = 0;
+			this->ButCos->FlatAppearance->CheckedBackColor = System::Drawing::Color::Gray;
+			this->ButCos->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->But1Divx->Location = System::Drawing::Point(12, 225);
-			this->But1Divx->Name = L"But1Divx";
-			this->But1Divx->Size = System::Drawing::Size(100, 60);
-			this->But1Divx->TabIndex = 0;
-			this->But1Divx->Text = L"1/x";
-			this->But1Divx->UseVisualStyleBackColor = true;
+			this->ButCos->Location = System::Drawing::Point(118, 225);
+			this->ButCos->Name = L"ButCos";
+			this->ButCos->Size = System::Drawing::Size(100, 60);
+			this->ButCos->TabIndex = 0;
+			this->ButCos->Text = L"cos(x)";
+			this->ButCos->UseVisualStyleBackColor = true;
 			// 
 			// ButClearEverything
 			// 
@@ -458,7 +460,7 @@ namespace WindowsFormsTemplate {
 			this->ButClearEverything->FlatAppearance->CheckedBackColor = System::Drawing::Color::Gray;
 			this->ButClearEverything->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular,
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			this->ButClearEverything->Location = System::Drawing::Point(118, 159);
+			this->ButClearEverything->Location = System::Drawing::Point(224, 159);
 			this->ButClearEverything->Name = L"ButClearEverything";
 			this->ButClearEverything->Size = System::Drawing::Size(100, 60);
 			this->ButClearEverything->TabIndex = 0;
@@ -473,7 +475,7 @@ namespace WindowsFormsTemplate {
 			this->ButClear->FlatAppearance->CheckedBackColor = System::Drawing::Color::Gray;
 			this->ButClear->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->ButClear->Location = System::Drawing::Point(224, 159);
+			this->ButClear->Location = System::Drawing::Point(330, 159);
 			this->ButClear->Name = L"ButClear";
 			this->ButClear->Size = System::Drawing::Size(100, 60);
 			this->ButClear->TabIndex = 0;
@@ -481,52 +483,44 @@ namespace WindowsFormsTemplate {
 			this->ButClear->UseVisualStyleBackColor = true;
 			this->ButClear->Click += gcnew System::EventHandler(this, &MainForm::ButClear_Click);
 			// 
-			// ButBackspace
+			// ButTan
 			// 
-			this->ButBackspace->FlatAppearance->BorderColor = System::Drawing::Color::Black;
-			this->ButBackspace->FlatAppearance->BorderSize = 0;
-			this->ButBackspace->FlatAppearance->CheckedBackColor = System::Drawing::Color::Gray;
-			this->ButBackspace->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->ButTan->FlatAppearance->BorderColor = System::Drawing::Color::Black;
+			this->ButTan->FlatAppearance->BorderSize = 0;
+			this->ButTan->FlatAppearance->CheckedBackColor = System::Drawing::Color::Gray;
+			this->ButTan->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->ButBackspace->Location = System::Drawing::Point(330, 159);
-			this->ButBackspace->Name = L"ButBackspace";
-			this->ButBackspace->Size = System::Drawing::Size(100, 60);
-			this->ButBackspace->TabIndex = 0;
-			this->ButBackspace->Text = L"<--";
-			this->ButBackspace->UseVisualStyleBackColor = true;
-			this->ButBackspace->Click += gcnew System::EventHandler(this, &MainForm::ButBackspace_Click);
+			this->ButTan->Location = System::Drawing::Point(118, 159);
+			this->ButTan->Name = L"ButTan";
+			this->ButTan->Size = System::Drawing::Size(100, 60);
+			this->ButTan->TabIndex = 0;
+			this->ButTan->Text = L"tan(x)";
+			this->ButTan->UseVisualStyleBackColor = true;
+			this->ButTan->Click += gcnew System::EventHandler(this, &MainForm::ButBackspace_Click);
 			// 
-			// ButDivWithoutRemainder
+			// ButSin
 			// 
-			this->ButDivWithoutRemainder->FlatAppearance->BorderColor = System::Drawing::Color::Black;
-			this->ButDivWithoutRemainder->FlatAppearance->BorderSize = 0;
-			this->ButDivWithoutRemainder->FlatAppearance->CheckedBackColor = System::Drawing::Color::Gray;
-			this->ButDivWithoutRemainder->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular,
-				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			this->ButDivWithoutRemainder->Location = System::Drawing::Point(12, 159);
-			this->ButDivWithoutRemainder->Name = L"ButDivWithoutRemainder";
-			this->ButDivWithoutRemainder->Size = System::Drawing::Size(100, 60);
-			this->ButDivWithoutRemainder->TabIndex = 0;
-			this->ButDivWithoutRemainder->Text = L"%";
-			this->ButDivWithoutRemainder->UseVisualStyleBackColor = true;
-			this->ButDivWithoutRemainder->Click += gcnew System::EventHandler(this, &MainForm::ButDivWithoutRemainder_Click);
-			// 
-			// menuStrip1
-			// 
-			this->menuStrip1->Location = System::Drawing::Point(0, 0);
-			this->menuStrip1->Name = L"menuStrip1";
-			this->menuStrip1->Size = System::Drawing::Size(442, 24);
-			this->menuStrip1->TabIndex = 1;
-			this->menuStrip1->Text = L"menuStrip1";
+			this->ButSin->FlatAppearance->BorderColor = System::Drawing::Color::Black;
+			this->ButSin->FlatAppearance->BorderSize = 0;
+			this->ButSin->FlatAppearance->CheckedBackColor = System::Drawing::Color::Gray;
+			this->ButSin->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->ButSin->Location = System::Drawing::Point(224, 225);
+			this->ButSin->Name = L"ButSin";
+			this->ButSin->Size = System::Drawing::Size(100, 60);
+			this->ButSin->TabIndex = 0;
+			this->ButSin->Text = L"sin(x)";
+			this->ButSin->UseVisualStyleBackColor = true;
+			this->ButSin->Click += gcnew System::EventHandler(this, &MainForm::ButDivWithoutRemainder_Click);
 			// 
 			// richTextBoxMain
 			// 
 			this->richTextBoxMain->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 27.75F, System::Drawing::FontStyle::Regular,
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			this->richTextBoxMain->Location = System::Drawing::Point(12, 27);
+			this->richTextBoxMain->Location = System::Drawing::Point(12, 12);
 			this->richTextBoxMain->Name = L"richTextBoxMain";
 			this->richTextBoxMain->RightToLeft = System::Windows::Forms::RightToLeft::Yes;
-			this->richTextBoxMain->Size = System::Drawing::Size(418, 126);
+			this->richTextBoxMain->Size = System::Drawing::Size(418, 141);
 			this->richTextBoxMain->TabIndex = 2;
 			this->richTextBoxMain->Text = L"0";
 			// 
@@ -534,13 +528,14 @@ namespace WindowsFormsTemplate {
 			// 
 			this->richTextBoxRes->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 27.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->richTextBoxRes->Location = System::Drawing::Point(129, 108);
+			this->richTextBoxRes->Location = System::Drawing::Point(12, 108);
+			this->richTextBoxRes->MaxLength = 16;
 			this->richTextBoxRes->Multiline = false;
 			this->richTextBoxRes->Name = L"richTextBoxRes";
 			this->richTextBoxRes->ReadOnly = true;
 			this->richTextBoxRes->RightToLeft = System::Windows::Forms::RightToLeft::Yes;
 			this->richTextBoxRes->ScrollBars = System::Windows::Forms::RichTextBoxScrollBars::None;
-			this->richTextBoxRes->Size = System::Drawing::Size(250, 45);
+			this->richTextBoxRes->Size = System::Drawing::Size(367, 45);
 			this->richTextBoxRes->TabIndex = 3;
 			this->richTextBoxRes->Text = L"0";
 			// 
@@ -565,13 +560,13 @@ namespace WindowsFormsTemplate {
 			this->Controls->Add(this->richTextBoxSign);
 			this->Controls->Add(this->richTextBoxRes);
 			this->Controls->Add(this->richTextBoxMain);
-			this->Controls->Add(this->ButDivWithoutRemainder);
-			this->Controls->Add(this->But1Divx);
+			this->Controls->Add(this->ButSin);
+			this->Controls->Add(this->ButCos);
 			this->Controls->Add(this->But7);
 			this->Controls->Add(this->But4);
 			this->Controls->Add(this->But1);
 			this->Controls->Add(this->ButSignChange);
-			this->Controls->Add(this->ButBackspace);
+			this->Controls->Add(this->ButTan);
 			this->Controls->Add(this->ButClear);
 			this->Controls->Add(this->ButDiv);
 			this->Controls->Add(this->ButRoot);
@@ -589,23 +584,20 @@ namespace WindowsFormsTemplate {
 			this->Controls->Add(this->But2);
 			this->Controls->Add(this->ButDot);
 			this->Controls->Add(this->But0);
-			this->Controls->Add(this->menuStrip1);
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedDialog;
-			this->MainMenuStrip = this->menuStrip1;
 			this->MaximizeBox = false;
 			this->MinimizeBox = false;
 			this->Name = L"MainForm";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Calculator";
 			this->ResumeLayout(false);
-			this->PerformLayout();
 
 		}
 #pragma endregion
 
 		bool rember_num = false;
 		bool dot = false;
-		bool sign_change_mode;
+		bool sign_switch_mode;
 		bool first_iter = true;
 
 private: System::Void But0_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -668,7 +660,7 @@ private: System::Void ButBackspace_Click(System::Object^ sender, System::EventAr
 		   bool tmp_check;
 		   for (int i = 0; i < txt->Length; i++) {
 			   tmp_check = false;
-			   for (int j = 0; j < nums.length(); j++) {
+			   for (unsigned int j = 0; j < nums.length(); j++) {
 				   if (txt[i] == nums[j]) {
 					   tmp_check = true;
 				   }
@@ -792,8 +784,9 @@ private: System::Void ButPlus_Click(System::Object^ sender, System::EventArgs^ e
 		WriteSign(1);
 	}
 	else {
-		richTextBoxMain->Text = "0";
+		richTextBoxMain->Text = "Wrong input";
 		dot = false;
+		rember_num = true;
 	}
 }
 
@@ -802,8 +795,9 @@ private: System::Void ButMinus_Click(System::Object^ sender, System::EventArgs^ 
 		WriteSign(2);
 	}
 	else {
-		richTextBoxMain->Text = "0";
+		richTextBoxMain->Text = "Wrong input";
 		dot = false;
+		rember_num = true;
 	}
 }
 private: System::Void ButMulti_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -811,8 +805,9 @@ private: System::Void ButMulti_Click(System::Object^ sender, System::EventArgs^ 
 		WriteSign(3);
 	}
 	else {
-		richTextBoxMain->Text = "0";
+		richTextBoxMain->Text = "Wrong input";
 		dot = false;
+		rember_num = true;
 	}
 }
 private: System::Void ButDiv_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -820,8 +815,9 @@ private: System::Void ButDiv_Click(System::Object^ sender, System::EventArgs^ e)
 		WriteSign(4);
 	}
 	else {
-		richTextBoxMain->Text = "0";
+		richTextBoxMain->Text = "Wrong input";
 		dot = false;
+		rember_num = true;
 	}
 }
 private: System::Void ButDivWithoutRemainder_Click(System::Object^ sender, System::EventArgs^ e){}
