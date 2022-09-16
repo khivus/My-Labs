@@ -1,9 +1,6 @@
-﻿// CppCalculator v0.2.1 2022 Aleksey Kharin
+﻿// CppCalculator v0.3.0 2022 Aleksey Kharin
 //
 // I need to make list:
-// * Backspace button
-// * Signchange button
-// * Other buttons (for now, idk need to do them)
 // * Error handling (like div by 0)
 // * Better multiplication
 // * Do RichTextBoxMain->Text handling
@@ -13,6 +10,8 @@
 #pragma once
 
 #include <string>
+#include <msclr\marshal_cppstd.h>
+#include "DllForCalc.h"
 
 namespace WindowsFormsTemplate {
 
@@ -49,7 +48,7 @@ namespace WindowsFormsTemplate {
 			}
 		}
 	private: System::Windows::Forms::Button^ But0;
-	private: System::Windows::Forms::Button^ ButSignChange;
+
 	private: System::Windows::Forms::Button^ ButDot;
 	private: System::Windows::Forms::Button^ ButGetRes;
 	private: System::Windows::Forms::Button^ But2;
@@ -128,7 +127,6 @@ namespace WindowsFormsTemplate {
 		void InitializeComponent(void)
 		{
 			this->But0 = (gcnew System::Windows::Forms::Button());
-			this->ButSignChange = (gcnew System::Windows::Forms::Button());
 			this->ButDot = (gcnew System::Windows::Forms::Button());
 			this->ButGetRes = (gcnew System::Windows::Forms::Button());
 			this->But2 = (gcnew System::Windows::Forms::Button());
@@ -163,28 +161,13 @@ namespace WindowsFormsTemplate {
 			this->But0->FlatAppearance->CheckedBackColor = System::Drawing::Color::Gray;
 			this->But0->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->But0->Location = System::Drawing::Point(118, 489);
+			this->But0->Location = System::Drawing::Point(12, 489);
 			this->But0->Name = L"But0";
-			this->But0->Size = System::Drawing::Size(100, 60);
+			this->But0->Size = System::Drawing::Size(206, 60);
 			this->But0->TabIndex = 0;
 			this->But0->Text = L"0";
 			this->But0->UseVisualStyleBackColor = true;
 			this->But0->Click += gcnew System::EventHandler(this, &MainForm::But0_Click);
-			// 
-			// ButSignChange
-			// 
-			this->ButSignChange->FlatAppearance->BorderColor = System::Drawing::Color::Black;
-			this->ButSignChange->FlatAppearance->BorderSize = 0;
-			this->ButSignChange->FlatAppearance->CheckedBackColor = System::Drawing::Color::Gray;
-			this->ButSignChange->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->ButSignChange->Location = System::Drawing::Point(12, 489);
-			this->ButSignChange->Name = L"ButSignChange";
-			this->ButSignChange->Size = System::Drawing::Size(100, 60);
-			this->ButSignChange->TabIndex = 0;
-			this->ButSignChange->Text = L"+/-";
-			this->ButSignChange->UseVisualStyleBackColor = true;
-			this->ButSignChange->Click += gcnew System::EventHandler(this, &MainForm::ButSignChange_Click);
 			// 
 			// ButDot
 			// 
@@ -409,6 +392,7 @@ namespace WindowsFormsTemplate {
 			this->ButSqr->TabIndex = 0;
 			this->ButSqr->Text = L"x^2";
 			this->ButSqr->UseVisualStyleBackColor = true;
+			this->ButSqr->Click += gcnew System::EventHandler(this, &MainForm::ButSqr_Click);
 			// 
 			// ButRoot
 			// 
@@ -423,6 +407,7 @@ namespace WindowsFormsTemplate {
 			this->ButRoot->TabIndex = 0;
 			this->ButRoot->Text = L"√x";
 			this->ButRoot->UseVisualStyleBackColor = true;
+			this->ButRoot->Click += gcnew System::EventHandler(this, &MainForm::ButRoot_Click);
 			// 
 			// ButDiv
 			// 
@@ -452,6 +437,7 @@ namespace WindowsFormsTemplate {
 			this->ButCos->TabIndex = 0;
 			this->ButCos->Text = L"cos(x)";
 			this->ButCos->UseVisualStyleBackColor = true;
+			this->ButCos->Click += gcnew System::EventHandler(this, &MainForm::ButCos_Click);
 			// 
 			// ButClearEverything
 			// 
@@ -496,7 +482,7 @@ namespace WindowsFormsTemplate {
 			this->ButTan->TabIndex = 0;
 			this->ButTan->Text = L"tan(x)";
 			this->ButTan->UseVisualStyleBackColor = true;
-			this->ButTan->Click += gcnew System::EventHandler(this, &MainForm::ButBackspace_Click);
+			this->ButTan->Click += gcnew System::EventHandler(this, &MainForm::ButTan_Click);
 			// 
 			// ButSin
 			// 
@@ -511,13 +497,15 @@ namespace WindowsFormsTemplate {
 			this->ButSin->TabIndex = 0;
 			this->ButSin->Text = L"sin(x)";
 			this->ButSin->UseVisualStyleBackColor = true;
-			this->ButSin->Click += gcnew System::EventHandler(this, &MainForm::ButDivWithoutRemainder_Click);
+			this->ButSin->Click += gcnew System::EventHandler(this, &MainForm::ButSin_Click);
 			// 
 			// richTextBoxMain
 			// 
 			this->richTextBoxMain->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 27.75F, System::Drawing::FontStyle::Regular,
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			this->richTextBoxMain->Location = System::Drawing::Point(12, 12);
+			this->richTextBoxMain->MaxLength = 19;
+			this->richTextBoxMain->Multiline = false;
 			this->richTextBoxMain->Name = L"richTextBoxMain";
 			this->richTextBoxMain->RightToLeft = System::Windows::Forms::RightToLeft::Yes;
 			this->richTextBoxMain->Size = System::Drawing::Size(418, 141);
@@ -526,10 +514,10 @@ namespace WindowsFormsTemplate {
 			// 
 			// richTextBoxRes
 			// 
-			this->richTextBoxRes->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 27.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->richTextBoxRes->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 20.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->richTextBoxRes->Location = System::Drawing::Point(12, 108);
-			this->richTextBoxRes->MaxLength = 16;
+			this->richTextBoxRes->MaxLength = 19;
 			this->richTextBoxRes->Multiline = false;
 			this->richTextBoxRes->Name = L"richTextBoxRes";
 			this->richTextBoxRes->ReadOnly = true;
@@ -544,6 +532,7 @@ namespace WindowsFormsTemplate {
 			this->richTextBoxSign->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 27.75F, System::Drawing::FontStyle::Regular,
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			this->richTextBoxSign->Location = System::Drawing::Point(385, 108);
+			this->richTextBoxSign->MaxLength = 2;
 			this->richTextBoxSign->Multiline = false;
 			this->richTextBoxSign->Name = L"richTextBoxSign";
 			this->richTextBoxSign->ReadOnly = true;
@@ -565,7 +554,6 @@ namespace WindowsFormsTemplate {
 			this->Controls->Add(this->But7);
 			this->Controls->Add(this->But4);
 			this->Controls->Add(this->But1);
-			this->Controls->Add(this->ButSignChange);
 			this->Controls->Add(this->ButTan);
 			this->Controls->Add(this->ButClear);
 			this->Controls->Add(this->ButDiv);
@@ -586,7 +574,6 @@ namespace WindowsFormsTemplate {
 			this->Controls->Add(this->But0);
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedDialog;
 			this->MaximizeBox = false;
-			this->MinimizeBox = false;
 			this->Name = L"MainForm";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Calculator";
@@ -599,6 +586,10 @@ namespace WindowsFormsTemplate {
 		bool dot = false;
 		bool sign_switch_mode;
 		bool first_iter = true;
+
+//
+// Button funcs
+//
 
 private: System::Void But0_Click(System::Object^ sender, System::EventArgs^ e) {
 	ClickPad(0);
@@ -643,33 +634,64 @@ private: System::Void ButClearEverything_Click(System::Object^ sender, System::E
 private: System::Void ButDot_Click(System::Object^ sender, System::EventArgs^ e) {
 	ClickPad(10);
 }
-private: System::Void ButSignChange_Click(System::Object^ sender, System::EventArgs^ e) {
-	//will work at this later
+	private: System::Void ButGetRes_Click(System::Object^ sender, System::EventArgs^ e) {
+		Calc(0);
+	}
+private: System::Void ButPlus_Click(System::Object^ sender, System::EventArgs^ e) {
+	Calc(1);
+	richTextBoxSign->Text = "+";
 }
 
-private: System::Void ButBackspace_Click(System::Object^ sender, System::EventArgs^ e) {
-	//richTextBoxMain->Text[richTextBoxMain->Text->Length - 1] = '';
-	//also will work soon
-	//just res_num - last digit
+private: System::Void ButMinus_Click(System::Object^ sender, System::EventArgs^ e) {
+	Calc(2);
+	richTextBoxSign->Text = "-";
 }
+private: System::Void ButMulti_Click(System::Object^ sender, System::EventArgs^ e) {
+	Calc(3);
+	richTextBoxSign->Text = "*";
+}
+private: System::Void ButDiv_Click(System::Object^ sender, System::EventArgs^ e) {
+	Calc(4);
+	richTextBoxSign->Text = "/";
+}
+private: System::Void ButSin_Click(System::Object^ sender, System::EventArgs^ e) {
+	Calc(5);
+	richTextBoxSign->Text = "s";
+}
+private: System::Void ButCos_Click(System::Object^ sender, System::EventArgs^ e) {
+	Calc(6);
+	richTextBoxSign->Text = "c";
+}
+private: System::Void ButTan_Click(System::Object^ sender, System::EventArgs^ e) {
+	Calc(7);
+	richTextBoxSign->Text = "t";
+}
+private: System::Void ButSqr_Click(System::Object^ sender, System::EventArgs^ e) {
+	Calc(8);
+	richTextBoxSign->Text = "^";
+}
+private: System::Void ButRoot_Click(System::Object^ sender, System::EventArgs^ e) {
+	Calc(9);
+	richTextBoxSign->Text = "√";
+}
+//
+// Calculating funcs
+//
 
-	   bool TextBoxCheck() {
-		   System::String^ txt = richTextBoxMain->Text;
-		   std::string nums = "0123456789.-";
-		   bool check = true;
-		   bool tmp_check;
-		   for (int i = 0; i < txt->Length; i++) {
-			   tmp_check = false;
-			   for (unsigned int j = 0; j < nums.length(); j++) {
-				   if (txt[i] == nums[j]) {
-					   tmp_check = true;
-				   }
-			   }
-			   if (!tmp_check) {
-				   check = false;
-			   }
-		   }
-		   return check;
+	   char* SystemStringToChar(System::String^ string) {
+		   return (char*)(void*)System::Runtime::InteropServices::Marshal::StringToHGlobalAnsi(string);
+	   }
+
+	   void Calc(int mode) {
+		   char* str_main = SystemStringToChar(richTextBoxMain->Text);
+		   char* str_res = SystemStringToChar(richTextBoxRes->Text);
+		   //char sign = Convert::ToChar(richTextBoxSign->Text);
+		   char sign = '+';
+		   char* str = Calculate(mode, str_main, str_res, sign);
+		   richTextBoxMain->Text = Convert::ToString(str);
+		   richTextBoxRes->Text = Convert::ToString(str);
+		   rember_num = true;
+		   dot = false;
 	   }
 
 	   void ClickPad(int mode) {
@@ -689,137 +711,5 @@ private: System::Void ButBackspace_Click(System::Object^ sender, System::EventAr
 		   }
 	   }
 
-	   void Calculate() {
-		   int mode = GetMode();
-		   double res_num = Convert::ToDouble(richTextBoxRes->Text);
-		   double tmp_num = Convert::ToDouble(richTextBoxMain->Text);
-		   double num;
-		   switch (mode) {
-		   case 1: // +
-			   num = res_num + tmp_num;
-			   break;
-		   case 2: // -
-			   num = res_num - tmp_num;
-			   break;
-		   case 3: // *
-			   num = res_num * tmp_num;
-			   break;
-		   case 4: // /
-			   num = res_num / tmp_num;
-			   break;
-		   default:
-			   // if no sign, will need to add label for it
-			   break;
-		   }
-		   if (mode != 5) {
-			   richTextBoxRes->Text = Convert::ToString(num);
-			   rember_num = true;
-			   dot = false;
-		   }
-	   }
-
-	   void WriteSign(int mode) {
-		   static int last_mode;
-		   if (last_mode == mode) {
-			   Calculate();
-		   }
-		   else {
-			   switch (mode) {
-			   case 1:
-				   richTextBoxSign->Text = " +";
-				   break;
-			   case 2:
-				   richTextBoxSign->Text = " -";
-				   break;
-			   case 3:
-				   richTextBoxSign->Text = " *";
-				   break;
-			   case 4:
-				   richTextBoxSign->Text = " /";
-				   break;
-			   default:
-				   break;
-			   }
-			   last_mode = mode;
-			   richTextBoxRes->Text = richTextBoxMain->Text;
-			   rember_num = true;
-			   dot = false;
-		   }
-	   }
-
-	   int GetMode() {
-		   if (richTextBoxSign->Text == " +") {
-			   return 1;
-		   }
-		   else if (richTextBoxSign->Text == " -") {
-			   return 2;
-		   }
-		   else if (richTextBoxSign->Text == " *") {
-			   return 3;
-		   }
-		   else if (richTextBoxSign->Text == " /") {
-			   return 4;
-		   }
-		   else {
-			   return 5;
-		   }
-	   }
-
-private: System::Void ButGetRes_Click(System::Object^ sender, System::EventArgs^ e) {
-	if (TextBoxCheck()) {
-		Calculate();
-	}
-	else {
-		richTextBoxMain->Text = "0";
-		dot = false;
-	}
-}
-private: System::Void ButPlus_Click(System::Object^ sender, System::EventArgs^ e) {
-	//richTextBoxSign->Text = " +";
-	//if (!sign_change_mode) {
-	//	richTextBoxRes->Text = richTextBoxMain->Text;
-	//	sign_change_mode = true;
-	//}
-	if (TextBoxCheck()) {
-		WriteSign(1);
-	}
-	else {
-		richTextBoxMain->Text = "Wrong input";
-		dot = false;
-		rember_num = true;
-	}
-}
-
-private: System::Void ButMinus_Click(System::Object^ sender, System::EventArgs^ e) {
-	if (TextBoxCheck()) {
-		WriteSign(2);
-	}
-	else {
-		richTextBoxMain->Text = "Wrong input";
-		dot = false;
-		rember_num = true;
-	}
-}
-private: System::Void ButMulti_Click(System::Object^ sender, System::EventArgs^ e) {
-	if (TextBoxCheck()) {
-		WriteSign(3);
-	}
-	else {
-		richTextBoxMain->Text = "Wrong input";
-		dot = false;
-		rember_num = true;
-	}
-}
-private: System::Void ButDiv_Click(System::Object^ sender, System::EventArgs^ e) {
-	if (TextBoxCheck()) {
-		WriteSign(4);
-	}
-	else {
-		richTextBoxMain->Text = "Wrong input";
-		dot = false;
-		rember_num = true;
-	}
-}
-private: System::Void ButDivWithoutRemainder_Click(System::Object^ sender, System::EventArgs^ e){}
 };
 }

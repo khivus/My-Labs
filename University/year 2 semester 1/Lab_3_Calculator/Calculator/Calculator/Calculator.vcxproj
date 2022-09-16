@@ -78,12 +78,21 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>WIN32;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\Khivus\Education\Programming\University\year 2 semester 1\Lab_3_Calculator\DllForCalc\DllForCalc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalDependencies />
+      <AdditionalDependencies>DllForCalc.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <EntryPointSymbol>main</EntryPointSymbol>
       <SubSystem>Windows</SubSystem>
+      <AdditionalLibraryDirectories>C:\Users\Khivus\Education\Programming\University\year 2 semester 1\Lab_3_Calculator\DllForCalc\$(IntDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
+    <PreBuildEvent>
+      <Command>
+      </Command>
+    </PreBuildEvent>
+    <PostBuildEvent>
+      <Command>xcopy /y /d "..\..\DllForCalc\$(IntDir)DllForCalc.dll" "$(OutDir)"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
