@@ -7,4 +7,5 @@
 #endif
 
 
-extern "C" DLLFORCALC_API char* Calculate(int mode, char* str_main, char* str_res, char sign);
+extern "C" DLLFORCALC_API double Calculate(char mode, double str_main, double str_res);
+extern "C" DLLFORCALC_API bool TextBoxCheck(char* str);

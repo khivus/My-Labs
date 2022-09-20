@@ -1,11 +1,5 @@
-﻿// CppCalculator v0.3.0 2022 Aleksey Kharin
-//
-// I need to make list:
-// * Error handling (like div by 0)
-// * Better multiplication
-// * Do RichTextBoxMain->Text handling
-// * Better ClickPad function
-//
+﻿// CppCalculator v1.0.0 2022 Aleksey Kharin
+// Release ver!
 
 #pragma once
 
@@ -48,69 +42,35 @@ namespace WindowsFormsTemplate {
 			}
 		}
 	private: System::Windows::Forms::Button^ But0;
-
 	private: System::Windows::Forms::Button^ ButDot;
 	private: System::Windows::Forms::Button^ ButGetRes;
 	private: System::Windows::Forms::Button^ But2;
 	protected:
 
-
 	protected:
 
-
-
-
 	private: System::Windows::Forms::Button^ But3;
-
 	private: System::Windows::Forms::Button^ ButPlus;
 	private: System::Windows::Forms::Button^ But1;
 	private: System::Windows::Forms::Button^ But5;
-
-
-
 	private: System::Windows::Forms::Button^ But6;
-
 	private: System::Windows::Forms::Button^ ButMinus;
 	private: System::Windows::Forms::Button^ But4;
 	private: System::Windows::Forms::Button^ But8;
-
-
-
 	private: System::Windows::Forms::Button^ But9;
-
 	private: System::Windows::Forms::Button^ ButMulti;
 	private: System::Windows::Forms::Button^ But7;
 	private: System::Windows::Forms::Button^ ButSqr;
-
-
-
-
 	private: System::Windows::Forms::Button^ ButRoot;
-
 	private: System::Windows::Forms::Button^ ButDiv;
 	private: System::Windows::Forms::Button^ ButCos;
-
 	private: System::Windows::Forms::Button^ ButClearEverything;
-
-
-
 	private: System::Windows::Forms::Button^ ButClear;
 	private: System::Windows::Forms::Button^ ButTan;
-
-
 	private: System::Windows::Forms::Button^ ButSin;
-
-
-
-
-
-
 	private: System::Windows::Forms::RichTextBox^ richTextBoxMain;
 	private: System::Windows::Forms::RichTextBox^ richTextBoxRes;
 	private: System::Windows::Forms::RichTextBox^ richTextBoxSign;
-
-
-
 	private: System::ComponentModel::IContainer^ components;
 
 	private:
@@ -167,7 +127,7 @@ namespace WindowsFormsTemplate {
 			this->But0->TabIndex = 0;
 			this->But0->Text = L"0";
 			this->But0->UseVisualStyleBackColor = true;
-			this->But0->Click += gcnew System::EventHandler(this, &MainForm::But0_Click);
+			this->But0->Click += gcnew System::EventHandler(this, &MainForm::ButPad_Click);
 			// 
 			// ButDot
 			// 
@@ -182,7 +142,7 @@ namespace WindowsFormsTemplate {
 			this->ButDot->TabIndex = 0;
 			this->ButDot->Text = L".";
 			this->ButDot->UseVisualStyleBackColor = true;
-			this->ButDot->Click += gcnew System::EventHandler(this, &MainForm::ButDot_Click);
+			this->ButDot->Click += gcnew System::EventHandler(this, &MainForm::ButPad_Click);
 			// 
 			// ButGetRes
 			// 
@@ -197,7 +157,7 @@ namespace WindowsFormsTemplate {
 			this->ButGetRes->TabIndex = 0;
 			this->ButGetRes->Text = L"=";
 			this->ButGetRes->UseVisualStyleBackColor = true;
-			this->ButGetRes->Click += gcnew System::EventHandler(this, &MainForm::ButGetRes_Click);
+			this->ButGetRes->Click += gcnew System::EventHandler(this, &MainForm::OperatorConverter_click);
 			// 
 			// But2
 			// 
@@ -212,7 +172,7 @@ namespace WindowsFormsTemplate {
 			this->But2->TabIndex = 0;
 			this->But2->Text = L"2";
 			this->But2->UseVisualStyleBackColor = true;
-			this->But2->Click += gcnew System::EventHandler(this, &MainForm::But2_Click);
+			this->But2->Click += gcnew System::EventHandler(this, &MainForm::ButPad_Click);
 			// 
 			// But3
 			// 
@@ -227,7 +187,7 @@ namespace WindowsFormsTemplate {
 			this->But3->TabIndex = 0;
 			this->But3->Text = L"3";
 			this->But3->UseVisualStyleBackColor = true;
-			this->But3->Click += gcnew System::EventHandler(this, &MainForm::But3_Click);
+			this->But3->Click += gcnew System::EventHandler(this, &MainForm::ButPad_Click);
 			// 
 			// ButPlus
 			// 
@@ -242,7 +202,7 @@ namespace WindowsFormsTemplate {
 			this->ButPlus->TabIndex = 0;
 			this->ButPlus->Text = L"+";
 			this->ButPlus->UseVisualStyleBackColor = true;
-			this->ButPlus->Click += gcnew System::EventHandler(this, &MainForm::ButPlus_Click);
+			this->ButPlus->Click += gcnew System::EventHandler(this, &MainForm::OperatorConverter_click);
 			// 
 			// But1
 			// 
@@ -257,7 +217,7 @@ namespace WindowsFormsTemplate {
 			this->But1->TabIndex = 0;
 			this->But1->Text = L"1";
 			this->But1->UseVisualStyleBackColor = true;
-			this->But1->Click += gcnew System::EventHandler(this, &MainForm::But1_Click);
+			this->But1->Click += gcnew System::EventHandler(this, &MainForm::ButPad_Click);
 			// 
 			// But5
 			// 
@@ -272,7 +232,7 @@ namespace WindowsFormsTemplate {
 			this->But5->TabIndex = 0;
 			this->But5->Text = L"5";
 			this->But5->UseVisualStyleBackColor = true;
-			this->But5->Click += gcnew System::EventHandler(this, &MainForm::But5_Click);
+			this->But5->Click += gcnew System::EventHandler(this, &MainForm::ButPad_Click);
 			// 
 			// But6
 			// 
@@ -287,7 +247,7 @@ namespace WindowsFormsTemplate {
 			this->But6->TabIndex = 0;
 			this->But6->Text = L"6";
 			this->But6->UseVisualStyleBackColor = true;
-			this->But6->Click += gcnew System::EventHandler(this, &MainForm::But6_Click);
+			this->But6->Click += gcnew System::EventHandler(this, &MainForm::ButPad_Click);
 			// 
 			// ButMinus
 			// 
@@ -302,7 +262,7 @@ namespace WindowsFormsTemplate {
 			this->ButMinus->TabIndex = 0;
 			this->ButMinus->Text = L"-";
 			this->ButMinus->UseVisualStyleBackColor = true;
-			this->ButMinus->Click += gcnew System::EventHandler(this, &MainForm::ButMinus_Click);
+			this->ButMinus->Click += gcnew System::EventHandler(this, &MainForm::OperatorConverter_click);
 			// 
 			// But4
 			// 
@@ -317,7 +277,7 @@ namespace WindowsFormsTemplate {
 			this->But4->TabIndex = 0;
 			this->But4->Text = L"4";
 			this->But4->UseVisualStyleBackColor = true;
-			this->But4->Click += gcnew System::EventHandler(this, &MainForm::But4_Click);
+			this->But4->Click += gcnew System::EventHandler(this, &MainForm::ButPad_Click);
 			// 
 			// But8
 			// 
@@ -332,7 +292,7 @@ namespace WindowsFormsTemplate {
 			this->But8->TabIndex = 0;
 			this->But8->Text = L"8";
 			this->But8->UseVisualStyleBackColor = true;
-			this->But8->Click += gcnew System::EventHandler(this, &MainForm::But8_Click);
+			this->But8->Click += gcnew System::EventHandler(this, &MainForm::ButPad_Click);
 			// 
 			// But9
 			// 
@@ -347,7 +307,7 @@ namespace WindowsFormsTemplate {
 			this->But9->TabIndex = 0;
 			this->But9->Text = L"9";
 			this->But9->UseVisualStyleBackColor = true;
-			this->But9->Click += gcnew System::EventHandler(this, &MainForm::But9_Click);
+			this->But9->Click += gcnew System::EventHandler(this, &MainForm::ButPad_Click);
 			// 
 			// ButMulti
 			// 
@@ -360,9 +320,9 @@ namespace WindowsFormsTemplate {
 			this->ButMulti->Name = L"ButMulti";
 			this->ButMulti->Size = System::Drawing::Size(100, 60);
 			this->ButMulti->TabIndex = 0;
-			this->ButMulti->Text = L"X";
+			this->ButMulti->Text = L"*";
 			this->ButMulti->UseVisualStyleBackColor = true;
-			this->ButMulti->Click += gcnew System::EventHandler(this, &MainForm::ButMulti_Click);
+			this->ButMulti->Click += gcnew System::EventHandler(this, &MainForm::OperatorConverter_click);
 			// 
 			// But7
 			// 
@@ -377,7 +337,7 @@ namespace WindowsFormsTemplate {
 			this->But7->TabIndex = 0;
 			this->But7->Text = L"7";
 			this->But7->UseVisualStyleBackColor = true;
-			this->But7->Click += gcnew System::EventHandler(this, &MainForm::But7_Click);
+			this->But7->Click += gcnew System::EventHandler(this, &MainForm::ButPad_Click);
 			// 
 			// ButSqr
 			// 
@@ -390,9 +350,9 @@ namespace WindowsFormsTemplate {
 			this->ButSqr->Name = L"ButSqr";
 			this->ButSqr->Size = System::Drawing::Size(100, 60);
 			this->ButSqr->TabIndex = 0;
-			this->ButSqr->Text = L"x^2";
+			this->ButSqr->Text = L"sqr";
 			this->ButSqr->UseVisualStyleBackColor = true;
-			this->ButSqr->Click += gcnew System::EventHandler(this, &MainForm::ButSqr_Click);
+			this->ButSqr->Click += gcnew System::EventHandler(this, &MainForm::OperatorConverter_click);
 			// 
 			// ButRoot
 			// 
@@ -405,9 +365,9 @@ namespace WindowsFormsTemplate {
 			this->ButRoot->Name = L"ButRoot";
 			this->ButRoot->Size = System::Drawing::Size(100, 60);
 			this->ButRoot->TabIndex = 0;
-			this->ButRoot->Text = L"√x";
+			this->ButRoot->Text = L"root";
 			this->ButRoot->UseVisualStyleBackColor = true;
-			this->ButRoot->Click += gcnew System::EventHandler(this, &MainForm::ButRoot_Click);
+			this->ButRoot->Click += gcnew System::EventHandler(this, &MainForm::OperatorConverter_click);
 			// 
 			// ButDiv
 			// 
@@ -422,7 +382,7 @@ namespace WindowsFormsTemplate {
 			this->ButDiv->TabIndex = 0;
 			this->ButDiv->Text = L"/";
 			this->ButDiv->UseVisualStyleBackColor = true;
-			this->ButDiv->Click += gcnew System::EventHandler(this, &MainForm::ButDiv_Click);
+			this->ButDiv->Click += gcnew System::EventHandler(this, &MainForm::OperatorConverter_click);
 			// 
 			// ButCos
 			// 
@@ -435,9 +395,9 @@ namespace WindowsFormsTemplate {
 			this->ButCos->Name = L"ButCos";
 			this->ButCos->Size = System::Drawing::Size(100, 60);
 			this->ButCos->TabIndex = 0;
-			this->ButCos->Text = L"cos(x)";
+			this->ButCos->Text = L"cos";
 			this->ButCos->UseVisualStyleBackColor = true;
-			this->ButCos->Click += gcnew System::EventHandler(this, &MainForm::ButCos_Click);
+			this->ButCos->Click += gcnew System::EventHandler(this, &MainForm::OperatorConverter_click);
 			// 
 			// ButClearEverything
 			// 
@@ -480,9 +440,9 @@ namespace WindowsFormsTemplate {
 			this->ButTan->Name = L"ButTan";
 			this->ButTan->Size = System::Drawing::Size(100, 60);
 			this->ButTan->TabIndex = 0;
-			this->ButTan->Text = L"tan(x)";
+			this->ButTan->Text = L"tan";
 			this->ButTan->UseVisualStyleBackColor = true;
-			this->ButTan->Click += gcnew System::EventHandler(this, &MainForm::ButTan_Click);
+			this->ButTan->Click += gcnew System::EventHandler(this, &MainForm::OperatorConverter_click);
 			// 
 			// ButSin
 			// 
@@ -495,9 +455,9 @@ namespace WindowsFormsTemplate {
 			this->ButSin->Name = L"ButSin";
 			this->ButSin->Size = System::Drawing::Size(100, 60);
 			this->ButSin->TabIndex = 0;
-			this->ButSin->Text = L"sin(x)";
+			this->ButSin->Text = L"sin";
 			this->ButSin->UseVisualStyleBackColor = true;
-			this->ButSin->Click += gcnew System::EventHandler(this, &MainForm::ButSin_Click);
+			this->ButSin->Click += gcnew System::EventHandler(this, &MainForm::OperatorConverter_click);
 			// 
 			// richTextBoxMain
 			// 
@@ -507,7 +467,7 @@ namespace WindowsFormsTemplate {
 			this->richTextBoxMain->MaxLength = 19;
 			this->richTextBoxMain->Multiline = false;
 			this->richTextBoxMain->Name = L"richTextBoxMain";
-			this->richTextBoxMain->RightToLeft = System::Windows::Forms::RightToLeft::Yes;
+			this->richTextBoxMain->RightToLeft = System::Windows::Forms::RightToLeft::No;
 			this->richTextBoxMain->Size = System::Drawing::Size(418, 141);
 			this->richTextBoxMain->TabIndex = 2;
 			this->richTextBoxMain->Text = L"0";
@@ -516,28 +476,31 @@ namespace WindowsFormsTemplate {
 			// 
 			this->richTextBoxRes->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 20.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->richTextBoxRes->Location = System::Drawing::Point(12, 108);
+			this->richTextBoxRes->ForeColor = System::Drawing::SystemColors::GrayText;
+			this->richTextBoxRes->Location = System::Drawing::Point(78, 113);
 			this->richTextBoxRes->MaxLength = 19;
 			this->richTextBoxRes->Multiline = false;
 			this->richTextBoxRes->Name = L"richTextBoxRes";
 			this->richTextBoxRes->ReadOnly = true;
-			this->richTextBoxRes->RightToLeft = System::Windows::Forms::RightToLeft::Yes;
+			this->richTextBoxRes->RightToLeft = System::Windows::Forms::RightToLeft::No;
 			this->richTextBoxRes->ScrollBars = System::Windows::Forms::RichTextBoxScrollBars::None;
-			this->richTextBoxRes->Size = System::Drawing::Size(367, 45);
+			this->richTextBoxRes->Size = System::Drawing::Size(352, 40);
 			this->richTextBoxRes->TabIndex = 3;
 			this->richTextBoxRes->Text = L"0";
 			// 
 			// richTextBoxSign
 			// 
-			this->richTextBoxSign->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 27.75F, System::Drawing::FontStyle::Regular,
+			this->richTextBoxSign->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 20.25F, System::Drawing::FontStyle::Regular,
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			this->richTextBoxSign->Location = System::Drawing::Point(385, 108);
-			this->richTextBoxSign->MaxLength = 2;
+			this->richTextBoxSign->ForeColor = System::Drawing::SystemColors::GrayText;
+			this->richTextBoxSign->Location = System::Drawing::Point(12, 113);
+			this->richTextBoxSign->MaxLength = 4;
 			this->richTextBoxSign->Multiline = false;
 			this->richTextBoxSign->Name = L"richTextBoxSign";
 			this->richTextBoxSign->ReadOnly = true;
+			this->richTextBoxSign->RightToLeft = System::Windows::Forms::RightToLeft::Yes;
 			this->richTextBoxSign->ScrollBars = System::Windows::Forms::RichTextBoxScrollBars::None;
-			this->richTextBoxSign->Size = System::Drawing::Size(45, 45);
+			this->richTextBoxSign->Size = System::Drawing::Size(60, 40);
 			this->richTextBoxSign->TabIndex = 4;
 			this->richTextBoxSign->Text = L"";
 			// 
@@ -582,134 +545,134 @@ namespace WindowsFormsTemplate {
 		}
 #pragma endregion
 
-		bool rember_num = false;
-		bool dot = false;
-		bool sign_switch_mode;
-		bool first_iter = true;
+		bool is_operation_performed = false;
+		bool first_operation = true;
 
-//
-// Button funcs
-//
+		char* SystemStringToChar(System::String^ string) {
+			return (char*)(void*)System::Runtime::InteropServices::Marshal::StringToHGlobalAnsi(string);
+		}
 
-private: System::Void But0_Click(System::Object^ sender, System::EventArgs^ e) {
-	ClickPad(0);
-}
-private: System::Void But1_Click(System::Object^ sender, System::EventArgs^ e) {
-	ClickPad(1);
-}
-private: System::Void But2_Click(System::Object^ sender, System::EventArgs^ e) {
-	ClickPad(2);
-}
-private: System::Void But3_Click(System::Object^ sender, System::EventArgs^ e) {
-	ClickPad(3);
-}
-private: System::Void But4_Click(System::Object^ sender, System::EventArgs^ e) {
-	ClickPad(4);
-}
-private: System::Void But5_Click(System::Object^ sender, System::EventArgs^ e) {
-	ClickPad(5);
-}
-private: System::Void But6_Click(System::Object^ sender, System::EventArgs^ e) {
-	ClickPad(6);
-}
-private: System::Void But7_Click(System::Object^ sender, System::EventArgs^ e) {
-	ClickPad(7);
-}
-private: System::Void But8_Click(System::Object^ sender, System::EventArgs^ e) {
-	ClickPad(8);
-}
-private: System::Void But9_Click(System::Object^ sender, System::EventArgs^ e) {
-	ClickPad(9);
-}
-private: System::Void ButClear_Click(System::Object^ sender, System::EventArgs^ e) {
-	richTextBoxMain->Text = "0";
-	dot = false;
-}
-private: System::Void ButClearEverything_Click(System::Object^ sender, System::EventArgs^ e) {
-	richTextBoxMain->Text = "0";
-	richTextBoxRes->Text = "0";
-	richTextBoxSign->Text = "";
-	dot = false;
-}
-private: System::Void ButDot_Click(System::Object^ sender, System::EventArgs^ e) {
-	ClickPad(10);
-}
-	private: System::Void ButGetRes_Click(System::Object^ sender, System::EventArgs^ e) {
-		Calc(0);
+		void perform(char mode) {
+			char* str_main = SystemStringToChar(richTextBoxMain->Text);
+			char* str_res = SystemStringToChar(richTextBoxRes->Text);
+			double num_main, num_res, num = 0;
+			bool flag = false;
+			try {
+				if (strlen(str_main) > 19 || strlen(str_res) > 19) throw 0; // Overflow
+				if (!TextBoxCheck(str_main) || !TextBoxCheck(str_res)) throw 1; // Letters in TextBox
+				else {
+					num_main = atof(str_main);
+					num_res = atof(str_res);
+				}
+				if (num_main == 0 && mode == '/') throw 2;
+				if (num_main < 0 && mode == 'r') throw 3;
+				num = Calculate(mode, num_main, num_res);
+			}
+			catch (int a) {
+				switch (a)
+				{
+				case 0:
+					richTextBoxMain->Text = "TextBox Overflow";
+					break;
+				case 1:
+					richTextBoxMain->Text = "Wrong input";
+					break;
+				case 2:
+					richTextBoxMain->Text = "Division by zero";
+					break;
+				case 3:
+					richTextBoxMain->Text = "Imposible operation";
+					break;
+				default:
+					break;
+				}
+				flag = true;
+			}
+			if (!flag) {
+				richTextBoxRes->Text = Convert::ToString(num);
+			}
+			is_operation_performed = true;
+		}
+
+	private: System::Void ButPad_Click(System::Object^ sender, System::EventArgs^ e) {
+		if (richTextBoxMain->Text == "0" || is_operation_performed) {
+			richTextBoxMain->Clear();
+		}
+		is_operation_performed = false;
+		Button^ button = (Button^)sender;
+		if (richTextBoxMain->Text->Length < richTextBoxMain->MaxLength) {
+			if (button->Text == ".") {
+				if (!richTextBoxMain->Text->Contains(".")) {
+					richTextBoxMain->Text = richTextBoxMain->Text + button->Text;
+				}
+			}
+			else {
+				richTextBoxMain->Text = richTextBoxMain->Text + button->Text;
+			}
+		}
 	}
-private: System::Void ButPlus_Click(System::Object^ sender, System::EventArgs^ e) {
-	Calc(1);
-	richTextBoxSign->Text = "+";
-}
 
-private: System::Void ButMinus_Click(System::Object^ sender, System::EventArgs^ e) {
-	Calc(2);
-	richTextBoxSign->Text = "-";
-}
-private: System::Void ButMulti_Click(System::Object^ sender, System::EventArgs^ e) {
-	Calc(3);
-	richTextBoxSign->Text = "*";
-}
-private: System::Void ButDiv_Click(System::Object^ sender, System::EventArgs^ e) {
-	Calc(4);
-	richTextBoxSign->Text = "/";
-}
-private: System::Void ButSin_Click(System::Object^ sender, System::EventArgs^ e) {
-	Calc(5);
-	richTextBoxSign->Text = "s";
-}
-private: System::Void ButCos_Click(System::Object^ sender, System::EventArgs^ e) {
-	Calc(6);
-	richTextBoxSign->Text = "c";
-}
-private: System::Void ButTan_Click(System::Object^ sender, System::EventArgs^ e) {
-	Calc(7);
-	richTextBoxSign->Text = "t";
-}
-private: System::Void ButSqr_Click(System::Object^ sender, System::EventArgs^ e) {
-	Calc(8);
-	richTextBoxSign->Text = "^";
-}
-private: System::Void ButRoot_Click(System::Object^ sender, System::EventArgs^ e) {
-	Calc(9);
-	richTextBoxSign->Text = "√";
-}
-//
-// Calculating funcs
-//
+	private: System::Void ButClear_Click(System::Object^ sender, System::EventArgs^ e) {
+		richTextBoxMain->Text = "0";
+	}
 
-	   char* SystemStringToChar(System::String^ string) {
-		   return (char*)(void*)System::Runtime::InteropServices::Marshal::StringToHGlobalAnsi(string);
-	   }
+	private: System::Void ButClearEverything_Click(System::Object^ sender, System::EventArgs^ e) {
+		richTextBoxMain->Text = "0";
+		richTextBoxRes->Text = "0";
+		richTextBoxSign->Clear();
+		first_operation = true;
+	}
 
-	   void Calc(int mode) {
-		   char* str_main = SystemStringToChar(richTextBoxMain->Text);
-		   char* str_res = SystemStringToChar(richTextBoxRes->Text);
-		   //char sign = Convert::ToChar(richTextBoxSign->Text);
-		   char sign = '+';
-		   char* str = Calculate(mode, str_main, str_res, sign);
-		   richTextBoxMain->Text = Convert::ToString(str);
-		   richTextBoxRes->Text = Convert::ToString(str);
-		   rember_num = true;
-		   dot = false;
-	   }
-
-	   void ClickPad(int mode) {
-		   if (rember_num) {
-			   rember_num = false;
-			   richTextBoxMain->Text = "";
-		   }
-		   if (richTextBoxMain->Text == "0" && mode != 10) {
-			   richTextBoxMain->Text = Convert::ToString(mode);
-		   }
-		   else if (mode < 10 && mode > -1) {
-			   richTextBoxMain->Text = richTextBoxMain->Text + mode;
-		   }
-		   else if (!dot){
-			   richTextBoxMain->Text = richTextBoxMain->Text + ".";
-			   dot = true;
-		   }
-	   }
+	private: System::Void OperatorConverter_click(System::Object^ sender, System::EventArgs^ e) {
+		Button^ button = (Button^)sender;
+		if (button->Text != "=") {
+			richTextBoxSign->Text = button->Text;
+			first_operation = false;
+		}
+		char* operator_mode = SystemStringToChar(button->Text);
+		char mode;
+		static char last_mode;
+		if (strcmp(operator_mode, "sin") == 0) {
+			mode = 's';
+		}
+		else if (strcmp(operator_mode, "cos") == 0) {
+			mode = 'c';
+		}
+		else if (strcmp(operator_mode, "tan") == 0) {
+			mode = 't';
+		}
+		else if (strcmp(operator_mode, "sqr") == 0) {
+			mode = 'q';
+		}
+		else if (strcmp(operator_mode, "root") == 0) {
+			mode = 'r';
+		}
+		else if (strcmp(operator_mode, "+") == 0) {
+			mode = '+';
+		}
+		else if (strcmp(operator_mode, "-") == 0) {
+			mode = '-';
+		}
+		else if (strcmp(operator_mode, "*") == 0) {
+			mode = '*';
+		}
+		else if (strcmp(operator_mode, "/") == 0) {
+			mode = '/';
+		}
+		else if (strcmp(operator_mode, "=") == 0) {
+			if (first_operation) {
+				richTextBoxRes->Text = richTextBoxMain->Text;
+				is_operation_performed = true;
+			}
+			else {
+				mode = last_mode;
+			}
+		}
+		if (!first_operation) {
+			last_mode = mode;
+			perform(mode);
+		}
+	}
 
 };
 }
