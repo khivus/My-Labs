@@ -1,4 +1,5 @@
 ﻿  MainForm.cpp
+C:\Users\Khivus\Education\Programming\University\year 2 semester 1\Lab_3_Calculator\Calculator\Calculator\MainForm.h(648,34): warning C4566: character represented by universal-character-name '\u221A' cannot be represented in the current code page (1252)
   MainForm.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link
   Calculator.vcxproj -> C:\Users\Khivus\Education\Programming\University\year 2 semester 1\Lab_3_Calculator\Calculator\Debug\Calculator.exe
   0 File(s) copied

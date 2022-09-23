@@ -1,11 +1,11 @@
-﻿// CppCalculator v1.0.0 2022 Aleksey Kharin
-// Release ver!
+﻿// CppCalculator v1.0.2 2022 Aleksey Kharin
 
 #pragma once
 
 #include <string>
 #include <msclr\marshal_cppstd.h>
 #include "DllForCalc.h"
+#include <map>
 
 namespace WindowsFormsTemplate {
 
@@ -69,8 +69,11 @@ namespace WindowsFormsTemplate {
 	private: System::Windows::Forms::Button^ ButTan;
 	private: System::Windows::Forms::Button^ ButSin;
 	private: System::Windows::Forms::RichTextBox^ richTextBoxMain;
-	private: System::Windows::Forms::RichTextBox^ richTextBoxRes;
-	private: System::Windows::Forms::RichTextBox^ richTextBoxSign;
+
+
+	private: System::Windows::Forms::Label^ ResultLabel;
+
+	private: System::Windows::Forms::Label^ OverflowLabel;
 	private: System::ComponentModel::IContainer^ components;
 
 	private:
@@ -110,8 +113,8 @@ namespace WindowsFormsTemplate {
 			this->ButTan = (gcnew System::Windows::Forms::Button());
 			this->ButSin = (gcnew System::Windows::Forms::Button());
 			this->richTextBoxMain = (gcnew System::Windows::Forms::RichTextBox());
-			this->richTextBoxRes = (gcnew System::Windows::Forms::RichTextBox());
-			this->richTextBoxSign = (gcnew System::Windows::Forms::RichTextBox());
+			this->ResultLabel = (gcnew System::Windows::Forms::Label());
+			this->OverflowLabel = (gcnew System::Windows::Forms::Label());
 			this->SuspendLayout();
 			// 
 			// But0
@@ -350,7 +353,7 @@ namespace WindowsFormsTemplate {
 			this->ButSqr->Name = L"ButSqr";
 			this->ButSqr->Size = System::Drawing::Size(100, 60);
 			this->ButSqr->TabIndex = 0;
-			this->ButSqr->Text = L"sqr";
+			this->ButSqr->Text = L"sqrt";
 			this->ButSqr->UseVisualStyleBackColor = true;
 			this->ButSqr->Click += gcnew System::EventHandler(this, &MainForm::OperatorConverter_click);
 			// 
@@ -365,7 +368,7 @@ namespace WindowsFormsTemplate {
 			this->ButRoot->Name = L"ButRoot";
 			this->ButRoot->Size = System::Drawing::Size(100, 60);
 			this->ButRoot->TabIndex = 0;
-			this->ButRoot->Text = L"root";
+			this->ButRoot->Text = L"√";
 			this->ButRoot->UseVisualStyleBackColor = true;
 			this->ButRoot->Click += gcnew System::EventHandler(this, &MainForm::OperatorConverter_click);
 			// 
@@ -467,50 +470,43 @@ namespace WindowsFormsTemplate {
 			this->richTextBoxMain->MaxLength = 19;
 			this->richTextBoxMain->Multiline = false;
 			this->richTextBoxMain->Name = L"richTextBoxMain";
-			this->richTextBoxMain->RightToLeft = System::Windows::Forms::RightToLeft::No;
-			this->richTextBoxMain->Size = System::Drawing::Size(418, 141);
+			this->richTextBoxMain->RightToLeft = System::Windows::Forms::RightToLeft::Yes;
+			this->richTextBoxMain->Size = System::Drawing::Size(418, 50);
 			this->richTextBoxMain->TabIndex = 2;
 			this->richTextBoxMain->Text = L"0";
 			// 
-			// richTextBoxRes
+			// ResultLabel
 			// 
-			this->richTextBoxRes->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 20.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->ResultLabel->AutoSize = true;
+			this->ResultLabel->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->richTextBoxRes->ForeColor = System::Drawing::SystemColors::GrayText;
-			this->richTextBoxRes->Location = System::Drawing::Point(78, 113);
-			this->richTextBoxRes->MaxLength = 19;
-			this->richTextBoxRes->Multiline = false;
-			this->richTextBoxRes->Name = L"richTextBoxRes";
-			this->richTextBoxRes->ReadOnly = true;
-			this->richTextBoxRes->RightToLeft = System::Windows::Forms::RightToLeft::No;
-			this->richTextBoxRes->ScrollBars = System::Windows::Forms::RichTextBoxScrollBars::None;
-			this->richTextBoxRes->Size = System::Drawing::Size(352, 40);
-			this->richTextBoxRes->TabIndex = 3;
-			this->richTextBoxRes->Text = L"0";
+			this->ResultLabel->ForeColor = System::Drawing::Color::DimGray;
+			this->ResultLabel->Location = System::Drawing::Point(12, 65);
+			this->ResultLabel->Name = L"ResultLabel";
+			this->ResultLabel->RightToLeft = System::Windows::Forms::RightToLeft::No;
+			this->ResultLabel->Size = System::Drawing::Size(10, 24);
+			this->ResultLabel->TabIndex = 5;
+			this->ResultLabel->Text = L"\r\n";
 			// 
-			// richTextBoxSign
+			// OverflowLabel
 			// 
-			this->richTextBoxSign->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 20.25F, System::Drawing::FontStyle::Regular,
-				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			this->richTextBoxSign->ForeColor = System::Drawing::SystemColors::GrayText;
-			this->richTextBoxSign->Location = System::Drawing::Point(12, 113);
-			this->richTextBoxSign->MaxLength = 4;
-			this->richTextBoxSign->Multiline = false;
-			this->richTextBoxSign->Name = L"richTextBoxSign";
-			this->richTextBoxSign->ReadOnly = true;
-			this->richTextBoxSign->RightToLeft = System::Windows::Forms::RightToLeft::Yes;
-			this->richTextBoxSign->ScrollBars = System::Windows::Forms::RichTextBoxScrollBars::None;
-			this->richTextBoxSign->Size = System::Drawing::Size(60, 40);
-			this->richTextBoxSign->TabIndex = 4;
-			this->richTextBoxSign->Text = L"";
+			this->OverflowLabel->AutoSize = true;
+			this->OverflowLabel->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->OverflowLabel->Location = System::Drawing::Point(12, 136);
+			this->OverflowLabel->Name = L"OverflowLabel";
+			this->OverflowLabel->Size = System::Drawing::Size(120, 20);
+			this->OverflowLabel->TabIndex = 5;
+			this->OverflowLabel->Text = L"Too much digits";
+			this->OverflowLabel->Visible = false;
 			// 
 			// MainForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(442, 561);
-			this->Controls->Add(this->richTextBoxSign);
-			this->Controls->Add(this->richTextBoxRes);
+			this->Controls->Add(this->OverflowLabel);
+			this->Controls->Add(this->ResultLabel);
 			this->Controls->Add(this->richTextBoxMain);
 			this->Controls->Add(this->ButSin);
 			this->Controls->Add(this->ButCos);
@@ -541,12 +537,19 @@ namespace WindowsFormsTemplate {
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Calculator";
 			this->ResumeLayout(false);
+			this->PerformLayout();
 
 		}
 #pragma endregion
 
 		bool is_operation_performed = false;
-		bool first_operation = true;
+		bool waiting_second_operator = true;
+		bool first_res_click = true;
+		double first_num = NULL;
+		double second_num = NULL;
+		double res_num = NULL;
+		char sign;
+		char last_sign;
 
 		char* SystemStringToChar(System::String^ string) {
 			return (char*)(void*)System::Runtime::InteropServices::Marshal::StringToHGlobalAnsi(string);
@@ -554,7 +557,7 @@ namespace WindowsFormsTemplate {
 
 		void perform(char mode) {
 			char* str_main = SystemStringToChar(richTextBoxMain->Text);
-			char* str_res = SystemStringToChar(richTextBoxRes->Text);
+			char* str_res = "mew"; //SystemStringToChar(richTextBoxRes->Text);
 			double num_main, num_res, num = 0;
 			bool flag = false;
 			try {
@@ -589,7 +592,7 @@ namespace WindowsFormsTemplate {
 				flag = true;
 			}
 			if (!flag) {
-				richTextBoxRes->Text = Convert::ToString(num);
+				//richTextBoxRes->Text = Convert::ToString(num);
 			}
 			is_operation_performed = true;
 		}
@@ -610,67 +613,74 @@ namespace WindowsFormsTemplate {
 				richTextBoxMain->Text = richTextBoxMain->Text + button->Text;
 			}
 		}
+		else {
+			OverflowLabel->Visible = true;
+		}
 	}
 
 	private: System::Void ButClear_Click(System::Object^ sender, System::EventArgs^ e) {
 		richTextBoxMain->Text = "0";
+		OverflowLabel->Visible = false;
 	}
 
 	private: System::Void ButClearEverything_Click(System::Object^ sender, System::EventArgs^ e) {
 		richTextBoxMain->Text = "0";
-		richTextBoxRes->Text = "0";
-		richTextBoxSign->Clear();
-		first_operation = true;
+		OverflowLabel->Visible = false;
+		ResultLabel->Text = "";
 	}
+
 
 	private: System::Void OperatorConverter_click(System::Object^ sender, System::EventArgs^ e) {
 		Button^ button = (Button^)sender;
-		if (button->Text != "=") {
-			richTextBoxSign->Text = button->Text;
-			first_operation = false;
-		}
 		char* operator_mode = SystemStringToChar(button->Text);
-		char mode;
-		static char last_mode;
 		if (strcmp(operator_mode, "sin") == 0) {
-			mode = 's';
+			sign = 's';
 		}
 		else if (strcmp(operator_mode, "cos") == 0) {
-			mode = 'c';
+			sign = 'c';
 		}
 		else if (strcmp(operator_mode, "tan") == 0) {
-			mode = 't';
+			sign = 't';
 		}
-		else if (strcmp(operator_mode, "sqr") == 0) {
-			mode = 'q';
+		else if (strcmp(operator_mode, "sqrt") == 0) {
+			sign = 'q';
 		}
-		else if (strcmp(operator_mode, "root") == 0) {
-			mode = 'r';
+		else if (strcmp(operator_mode, "√") == 0) {
+			sign = 'r';
 		}
 		else if (strcmp(operator_mode, "+") == 0) {
-			mode = '+';
+			sign = '+';
 		}
 		else if (strcmp(operator_mode, "-") == 0) {
-			mode = '-';
+			sign = '-';
 		}
 		else if (strcmp(operator_mode, "*") == 0) {
-			mode = '*';
+			sign = '*';
 		}
 		else if (strcmp(operator_mode, "/") == 0) {
-			mode = '/';
+			sign = '/';
 		}
 		else if (strcmp(operator_mode, "=") == 0) {
-			if (first_operation) {
-				richTextBoxRes->Text = richTextBoxMain->Text;
-				is_operation_performed = true;
+			sign = '=';
+		}
+		if (sign == '=') {
+			if (first_res_click) {
+				ResultLabel->Text = ResultLabel->Text + " " + richTextBoxMain->Text + " " + button->Text;
+				first_res_click = false;
+				//res_num = calculate...
 			}
 			else {
-				mode = last_mode;
+				ResultLabel->Text = second_num + " " + sign + " " + first_num + " = ";
+				///res_num = Calculate... with first and second num
+				//richTextBoxMain->Text = res_num
 			}
 		}
-		if (!first_operation) {
-			last_mode = mode;
-			perform(mode);
+		else if (sign == '+' || sign == '-' || sign == '*' || sign == '/') {
+			ResultLabel->Text = richTextBoxMain->Text + " " + button->Text;
+			first_res_click = true;
+		}
+		else if (sign == 's' || sign == 'c' || sign == 't' || sign == 'q' || sign == 'r') {
+			first_res_click = true;
 		}
 	}
 
