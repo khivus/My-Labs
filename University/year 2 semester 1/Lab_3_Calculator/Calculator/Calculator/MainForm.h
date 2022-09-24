@@ -1,4 +1,4 @@
-﻿// CppCalculator v1.0.2 2022 Aleksey Kharin
+﻿// CppCalculator v1.0.3 2022 Aleksey Kharin
 
 #pragma once
 
@@ -484,9 +484,8 @@ namespace WindowsFormsTemplate {
 			this->ResultLabel->Location = System::Drawing::Point(12, 65);
 			this->ResultLabel->Name = L"ResultLabel";
 			this->ResultLabel->RightToLeft = System::Windows::Forms::RightToLeft::No;
-			this->ResultLabel->Size = System::Drawing::Size(10, 24);
+			this->ResultLabel->Size = System::Drawing::Size(0, 24);
 			this->ResultLabel->TabIndex = 5;
-			this->ResultLabel->Text = L"\r\n";
 			// 
 			// OverflowLabel
 			// 
@@ -545,11 +544,19 @@ namespace WindowsFormsTemplate {
 		bool is_operation_performed = false;
 		bool waiting_second_operator = true;
 		bool first_res_click = true;
+		bool first_time = true;
+		bool equal_repeat_mode = false;
+		bool simple_oper_used = false;
+		bool comp_oper_used = false;
 		double first_num = NULL;
 		double second_num = NULL;
 		double res_num = NULL;
-		char sign;
-		char last_sign;
+		double scale_num = NULL;
+		char sign = NULL;
+		char last_sign = NULL;
+		char* operator_mode = NULL;
+		String^ sign_s;
+		String^ last_sign_s;
 
 		char* SystemStringToChar(System::String^ string) {
 			return (char*)(void*)System::Runtime::InteropServices::Marshal::StringToHGlobalAnsi(string);
@@ -627,12 +634,51 @@ namespace WindowsFormsTemplate {
 		richTextBoxMain->Text = "0";
 		OverflowLabel->Visible = false;
 		ResultLabel->Text = "";
+		first_time = true;
+		simple_oper_used = false;
+		comp_oper_used = false;
+		first_res_click = true;
+		equal_repeat_mode = false;
+		sign = NULL;
+		last_sign = NULL;
+		scale_num = NULL;
+		operator_mode = NULL;
+		sign_s = "";
+		last_sign_s = "";
 	}
 
+		   double calculate(double num1, double num2, char sign) {
+			   double num;
+			   switch (sign)
+			   {
+			   case '+':
+				   num = num1 + num2;
+				   break;
+			   default:
+				   break;
+			   }
+			   return num;
+		   }
 
 	private: System::Void OperatorConverter_click(System::Object^ sender, System::EventArgs^ e) {
 		Button^ button = (Button^)sender;
-		char* operator_mode = SystemStringToChar(button->Text);
+
+		if (!equal_repeat_mode) {
+			if (sign != NULL) {
+				last_sign = sign;
+				last_sign_s = sign_s;
+			}
+			if (first_num != NULL) {
+				second_num = first_num;
+			}
+			first_num = Convert::ToDouble(richTextBoxMain->Text);
+		}
+		else {
+			scale_num = Convert::ToDouble(richTextBoxMain->Text);
+		}
+		sign_s = button->Text;
+		operator_mode = SystemStringToChar(button->Text);
+		
 		if (strcmp(operator_mode, "sin") == 0) {
 			sign = 's';
 		}
@@ -664,23 +710,45 @@ namespace WindowsFormsTemplate {
 			sign = '=';
 		}
 		if (sign == '=') {
-			if (first_res_click) {
-				ResultLabel->Text = ResultLabel->Text + " " + richTextBoxMain->Text + " " + button->Text;
-				first_res_click = false;
-				//res_num = calculate...
+			if (equal_repeat_mode) {
+				res_num = calculate(first_num, scale_num, last_sign);
+				richTextBoxMain->Text = Convert::ToString(res_num);
+				ResultLabel->Text = Convert::ToString(first_num) + " " + last_sign_s + " " + Convert::ToString(scale_num) + " =";
 			}
-			else {
-				ResultLabel->Text = second_num + " " + sign + " " + first_num + " = ";
-				///res_num = Calculate... with first and second num
-				//richTextBoxMain->Text = res_num
+			if (first_res_click) {
+				if (simple_oper_used && comp_oper_used) {
+
+					ResultLabel->Text = ResultLabel->Text + " =";
+					first_res_click = false;
+				}
+				else if (simple_oper_used) {
+					ResultLabel->Text = Convert::ToString(second_num) + " " + last_sign_s + " " + Convert::ToString(first_num) + " =";
+					equal_repeat_mode = true;
+					first_res_click = false;
+				}
+				else if (comp_oper_used) {
+					ResultLabel->Text = ResultLabel->Text + " =";
+					first_res_click = false;
+				}
 			}
 		}
 		else if (sign == '+' || sign == '-' || sign == '*' || sign == '/') {
-			ResultLabel->Text = richTextBoxMain->Text + " " + button->Text;
+			ResultLabel->Text = first_num + " " + button->Text; 
+			simple_oper_used = true;
 			first_res_click = true;
+			equal_repeat_mode = false;
 		}
 		else if (sign == 's' || sign == 'c' || sign == 't' || sign == 'q' || sign == 'r') {
+			if (first_time) {
+				ResultLabel->Text = button->Text + "(" + richTextBoxMain->Text + ")";
+				first_time = false;
+			}
+			else {
+				ResultLabel->Text = button->Text + "(" + ResultLabel->Text + ")";
+			}
+			comp_oper_used = true;
 			first_res_click = true;
+			equal_repeat_mode = false;
 		}
 	}
 
