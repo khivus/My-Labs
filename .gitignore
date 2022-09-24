@@ -1,2 +1,2 @@
 # Ignore Browse.VC.db files
-*/.vs/
+.vs
