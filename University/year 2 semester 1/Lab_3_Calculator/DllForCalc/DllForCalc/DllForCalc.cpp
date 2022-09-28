@@ -7,7 +7,7 @@ using namespace std;
 
 bool TextBoxCheck(char* str) {
 	string txt = str;
-	string nums = "0123456789.-";
+	string nums = "0123456789.-eE+";
 	bool check = true;
 	bool tmp_check;
 	for (unsigned int i = 0; i < txt.length(); i++) {
@@ -24,35 +24,36 @@ bool TextBoxCheck(char* str) {
 	return check;
 }
 
-double Calculate(char mode, double num_main, double num_res) {
+double calculate(double num1, double num2, char sign) {
 	double num = 0;
-	switch (mode) {
+	switch (sign)
+	{
 	case '+':
-		num = num_res + num_main;
+		num = num1 + num2;
 		break;
 	case '-':
-		num = num_res - num_main;
+		num = num1 - num2;
 		break;
 	case '*':
-		num = num_res * num_main;
+		num = num1 * num2;
 		break;
 	case '/':
-		num = num_res / num_main;
+		num = num1 / num2;
 		break;
-	case 's': // sin
-		num = sin(num_main);
+	case 's':
+		num = sin(num1);
 		break;
-	case 'c': // cos
-		num = cos(num_main);
+	case 'c':
+		num = cos(num1);
 		break;
-	case 't': // tan
-		num = tan(num_main);
+	case 't':
+		num = tan(num1);
 		break;
-	case 'q': // ^2
-		num = num_main * num_main;
+	case 'q':
+		num = num1 * num1;
 		break;
-	case 'r': // ^1/2
-		num = sqrt(num_main);
+	case 'r':
+		num = sqrt(num1);
 		break;
 	default:
 		break;
