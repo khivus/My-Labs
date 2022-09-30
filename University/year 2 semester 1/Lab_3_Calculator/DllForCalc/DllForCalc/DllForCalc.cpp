@@ -50,7 +50,7 @@ double calculate(double num1, double num2, char sign) {
 		num = tan(num1);
 		break;
 	case 'q':
-		num = num1 * num1;
+		num = pow(num1, num2);
 		break;
 	case 'r':
 		num = sqrt(num1);

@@ -1,4 +1,4 @@
-﻿// Calculator v1.1.0 2022 Aleksey Kharin
+﻿// Calculator v1.1.1 2022 Aleksey Kharin
 
 #pragma once
 
@@ -350,7 +350,7 @@ namespace WindowsFormsTemplate {
 			this->ButSqr->Name = L"ButSqr";
 			this->ButSqr->Size = System::Drawing::Size(100, 60);
 			this->ButSqr->TabIndex = 0;
-			this->ButSqr->Text = L"pow";
+			this->ButSqr->Text = L"^";
 			this->ButSqr->UseVisualStyleBackColor = true;
 			this->ButSqr->Click += gcnew System::EventHandler(this, &MainForm::OperatorConverter_click);
 			// 
@@ -467,7 +467,7 @@ namespace WindowsFormsTemplate {
 			this->richTextBoxMain->MaxLength = 19;
 			this->richTextBoxMain->Multiline = false;
 			this->richTextBoxMain->Name = L"richTextBoxMain";
-			this->richTextBoxMain->RightToLeft = System::Windows::Forms::RightToLeft::Yes;
+			this->richTextBoxMain->RightToLeft = System::Windows::Forms::RightToLeft::No;
 			this->richTextBoxMain->Size = System::Drawing::Size(418, 50);
 			this->richTextBoxMain->TabIndex = 2;
 			this->richTextBoxMain->Text = L"0";
@@ -539,6 +539,7 @@ namespace WindowsFormsTemplate {
 		}
 #pragma endregion
 
+		bool first_time = true;
 		bool is_operation_performed = false;
 		bool waiting_second_operator = true;
 		bool first_res_click = true;
@@ -573,13 +574,61 @@ namespace WindowsFormsTemplate {
 		char* fhandle(double num1, double num2, char sign, char* str1, char* str2) {
 			try {
 				if (strlen(str1) > 18 || strlen(str2) > 39) throw "Overflow";
-				if (num1 == 0 && sign == '/') throw "Divizion by zero";
+				if (num1 == 0 && sign == '/' && num2 != NULL) throw "Divizion by zero";
 				if (num1 < 0 && sign == 'r') throw "Imposible operation";
 			}
 			catch (char* error) {
 				return error;
 			}
 			return NULL;
+		}
+
+		void disable_buts() {
+			But0->Enabled = false;
+			But1->Enabled = false;
+			But2->Enabled = false;
+			But3->Enabled = false;
+			But4->Enabled = false;
+			But5->Enabled = false;
+			But6->Enabled = false;
+			But7->Enabled = false;
+			But8->Enabled = false;
+			But9->Enabled = false;
+			ButRoot->Enabled = false;
+			ButSqr->Enabled = false;
+			ButSin->Enabled = false;
+			ButCos->Enabled = false;
+			ButTan->Enabled = false;
+			ButPlus->Enabled = false;
+			ButMinus->Enabled = false;
+			ButMulti->Enabled = false;
+			ButDiv->Enabled = false;
+			ButGetRes->Enabled = false;
+			ButDot->Enabled = false;
+		}
+
+		void enable_buts() {
+			But0->Enabled = true;
+			But1->Enabled = true;
+			But2->Enabled = true;
+			But3->Enabled = true;
+			But4->Enabled = true;
+			But5->Enabled = true;
+			But6->Enabled = true;
+			But7->Enabled = true;
+			But8->Enabled = true;
+			But9->Enabled = true;
+			ButRoot->Enabled = true;
+			ButSqr->Enabled = true;
+			ButSin->Enabled = true;
+			ButCos->Enabled = true;
+			ButTan->Enabled = true;
+			ButPlus->Enabled = true;
+			ButMinus->Enabled = true;
+			ButMulti->Enabled = true;
+			ButDiv->Enabled = true;
+			ButGetRes->Enabled = true;
+			ButDot->Enabled = true;
 		}
 
 	private: System::Void ButPad_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -608,9 +657,11 @@ namespace WindowsFormsTemplate {
 	private: System::Void ButClear_Click(System::Object^ sender, System::EventArgs^ e) {
 		richTextBoxMain->Text = "0";
 		OverflowLabel->Visible = false;
+		enable_buts();
 	}
 
 	private: System::Void ButClearEverything_Click(System::Object^ sender, System::EventArgs^ e) {
+		enable_buts();
 		// Boxes
 		richTextBoxMain->Text = "0";
 		ResultLabel->Text = "";
@@ -622,6 +673,7 @@ namespace WindowsFormsTemplate {
 		first_res_click = true;
 		equal_repeat_mode = false;
 		switch_oper_mode = true;
+		first_time = true;
 		// Signs
 		sign = NULL;
 		last_sign = NULL;
@@ -677,7 +729,7 @@ namespace WindowsFormsTemplate {
 			else if (strcmp(operator_mode, "tan") == 0) {
 				sign = 't';
 			}
-			else if (strcmp(operator_mode, "pow") == 0) {
+			else if (strcmp(operator_mode, "^") == 0) {
 				sign = 'q';
 			}
 			else if (strcmp(operator_mode, "sqrt") == 0) {
@@ -703,51 +755,72 @@ namespace WindowsFormsTemplate {
 			if (error_c != NULL) {
 				richTextBoxMain->Text = CharToSystemString(error_c);
 				error_show = true;
+				disable_buts();
 			}
 			else {
 				if (sign == '=') {
-
-					if (equal_repeat_mode) {
-						res_num = calculate(scale_num, first_num, last_sign);
-						richTextBoxMain->Text = Convert::ToString(res_num);
-						ResultLabel->Text = Convert::ToString(scale_num) + " " + last_sign_s + " " + Convert::ToString(first_num) + " =";
+					error_c = fhandle(first_num, second_num, last_sign, str_main, str_res);
+					if (error_c != NULL) {
+						richTextBoxMain->Text = CharToSystemString(error_c);
+						error_show = true;
+						disable_buts();
 					}
-					if (first_res_click) {
-						if (simple_oper_used) {
-							res_num = calculate(second_num, first_num, last_sign);
+					else {
+						if (equal_repeat_mode) {
+							res_num = calculate(scale_num, first_num, last_sign);
 							richTextBoxMain->Text = Convert::ToString(res_num);
-							ResultLabel->Text = Convert::ToString(second_num) + " " + last_sign_s + " " + Convert::ToString(first_num) + " =";
-							equal_repeat_mode = true;
+							ResultLabel->Text = Convert::ToString(scale_num) + " " + last_sign_s + " " + Convert::ToString(first_num) + " =";
 						}
-						else if (comp_oper_used) {
-							res_num = calculate(first_num, NULL, last_sign);
-							richTextBoxMain->Text = Convert::ToString(res_num);
-							ResultLabel->Text = ResultLabel->Text + " =";
+						if (first_res_click) {
+							if (simple_oper_used) {
+								res_num = calculate(second_num, first_num, last_sign);
+								richTextBoxMain->Text = Convert::ToString(res_num);
+								ResultLabel->Text = Convert::ToString(second_num) + " " + last_sign_s + " " + Convert::ToString(first_num) + " =";
+								equal_repeat_mode = true;
+							}
+							else if (comp_oper_used) {
+								res_num = calculate(first_num, NULL, last_sign);
+								richTextBoxMain->Text = Convert::ToString(res_num);
+								ResultLabel->Text = ResultLabel->Text + " =";
+							}
 						}
 					}
-
+					first_time = true;
 					switch_oper_mode = false;
 					first_res_click = false;
 					simple_oper_used = false;
 					comp_oper_used = false;
+					is_operation_performed = true;
 				}
-				else if (sign == '+' || sign == '-' || sign == '*' || sign == '/') {
+				else if (sign == '-' && first_num == 0) {
+					richTextBoxMain->Text = "-";
+					is_operation_performed = false;
+				}
+				else if (sign == '+' || sign == '-' || sign == '*' || sign == '/' || sign == 'q') {
+					
 					if (switch_oper_mode) {
 						ResultLabel->Text = Convert::ToString(first_num) + " " + sign_s;
 					}
 					else {
 						switch_oper_mode = true;
-						res_num = calculate(second_num, first_num, sign);
+						if (first_time) {
+							first_time = false;
+							res_num = calculate(second_num, first_num, sign);
+						}
+						else {
+							res_num = calculate(second_num, first_num, last_sign);
+						}
 						richTextBoxMain->Text = Convert::ToString(res_num);
 						first_num = res_num;
 						ResultLabel->Text = Convert::ToString(first_num) + " " + sign_s;
 					}
-
+					first_time = false;
 					simple_oper_used = true;
 					first_res_click = true;
 					equal_repeat_mode = false;
+					is_operation_performed = true;
 				}
-				else if (sign == 's' || sign == 'c' || sign == 't' || sign == 'q' || sign == 'r') {
+				else if (sign == 's' || sign == 'c' || sign == 't' || sign == 'r') {
 					res_num = calculate(first_num, NULL, sign);
 					richTextBoxMain->Text = Convert::ToString(res_num);
 					ResultLabel->Text = sign_s + "(" + Convert::ToString(first_num) + ")";
@@ -756,6 +829,7 @@ namespace WindowsFormsTemplate {
 					comp_oper_used = true;
 					first_res_click = true;
 					equal_repeat_mode = false;
+					is_operation_performed = true;
 				}
 			}
 		}
@@ -764,9 +838,8 @@ namespace WindowsFormsTemplate {
 		if (error_c != NULL) {
 			richTextBoxMain->Text = CharToSystemString(error_c);
 			error_show = true;
+			disable_buts();
 		}
-
-		is_operation_performed = true;
 	}
 
 };
