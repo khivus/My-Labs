@@ -1,4 +1,4 @@
-#Lab 2 Binary tree
+# Lab 2 Binary tree
 	
 Not made by me!
 
