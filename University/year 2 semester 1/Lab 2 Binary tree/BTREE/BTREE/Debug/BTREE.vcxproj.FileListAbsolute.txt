@@ -1,0 +1,12 @@
+C:\Users\Zloy\source\repos\BTREE\BTREE\Debug\BTREE.vcxproj.AssemblyReference.cache
+C:\Users\Zloy\source\repos\BTREE\BTREE\Debug\BTREE.MainForm.resources
+C:\Users\Zloy\source\repos\BTREE\BTREE\Debug\BTREE.vcxproj.GenerateResource.cache
+C:\Users\class\Downloads\BTREE\BTREE\BTREE\Debug\BTREE.vcxprojAssemblyReference.cache
+C:\Users\class\Downloads\BTREE\BTREE\BTREE\Debug\BTREE.MainForm.resources
+C:\Users\class\Downloads\BTREE\BTREE\BTREE\Debug\BTREE.vcxproj.GenerateResource.cache
+C:\Users\Zloy\Desktop\BTREE\BTREE\Debug\BTREE.vcxproj.AssemblyReference.cache
+C:\Users\Zloy\Desktop\BTREE\BTREE\Debug\BTREE.MainForm.resources
+C:\Users\Zloy\Desktop\BTREE\BTREE\Debug\BTREE.vcxproj.GenerateResource.cache
+C:\Users\Khivus\source\repos\Tree test\BTREE\BTREE\Debug\BTREE.vcxproj.AssemblyReference.cache
+C:\Users\Khivus\source\repos\Tree test\BTREE\BTREE\Debug\BTREE.MainForm.resources
+C:\Users\Khivus\source\repos\Tree test\BTREE\BTREE\Debug\BTREE.vcxproj.GenerateResource.cache

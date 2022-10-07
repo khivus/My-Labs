@@ -1,0 +1,14 @@
+﻿  0 File(s) copied
+  MainForm.cpp
+C:\Users\Khivus\source\repos\Tree test\BTREE\BTREE\MainForm.h(305,98): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Khivus\source\repos\Tree test\BTREE\BTREE\MainForm.h(305,84): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Khivus\source\repos\Tree test\BTREE\BTREE\MainForm.h(308,97): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Khivus\source\repos\Tree test\BTREE\BTREE\MainForm.h(308,84): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Khivus\source\repos\Tree test\BTREE\BTREE\MainForm.h(311,97): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Khivus\source\repos\Tree test\BTREE\BTREE\MainForm.h(311,84): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Khivus\source\repos\Tree test\BTREE\BTREE\MainForm.h(329,32): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\Khivus\source\repos\Tree test\BTREE\BTREE\MainForm.h(333,32): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\Khivus\source\repos\Tree test\BTREE\BTREE\MainForm.h(229): warning C4715: 'WindowsFormsTemplate::MainForm::sumBT': not all control paths return a value
+C:\Users\Khivus\source\repos\Tree test\BTREE\BTREE\MainForm.h(293): warning C4715: 'WindowsFormsTemplate::MainForm::find_all': not all control paths return a value
+  MainForm.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link
+  BTREE.vcxproj -> C:\Users\Khivus\source\repos\Tree test\BTREE\Debug\BTREE.exe
