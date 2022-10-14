@@ -1,0 +1,11 @@
+C:\Users\Khivus\RiderProjects\Lab-4-DB\Lab-4-DB\bin\Debug\Lab_4_DB.exe.config
+C:\Users\Khivus\RiderProjects\Lab-4-DB\Lab-4-DB\bin\Debug\Lab_4_DB.exe
+C:\Users\Khivus\RiderProjects\Lab-4-DB\Lab-4-DB\bin\Debug\Lab_4_DB.pdb
+C:\Users\Khivus\RiderProjects\Lab-4-DB\Lab-4-DB\obj\Debug\Lab-4-DB.csproj.AssemblyReference.cache
+C:\Users\Khivus\RiderProjects\Lab-4-DB\Lab-4-DB\obj\Debug\Lab-4-DB.csproj.SuggestedBindingRedirects.cache
+C:\Users\Khivus\RiderProjects\Lab-4-DB\Lab-4-DB\obj\Debug\Lab_4_DB.Properties.Resources.resources
+C:\Users\Khivus\RiderProjects\Lab-4-DB\Lab-4-DB\obj\Debug\Lab-4-DB.csproj.GenerateResource.cache
+C:\Users\Khivus\RiderProjects\Lab-4-DB\Lab-4-DB\obj\Debug\Lab-4-DB.csproj.CoreCompileInputs.cache
+C:\Users\Khivus\RiderProjects\Lab-4-DB\Lab-4-DB\obj\Debug\Lab_4_DB.exe
+C:\Users\Khivus\RiderProjects\Lab-4-DB\Lab-4-DB\obj\Debug\Lab_4_DB.pdb
+C:\Users\Khivus\RiderProjects\Lab-4-DB\Lab-4-DB\obj\Debug\Lab_4_DB.Form1.resources
