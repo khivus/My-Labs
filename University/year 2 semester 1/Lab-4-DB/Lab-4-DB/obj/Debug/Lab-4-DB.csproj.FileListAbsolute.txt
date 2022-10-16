@@ -9,3 +9,14 @@ C:\Users\Khivus\RiderProjects\Lab-4-DB\Lab-4-DB\obj\Debug\Lab-4-DB.csproj.CoreCo
 C:\Users\Khivus\RiderProjects\Lab-4-DB\Lab-4-DB\obj\Debug\Lab_4_DB.exe
 C:\Users\Khivus\RiderProjects\Lab-4-DB\Lab-4-DB\obj\Debug\Lab_4_DB.pdb
 C:\Users\Khivus\RiderProjects\Lab-4-DB\Lab-4-DB\obj\Debug\Lab_4_DB.Form1.resources
+D:\My-Labs\University\year 2 semester 1\Lab-4-DB\Lab-4-DB\bin\Debug\Lab_4_DB.exe.config
+D:\My-Labs\University\year 2 semester 1\Lab-4-DB\Lab-4-DB\bin\Debug\Lab_4_DB.exe
+D:\My-Labs\University\year 2 semester 1\Lab-4-DB\Lab-4-DB\bin\Debug\Lab_4_DB.pdb
+D:\My-Labs\University\year 2 semester 1\Lab-4-DB\Lab-4-DB\obj\Debug\Lab-4-DB.csproj.AssemblyReference.cache
+D:\My-Labs\University\year 2 semester 1\Lab-4-DB\Lab-4-DB\obj\Debug\Lab-4-DB.csproj.SuggestedBindingRedirects.cache
+D:\My-Labs\University\year 2 semester 1\Lab-4-DB\Lab-4-DB\obj\Debug\Lab_4_DB.Form1.resources
+D:\My-Labs\University\year 2 semester 1\Lab-4-DB\Lab-4-DB\obj\Debug\Lab_4_DB.Properties.Resources.resources
+D:\My-Labs\University\year 2 semester 1\Lab-4-DB\Lab-4-DB\obj\Debug\Lab-4-DB.csproj.GenerateResource.cache
+D:\My-Labs\University\year 2 semester 1\Lab-4-DB\Lab-4-DB\obj\Debug\Lab-4-DB.csproj.CoreCompileInputs.cache
+D:\My-Labs\University\year 2 semester 1\Lab-4-DB\Lab-4-DB\obj\Debug\Lab_4_DB.exe
+D:\My-Labs\University\year 2 semester 1\Lab-4-DB\Lab-4-DB\obj\Debug\Lab_4_DB.pdb

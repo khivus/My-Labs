@@ -1,5 +1,0 @@
-﻿  treeDLL.cpp
-C:\Users\Zloy\source\repos\treeDLL\treeDLL\treeDLL.cpp(44): warning C4715: summing: значение возвращается не при всех путях выполнения
-C:\Users\Zloy\source\repos\treeDLL\treeDLL\treeDLL.cpp(140): warning C4715: find_del: значение возвращается не при всех путях выполнения
-     Создается библиотека C:\Users\Zloy\source\repos\treeDLL\Debug\treeDLL.lib и объект C:\Users\Zloy\source\repos\treeDLL\Debug\treeDLL.exp
-  treeDLL.vcxproj -> C:\Users\Zloy\source\repos\treeDLL\Debug\treeDLL.dll
