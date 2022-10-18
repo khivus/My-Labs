@@ -1,0 +1,5 @@
+C:\Windows\system32\wsl.exe --distribution Ubuntu --exec /bin/bash -c "export CMAKE_COLOR_DIAGNOSTICS=ON && export CLION_IDE=TRUE && export JETBRAINS_IDE=TRUE && cd '/mnt/c/Users/Khivus/CLionProjects/Lab 4 DB/cmake-build-debug' && /usr/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G 'CodeBlocks - Unix Makefiles' -S '/mnt/c/Users/Khivus/CLionProjects/Lab 4 DB' -B '/mnt/c/Users/Khivus/CLionProjects/Lab 4 DB/cmake-build-debug'; exitcode=$?; sleep 0.001; (exit $exitcode)"
+/usr/bin/cmake: /usr/local/lib/libcurl.so.4: no version information available (required by /usr/bin/cmake)
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /mnt/c/Users/Khivus/CLionProjects/Lab 4 DB/cmake-build-debug
