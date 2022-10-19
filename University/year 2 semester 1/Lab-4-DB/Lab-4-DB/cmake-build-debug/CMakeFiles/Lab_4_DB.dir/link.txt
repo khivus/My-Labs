@@ -1,1 +1,0 @@
-/usr/bin/c++ -g CMakeFiles/Lab_4_DB.dir/main.cpp.o -o Lab_4_DB  -Wl,-rpath,/usr/local/lib /usr/local/lib/libsqlite3.so 
