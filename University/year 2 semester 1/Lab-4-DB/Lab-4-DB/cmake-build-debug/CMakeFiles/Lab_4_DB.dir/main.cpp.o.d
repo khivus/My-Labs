@@ -1,5 +1,5 @@
 CMakeFiles/Lab_4_DB.dir/main.cpp.o: \
- /mnt/c/Users/Khivus/CLionProjects/Lab\ 4\ DB/main.cpp \
+ /mnt/d/My-Labs/University/year\ 2\ semester\ 1/Lab-4-DB/Lab-4-DB/main.cpp \
  /usr/include/stdc-predef.h /usr/include/c++/11/iostream \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \

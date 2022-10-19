@@ -8,18 +8,18 @@
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="/mnt/c/Users/Khivus/CLionProjects/Lab 4 DB/cmake-build-debug"/>
+				<Option working_dir="/mnt/d/My-Labs/University/year 2 semester 1/Lab-4-DB/Lab-4-DB/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/gmake -j12 -f &quot;/mnt/c/Users/Khivus/CLionProjects/Lab\ 4\ DB/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/gmake -j12 -f &quot;/mnt/c/Users/Khivus/CLionProjects/Lab\ 4\ DB/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -j12 -f &quot;/mnt/c/Users/Khivus/CLionProjects/Lab\ 4\ DB/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -j12 -f &quot;/mnt/c/Users/Khivus/CLionProjects/Lab\ 4\ DB/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/gmake -j12 -f &quot;/mnt/d/My-Labs/University/year\ 2\ semester\ 1/Lab-4-DB/Lab-4-DB/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/gmake -j12 -f &quot;/mnt/d/My-Labs/University/year\ 2\ semester\ 1/Lab-4-DB/Lab-4-DB/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j12 -f &quot;/mnt/d/My-Labs/University/year\ 2\ semester\ 1/Lab-4-DB/Lab-4-DB/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j12 -f &quot;/mnt/d/My-Labs/University/year\ 2\ semester\ 1/Lab-4-DB/Lab-4-DB/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="Lab_4_DB">
-				<Option output="/mnt/c/Users/Khivus/CLionProjects/Lab 4 DB/cmake-build-debug/Lab_4_DB" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/mnt/c/Users/Khivus/CLionProjects/Lab 4 DB/cmake-build-debug"/>
+				<Option output="/mnt/d/My-Labs/University/year 2 semester 1/Lab-4-DB/Lab-4-DB/cmake-build-debug/Lab_4_DB" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/mnt/d/My-Labs/University/year 2 semester 1/Lab-4-DB/Lab-4-DB/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -33,15 +33,15 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/gmake -j12 -f &quot;/mnt/c/Users/Khivus/CLionProjects/Lab\ 4\ DB/cmake-build-debug/Makefile&quot;  VERBOSE=1 Lab_4_DB"/>
-					<CompileFile command="/usr/bin/gmake -j12 -f &quot;/mnt/c/Users/Khivus/CLionProjects/Lab\ 4\ DB/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -j12 -f &quot;/mnt/c/Users/Khivus/CLionProjects/Lab\ 4\ DB/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -j12 -f &quot;/mnt/c/Users/Khivus/CLionProjects/Lab\ 4\ DB/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/gmake -j12 -f &quot;/mnt/d/My-Labs/University/year\ 2\ semester\ 1/Lab-4-DB/Lab-4-DB/cmake-build-debug/Makefile&quot;  VERBOSE=1 Lab_4_DB"/>
+					<CompileFile command="/usr/bin/gmake -j12 -f &quot;/mnt/d/My-Labs/University/year\ 2\ semester\ 1/Lab-4-DB/Lab-4-DB/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j12 -f &quot;/mnt/d/My-Labs/University/year\ 2\ semester\ 1/Lab-4-DB/Lab-4-DB/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j12 -f &quot;/mnt/d/My-Labs/University/year\ 2\ semester\ 1/Lab-4-DB/Lab-4-DB/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="Lab_4_DB/fast">
-				<Option output="/mnt/c/Users/Khivus/CLionProjects/Lab 4 DB/cmake-build-debug/Lab_4_DB" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/mnt/c/Users/Khivus/CLionProjects/Lab 4 DB/cmake-build-debug"/>
+				<Option output="/mnt/d/My-Labs/University/year 2 semester 1/Lab-4-DB/Lab-4-DB/cmake-build-debug/Lab_4_DB" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/mnt/d/My-Labs/University/year 2 semester 1/Lab-4-DB/Lab-4-DB/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -55,37 +55,37 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/gmake -j12 -f &quot;/mnt/c/Users/Khivus/CLionProjects/Lab\ 4\ DB/cmake-build-debug/Makefile&quot;  VERBOSE=1 Lab_4_DB/fast"/>
-					<CompileFile command="/usr/bin/gmake -j12 -f &quot;/mnt/c/Users/Khivus/CLionProjects/Lab\ 4\ DB/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -j12 -f &quot;/mnt/c/Users/Khivus/CLionProjects/Lab\ 4\ DB/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -j12 -f &quot;/mnt/c/Users/Khivus/CLionProjects/Lab\ 4\ DB/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/gmake -j12 -f &quot;/mnt/d/My-Labs/University/year\ 2\ semester\ 1/Lab-4-DB/Lab-4-DB/cmake-build-debug/Makefile&quot;  VERBOSE=1 Lab_4_DB/fast"/>
+					<CompileFile command="/usr/bin/gmake -j12 -f &quot;/mnt/d/My-Labs/University/year\ 2\ semester\ 1/Lab-4-DB/Lab-4-DB/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j12 -f &quot;/mnt/d/My-Labs/University/year\ 2\ semester\ 1/Lab-4-DB/Lab-4-DB/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j12 -f &quot;/mnt/d/My-Labs/University/year\ 2\ semester\ 1/Lab-4-DB/Lab-4-DB/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="/mnt/c/Users/Khivus/CLionProjects/Lab 4 DB/cmake-build-debug"/>
+				<Option working_dir="/mnt/d/My-Labs/University/year 2 semester 1/Lab-4-DB/Lab-4-DB/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/gmake -j12 -f &quot;/mnt/c/Users/Khivus/CLionProjects/Lab\ 4\ DB/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/gmake -j12 -f &quot;/mnt/c/Users/Khivus/CLionProjects/Lab\ 4\ DB/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -j12 -f &quot;/mnt/c/Users/Khivus/CLionProjects/Lab\ 4\ DB/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -j12 -f &quot;/mnt/c/Users/Khivus/CLionProjects/Lab\ 4\ DB/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/gmake -j12 -f &quot;/mnt/d/My-Labs/University/year\ 2\ semester\ 1/Lab-4-DB/Lab-4-DB/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/gmake -j12 -f &quot;/mnt/d/My-Labs/University/year\ 2\ semester\ 1/Lab-4-DB/Lab-4-DB/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j12 -f &quot;/mnt/d/My-Labs/University/year\ 2\ semester\ 1/Lab-4-DB/Lab-4-DB/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j12 -f &quot;/mnt/d/My-Labs/University/year\ 2\ semester\ 1/Lab-4-DB/Lab-4-DB/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="/mnt/c/Users/Khivus/CLionProjects/Lab 4 DB/cmake-build-debug"/>
+				<Option working_dir="/mnt/d/My-Labs/University/year 2 semester 1/Lab-4-DB/Lab-4-DB/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/gmake -j12 -f &quot;/mnt/c/Users/Khivus/CLionProjects/Lab\ 4\ DB/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/gmake -j12 -f &quot;/mnt/c/Users/Khivus/CLionProjects/Lab\ 4\ DB/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -j12 -f &quot;/mnt/c/Users/Khivus/CLionProjects/Lab\ 4\ DB/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -j12 -f &quot;/mnt/c/Users/Khivus/CLionProjects/Lab\ 4\ DB/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/gmake -j12 -f &quot;/mnt/d/My-Labs/University/year\ 2\ semester\ 1/Lab-4-DB/Lab-4-DB/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/gmake -j12 -f &quot;/mnt/d/My-Labs/University/year\ 2\ semester\ 1/Lab-4-DB/Lab-4-DB/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j12 -f &quot;/mnt/d/My-Labs/University/year\ 2\ semester\ 1/Lab-4-DB/Lab-4-DB/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j12 -f &quot;/mnt/d/My-Labs/University/year\ 2\ semester\ 1/Lab-4-DB/Lab-4-DB/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/mnt/c/Users/Khivus/CLionProjects/Lab 4 DB/main.cpp">
+		<Unit filename="/mnt/d/My-Labs/University/year 2 semester 1/Lab-4-DB/Lab-4-DB/main.cpp">
 			<Option target="Lab_4_DB"/>
 		</Unit>
-		<Unit filename="/mnt/c/Users/Khivus/CLionProjects/Lab 4 DB/CMakeLists.txt">
+		<Unit filename="/mnt/d/My-Labs/University/year 2 semester 1/Lab-4-DB/Lab-4-DB/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>

@@ -55,7 +55,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/mnt/c/Users/Khivus/CLionProjects/Lab 4 DB/cmake-build-debug"
+			"value" : "/mnt/d/My-Labs/University/year 2 semester 1/Lab-4-DB/Lab-4-DB/cmake-build-debug"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -679,7 +679,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/mnt/c/Users/Khivus/CLionProjects/Lab 4 DB"
+			"value" : "/mnt/d/My-Labs/University/year 2 semester 1/Lab-4-DB/Lab-4-DB"
 		},
 		{
 			"name" : "CMAKE_INSTALL_PREFIX",
@@ -1218,18 +1218,6 @@
 			"value" : "[/usr/local/include][/usr/local/lib/libsqlite3.so][v3.39.4()]"
 		},
 		{
-			"name" : "Lab_4_DB",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Path to a library."
-				}
-			],
-			"type" : "FILEPATH",
-			"value" : "Lab_4_DB-NOTFOUND"
-		},
-		{
 			"name" : "Lab_4_DB_BINARY_DIR",
 			"properties" : 
 			[
@@ -1239,7 +1227,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/mnt/c/Users/Khivus/CLionProjects/Lab 4 DB/cmake-build-debug"
+			"value" : "/mnt/d/My-Labs/University/year 2 semester 1/Lab-4-DB/Lab-4-DB/cmake-build-debug"
 		},
 		{
 			"name" : "Lab_4_DB_IS_TOP_LEVEL",
@@ -1263,7 +1251,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/mnt/c/Users/Khivus/CLionProjects/Lab 4 DB"
+			"value" : "/mnt/d/My-Labs/University/year 2 semester 1/Lab-4-DB/Lab-4-DB"
 		},
 		{
 			"name" : "ProcessorCount_cmd_nproc",

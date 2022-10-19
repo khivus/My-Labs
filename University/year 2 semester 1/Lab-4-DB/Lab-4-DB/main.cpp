@@ -1,3 +1,5 @@
+// DBM v0.1.0 2022 Kharin Aleksey
+//
 // cd '/mnt/c/Users/Khivus/CLionProjects/Lab 4 DB/cmake-build-debug' && '/mnt/c/Users/Khivus/CLionProjects/Lab 4 DB/cmake-build-debug/Lab_4_DB'; exitcode=$?; sleep 0.001; (exit $exitcode)
 // From default directory:
 // cd cmake-build-debug/; ./Lab_4_DB; exitcode=$?; sleep 0.001; (exit $exitcode)
@@ -8,20 +10,20 @@
 
 using namespace std;
 
-//static int callback(void* data, int argc, char** argv, char** azColName) {
-//    int i;
-//    fprintf(stderr, "%s: ", (const char*)data);
-//    for (i = 0; i < argc; i++) {
-//        printf("%s = %s\n", azColName[i], argv[i] ? argv[i] : "NULL");
-//    }
-//    printf("\n");
-//    return 0;
-//}
+static int callback(void *data, int argc, char **argv, char **azColName){
+    int i;
+    fprintf(stderr, "%s: ", (const char*)data);
+    for(i = 0; i<argc; i++){
+        printf("%s = %s\n", azColName[i], argv[i] ? argv[i] : "NULL");
+    }
+    printf("\n");
+    return 0;
+}
 
 class DBManager {
 public:
-    DBManager() { cout << "Constructing DBManager.\n"; };
-    ~DBManager() { cout << "Destructing DBManager.\n"; };
+    DBManager() { cout << "DBManager constructed.\n"; };
+    ~DBManager() { cout << "DBManager destructed.\n"; };
 
     sqlite3* DB{};
 
@@ -38,6 +40,61 @@ public:
             cout << "Opened Database Successfully!" << endl;
     }
 
+    void insert(const string& info, int mode) const {
+        char* message_error;
+        string insert_info;
+
+        if (mode == 1)
+                insert_info = "INSERT INTO buildings (building) VALUES(" + info + ");";
+        else if (mode == 2)
+                insert_info = "INSERT INTO auditory (building_id, num, square, purpose, university_unit, image) VALUES(" + info + ");";
+
+        int exit = sqlite3_exec(DB, insert_info.c_str(),nullptr, nullptr, &message_error);
+        if (exit != SQLITE_OK) {
+            cerr << "Sql insert error: " << sqlite3_errmsg(DB) << endl;
+            sqlite3_free(message_error);
+        }
+        else
+            cout << "Successfully inserted into database.\n";
+    }
+
+    void del(const string& id, int mode) const {
+        char* message_error;
+        string del_query;
+
+        if (mode == 1)
+            del_query = "DELETE FROM buildings WHERE ID = " + id + ";";
+        else if (mode == 2)
+            del_query = "DELETE FROM auditory WHERE ID = " + id + ";";
+
+        int exit = sqlite3_exec(DB, del_query.c_str(), nullptr, nullptr, &message_error);
+        if (exit != SQLITE_OK) {
+            cerr << "Sql delete error: " << sqlite3_errmsg(DB) << endl;
+            sqlite3_free(message_error);
+        }
+        else
+            cout << "Record deleted Successfully!" << endl;
+    }
+
+    void dbout(int table) const {
+        string sql;
+        char* message_error;
+        const char* data = "Callback function called";
+
+        if (table == 1)
+            sql = "SELECT * from buildings";
+        else if (table == 2)
+            sql = "SELECT * from auditory";
+        int exit = sqlite3_exec(DB, sql.c_str(), callback, (void*)data, &message_error);
+
+        if( exit != SQLITE_OK ) {
+            cerr << "Sql error: " << sqlite3_errmsg(DB) << endl;
+            sqlite3_free(message_error);
+        } else {
+            fprintf(stdout, "Outputted info successfully.\n");
+        }
+    }
+
 };
 
 void menu_output() {
@@ -48,7 +105,7 @@ void menu_output() {
             "[3] Delete info\n"
             "[4] Output info\n"
             "[5] About program\n"
-            "[7] Exit\n"
+            "[6] Exit\n"
             "=============================================\n\n";
 }
 
@@ -62,53 +119,12 @@ int get_menu_point() {
     return point;
 }
 
-//void create_table_a(sqlite3* DB) {
-//    string sql = "CREATE TABLE auditory ("
-//                 " \"building_id\" INTEGER NOT NULL,"
-//                 " \"num\" INTEGER NOT NULL,"
-//                 " \"square\" INTEGER,"
-//                 " \"purpose\" TEXT,"
-//                 " \"university_unit\"\tTEXT,"
-//                 " \"image\" TEXT,"
-//                 " FOREIGN KEY(\"building_id\") REFERENCES \"buildings\"(\"id\")"
-//                 ");";
-//    int exit;
-//    char* messageError;
-//    exit = sqlite3_exec(DB, sql.c_str(), NULL, 0, &messageError);
-//
-//    if (exit != SQLITE_OK) {
-//        std::cerr << "Error Create Table" << std::endl;
-//        sqlite3_free(messageError);
-//    }
-//    else
-//        std::cout << "Table created Successfully" << std::endl;
-//}
-//
-//void create_table_b(sqlite3* DB) {
-//    string sql = "CREATE TABLE \"buildings\" ("
-//                 " \"id\" INTEGER NOT NULL,"
-//                 " \"building\" INTEGER NOT NULL,"
-//                 " PRIMARY KEY(\"id\" AUTOINCREMENT)"
-//                 ");";
-//    int exit;
-//    char* messageError;
-//    exit = sqlite3_exec(DB, sql.c_str(), nullptr, nullptr, &messageError);
-//
-//    if (exit != SQLITE_OK) {
-//        std::cerr << "Error Create Table" << std::endl;
-//        sqlite3_free(messageError);
-//    }
-//    else
-//        std::cout << "Table created Successfully" << std::endl;
-//}
-
 int main() {
     bool in_menu = true;
     int menu_point;
-    int exit;
-    char* message_error;
-    string info;
     string insert_into_sql;
+    string info, id;
+    int ans;
     menu_output();
     DBManager DB;
     DB.open();
@@ -117,31 +133,61 @@ int main() {
         menu_point = get_menu_point();
         switch (menu_point) {
             case 1: // insert
-                cout << "Input into buildings...\n"
-                        "Input building number: ";
-                cin >> info;
-                insert_into_sql = "INSERT INTO buildings (building) "
-                                  "VALUES(" + info + ");";
-
-                exit = sqlite3_exec(DB.get(), insert_into_sql.c_str(),nullptr, nullptr, &message_error);
-                if (exit != SQLITE_OK) {
-                    cerr << "Error: " << sqlite3_errmsg(DB.get()) << endl;
-                    sqlite3_free(message_error);
+                cout << "Input in [1]Buildings or [2]Auditories: ";
+                cin >> ans;
+                if (ans == 1) {
+                    cout << "Input building_num(int): ";
+                    cin >> info;
                 }
-                else
-                    cout << "Successfully inserted into buildings.\n";
+                else if (ans == 2) {
+                    string b_id, a_num, sqr, purpose, unit, img;
+                    cout << "Input building num(int): ";
+                    cin >> b_id;
+                    cout << "Input auditory num(int): ";
+                    cin >> a_num;
+                    cout << "Input auditory square(int or NULL): ";
+                    cin >> sqr;
+                    cout << "Input auditory purpose(string or NULL): ";
+                    cin >> purpose;
+                    cout << "Input auditory university unit(string or NULL): ";
+                    cin >> unit;
+                    cout << "Input auditory image(link or NULL): ";
+                    cin >> img;
+                    info = b_id + ", " + a_num + ", " + sqr + ", '" + purpose + "', '" + unit + "', '" + img + "'";
+                }
+                else {
+                    cout << "Wrong input!\n";
+                    break;
+                }
+                DB.insert(info, ans);
                 break;
             case 2: // change
                 cout << "What you want to change? :>\n";
                 break;
             case 3: // delete
-                cout << "Select a record to delete:\n";
+                cout << "Delete from [1]Buildings or [2]Auditories: ";
+                cin >> ans;
+                if (ans != 1 && ans != 2)
+                    cout << "Wrong input!\n";
+                else {
+                    cout << "Input id of the record to delete: ";
+                    cin >> id;
+                    DB.del(id, ans);
+                }
                 break;
             case 4: // output
-                cout << "Output from the 'MainDB_tnp.db':\n";
+                cout << "Output from 'MDB.db' [1]Buildings or [2]Auditories: ";
+                cin >> ans;
+                if (ans != 1 && ans != 2)
+                    cout << "Wrong input!\n";
+                else
+                    DB.dbout(ans);
                 break;
-            case 7: // exit
-                cout << "Exit the program\n";
+            case 5:
+                cout << "DB manager v0.1.0 2022 Kharin Aleksey\n";
+                break;
+            case 6: // exit
+                cout << "Exit the program.\n";
                 in_menu = false;
                 break;
             default:

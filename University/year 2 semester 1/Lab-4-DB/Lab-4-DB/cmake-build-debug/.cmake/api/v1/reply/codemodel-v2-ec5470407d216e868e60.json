@@ -49,8 +49,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "/mnt/c/Users/Khivus/CLionProjects/Lab 4 DB/cmake-build-debug",
-		"source" : "/mnt/c/Users/Khivus/CLionProjects/Lab 4 DB"
+		"build" : "/mnt/d/My-Labs/University/year 2 semester 1/Lab-4-DB/Lab-4-DB/cmake-build-debug",
+		"source" : "/mnt/d/My-Labs/University/year 2 semester 1/Lab-4-DB/Lab-4-DB"
 	},
 	"version" : 
 	{

@@ -1,4 +1,4 @@
-# Install script for directory: /mnt/c/Users/Khivus/CLionProjects/Lab 4 DB
+# Install script for directory: /mnt/d/My-Labs/University/year 2 semester 1/Lab-4-DB/Lab-4-DB
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -50,5 +50,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/mnt/c/Users/Khivus/CLionProjects/Lab 4 DB/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/mnt/d/My-Labs/University/year 2 semester 1/Lab-4-DB/Lab-4-DB/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
