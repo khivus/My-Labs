@@ -1,3 +1,0 @@
-/mnt/d/My-Labs/University/year 2 semester 1/Lab-4-DB/Lab-4-DB/cmake-build-debug/CMakeFiles/Lab_4_DB.dir
-/mnt/d/My-Labs/University/year 2 semester 1/Lab-4-DB/Lab-4-DB/cmake-build-debug/CMakeFiles/edit_cache.dir
-/mnt/d/My-Labs/University/year 2 semester 1/Lab-4-DB/Lab-4-DB/cmake-build-debug/CMakeFiles/rebuild_cache.dir
