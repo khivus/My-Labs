@@ -1,0 +1,8 @@
+C:\Users\Zloy\source\repos\database\database\Debug\database.vcxproj.AssemblyReference.cache
+C:\Users\Zloy\source\repos\database\database\Debug\database.MainForm.resources
+C:\Users\Zloy\source\repos\database\database\Debug\database.vcxproj.GenerateResource.cache
+C:\Users\Zloy\source\repos\database\database\Debug\database.vcxproj.CopyComplete
+C:\Users\Светлана\Desktop\database\database\Debug\database.vcxproj.AssemblyReference.cache
+C:\Users\Светлана\Desktop\database\database\Debug\database.MainForm.resources
+C:\Users\Светлана\Desktop\database\database\Debug\database.vcxproj.GenerateResource.cache
+C:\Users\Светлана\Desktop\database\database\Debug\database.vcxproj.CopyComplete
