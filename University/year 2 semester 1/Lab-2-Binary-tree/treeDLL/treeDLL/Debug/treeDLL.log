@@ -1,3 +1,0 @@
-﻿  treeDLL.cpp
-C:\Users\Zloy\source\repos\treeDLL\treeDLL\treeDLL.cpp(141): warning C4715: find_del: значение возвращается не при всех путях выполнения
-  treeDLL.vcxproj -> C:\Users\Zloy\source\repos\treeDLL\Debug\treeDLL.dll

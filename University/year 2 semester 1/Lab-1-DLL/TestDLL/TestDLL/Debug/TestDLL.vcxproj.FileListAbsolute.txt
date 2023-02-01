@@ -1,9 +1,0 @@
-C:\Users\Zloy\source\repos\TestDLL\TestDLL\Debug\TestDLL.vcxproj.AssemblyReference.cache
-C:\Users\Zloy\source\repos\TestDLL\TestDLL\Debug\TestDLL.MyForm.resources
-C:\Users\Zloy\source\repos\TestDLL\TestDLL\Debug\TestDLL.vcxproj.GenerateResource.cache
-C:\Users\Khivus\source\repos\Project\TestDLL\TestDLL\Debug\TestDLL.vcxproj.AssemblyReference.cache
-C:\Users\Khivus\source\repos\Project\TestDLL\TestDLL\Debug\TestDLL.MyForm.resources
-C:\Users\Khivus\source\repos\Project\TestDLL\TestDLL\Debug\TestDLL.vcxproj.GenerateResource.cache
-C:\Users\Khivus\Education\Programming\University\year 2 semester 1\Lab_1\TestDLL\TestDLL\Debug\TestDLL.vcxproj.AssemblyReference.cache
-C:\Users\Khivus\Education\Programming\University\year 2 semester 1\Lab_1\TestDLL\TestDLL\Debug\TestDLL.MyForm.resources
-C:\Users\Khivus\Education\Programming\University\year 2 semester 1\Lab_1\TestDLL\TestDLL\Debug\TestDLL.vcxproj.GenerateResource.cache

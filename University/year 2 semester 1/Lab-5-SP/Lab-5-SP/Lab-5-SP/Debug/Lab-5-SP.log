@@ -1,7 +1,0 @@
-﻿  MainForm.cpp
-C:\Users\Khivus\source\repos\Lab-5-SP\Lab-5-SP\MainForm.h(215,3): warning C4996: 'spawnl': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _spawnl. See online help for details.
-C:\Users\Khivus\source\repos\Lab-5-SP\Lab-5-SP\MainForm.h(219,3): warning C4996: 'execl': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _execl. See online help for details.
-  .NETFramework,Version=v4.7.2.AssemblyAttributes.cpp
-  Создание кода...
-  MainForm.obj : обнаружен модуль MSIL; для MSIL последовательная компоновка отключена; выполняется полная компоновка
-  Lab-5-SP.vcxproj -> C:\Users\Khivus\source\repos\Lab-5-SP\Debug\Lab-5-SP.exe

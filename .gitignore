@@ -1,2 +1,9 @@
 # Ignore Browse.VC.db files
 **/.vs
+
+# Ignore all Debug directories 
+**/Debug
+
+**/.vscode
+
+**/__pycache__
