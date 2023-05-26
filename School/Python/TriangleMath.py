@@ -1,5 +1,5 @@
 '''Copyright Aleksey inc. 2003-2021 all rights reserved©
-vk.com/khivuss'''
+@khivus'''
 
 from math import *
 from tkinter import *

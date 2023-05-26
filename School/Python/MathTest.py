@@ -1,5 +1,5 @@
 from tkinter import *
-from why import questions
+from Questions import questions
 
 root=Tk()
 root.title('Тест')

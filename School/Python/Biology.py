@@ -107,9 +107,9 @@ def graph():
     y1=40
     y=240
     for i in range(6):
-	canv.create_line(x,278,x,282)
-	canv.create_text(x,297,text=x1)
-	x+=50
+        canv.create_line(x,278,x,282)
+        canv.create_text(x,297,text=x1)
+        x+=50
         x1+=50
         canv.create_line(18,y,22,y)
         canv.create_text(10,y,text=y1)
